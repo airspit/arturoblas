@@ -104,6 +104,23 @@ nav {
 .uc9 { background: var(--bk); color: var(--wh); border: 1.5px dashed rgba(255,255,255,.3); }
 
 .bio-body { font-size: .75rem; line-height: 2; color: rgba(8,8,8,.55); max-width: 64ch; }
+.bio-name { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 1.4rem; letter-spacing: -.02em; margin-bottom: .3rem; }
+.bio-place { font-size: .68rem; color: rgba(8,8,8,.45); margin-bottom: 1.8rem; }
+.bio-lead { font-size: .82rem; line-height: 1.9; color: var(--bk); max-width: 62ch; margin-bottom: 1.8rem; font-weight: 500; }
+.bio-traits { display: flex; flex-direction: column; gap: 0; margin-bottom: 1.8rem; }
+.bio-trait { display: grid; grid-template-columns: 110px 1fr; gap: 1.2rem; padding: 1.1rem 0; border-top: 1px solid rgba(8,8,8,.08); }
+.bio-trait-word { font-family: 'Unbounded', sans-serif; font-size: .7rem; font-weight: 700; padding: .35rem .7rem; border-radius: 999px; height: fit-content; text-align: center; }
+.bio-trait-text { font-size: .68rem; line-height: 1.85; color: rgba(8,8,8,.6); max-width: 60ch; }
+.bio-section-label { font-family: 'Unbounded', sans-serif; font-size: .55rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--mg); margin: 1.6rem 0 .8rem; }
+.bio-trayectoria { font-size: .68rem; line-height: 1.9; color: rgba(8,8,8,.55); max-width: 62ch; margin-bottom: 1.8rem; }
+.bio-create-list { display: flex; flex-direction: column; gap: .2rem; margin-bottom: 1.8rem; }
+.bio-create-item { font-family: 'Unbounded', sans-serif; font-size: .85rem; font-weight: 700; letter-spacing: -.01em; }
+.bio-create-item.lead { color: var(--mg); margin-bottom: .5rem; font-size: .68rem; font-weight: 400; letter-spacing: 0; font-family: 'Space Grotesk', sans-serif; }
+.bio-believe-list { display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1.8rem; }
+.bio-believe-item { font-size: .72rem; line-height: 1.7; padding-left: 1rem; border-left: 2px solid var(--lm1); color: rgba(8,8,8,.65); }
+.bio-closing { font-size: .78rem; line-height: 1.9; max-width: 58ch; padding-top: 1.5rem; border-top: 1.5px solid var(--bk); margin-top: .5rem; }
+.bio-closing strong { font-family: 'Unbounded', sans-serif; font-weight: 700; }
+.bio-final { font-style: italic; color: var(--mg); margin-top: .8rem; font-size: .8rem; }
 
 .hashtag-row { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
 .htag { font-family: 'Unbounded', sans-serif; font-size: .52rem; font-weight: 700; padding: .3rem .75rem; border-radius: 999px; border: 1.5px solid var(--bk); cursor: pointer; transition: background .12s, color .12s; background: none; }
@@ -283,7 +300,55 @@ nav {
 
   <section class="snap-section" id="bio" data-name="bio">
     <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">bio & trayectoria</h2><span class="sec-dot" style="background:var(--mg)"></span></div>
-    <div class="sec-body"><p class="bio-body">Acá va tu presentación completa — quién sos, de dónde venís, qué te mueve. Espacio para una bio extensa, en tu voz.</p></div>
+    <div class="sec-body">
+      <p class="bio-name">Arturo Blas</p>
+      <p class="bio-place">La Plata · 15 años en Buenos Aires</p>
+
+      <p class="bio-lead">Me considero una persona ecléctica, inquieta y renacentista.</p>
+
+      <div class="bio-traits">
+        <div class="bio-trait">
+          <span class="bio-trait-word" style="background:var(--mg);color:#fff;">Ecléctico</span>
+          <p class="bio-trait-text">Porque me niego a aceptar que la realidad pueda comprenderse desde una única disciplina. Me interesan las ciudades y las personas. La cultura y la política. El turismo y la arquitectura. El diseño y la tecnología. Las ideas y las experiencias. Siempre desconfié de los compartimentos estancos. Prefiero los cruces, las mezclas y los territorios donde aparentemente nada tiene que ver con nada, hasta que alguien encuentra la conexión.</p>
+        </div>
+        <div class="bio-trait">
+          <span class="bio-trait-word" style="background:var(--lm1);color:var(--bk);">Inquieto</span>
+          <p class="bio-trait-text">Porque las respuestas definitivas nunca lograron seducirme demasiado. Me atraen más las preguntas. Observo costumbres, comportamientos, rituales y contradicciones. Me intriga aquello que la mayoría considera normal. Me interesa entender por qué vivimos como vivimos, qué historias nos contamos para darle sentido al mundo y qué sucede cuando alguien se anima a cuestionarlas.</p>
+        </div>
+        <div class="bio-trait">
+          <span class="bio-trait-word" style="background:var(--bk);color:var(--lm2);">Renacentista</span>
+          <p class="bio-trait-text">Porque creo que la curiosidad es una forma de libertad. Porque disfruto aprendiendo cosas nuevas. Porque me entusiasma moverme entre disciplinas, lenguajes y universos distintos. Porque nunca sentí la necesidad de elegir una sola identidad cuando podía explorar muchas.</p>
+        </div>
+      </div>
+
+      <p class="bio-trayectoria">A lo largo de mi vida participé en proyectos culturales, comunitarios, turísticos, educativos y de cooperación internacional. Diseñé experiencias, impulsé encuentros, construí redes, organicé eventos, coordiné equipos, di conferencias y desarrollé iniciativas en distintos lugares y contextos.<br><br>Pero ninguna de esas actividades define realmente quién soy.<br>Lo que me define es el impulso de crear.</p>
+
+      <div class="bio-create-list">
+        <span class="bio-create-item lead">crear:</span>
+        <span class="bio-create-item">Una idea.</span>
+        <span class="bio-create-item">Una conversación.</span>
+        <span class="bio-create-item">Una comunidad.</span>
+        <span class="bio-create-item">Una experiencia.</span>
+        <span class="bio-create-item">Una pregunta capaz de alterar una certeza.</span>
+      </div>
+
+      <p class="bio-trayectoria">Me considero un inventor. No necesariamente de objetos, sino de posibilidades. Me apasiona imaginar lo que todavía no existe y construir puentes entre mundos que suelen permanecer separados. Allí donde otros ven fronteras, yo suelo ver conexiones.</p>
+
+      <p class="bio-section-label">creo en</p>
+      <div class="bio-believe-list">
+        <p class="bio-believe-item">La cultura como una fuerza transformadora.</p>
+        <p class="bio-believe-item">La diversidad como una fuente de riqueza y no como un problema a resolver.</p>
+        <p class="bio-believe-item">Las ciudades como grandes laboratorios humanos.</p>
+        <p class="bio-believe-item">Los viajes como herramientas para expandir la mirada.</p>
+        <p class="bio-believe-item">Las comunidades como espacios de construcción colectiva.</p>
+        <p class="bio-believe-item">Que la creatividad no pertenece exclusivamente al arte. También vive en las organizaciones, en los proyectos, en las conversaciones, en la forma en que habitamos el mundo y en la manera en que nos vinculamos con los demás.</p>
+      </div>
+
+      <div class="bio-closing">
+        <p><strong>Este sitio es un mapa.</strong><br>Un mapa de ideas, proyectos, experiencias, reflexiones y obsesiones. Un espacio donde conviven la cultura, el turismo, la hospitalidad, el diseño, la comunicación, la innovación y todo aquello que despierta mi curiosidad.</p>
+        <p class="bio-final">No porque crea que tengo respuestas extraordinarias. Sino porque estoy convencido de que las preguntas correctas pueden cambiarlo todo.</p>
+      </div>
+    </div>
   </section>
 
   <section class="snap-section" id="textos" data-name="textos">
