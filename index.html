@@ -20,40 +20,11 @@
 html, body { height: 100%; overflow: hidden; }
 body { background: var(--wh); font-family: 'Space Grotesk', sans-serif; color: var(--bk); }
 
-nav {
-  background: var(--bk); display: flex; align-items: center; justify-content: space-between;
-  padding: .8rem 1.8rem; border-bottom: 2.5px solid var(--mg);
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  flex-wrap: wrap; gap: .4rem;
+/* ===== LANDING — pantalla cerrada, sin scroll, sin nav ===== */
+#landingScreen {
+  position: fixed; inset: 0; z-index: 500; background: var(--wh);
+  display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;
 }
-.nav-logo { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 1.05rem; color: var(--wh); letter-spacing: -.02em; cursor: pointer; background: none; border: none; }
-.nav-logo span { color: var(--mg); }
-.nav-pills { display: flex; gap: .3rem; flex-wrap: wrap; }
-.nav-pill {
-  font-size: .5rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
-  color: var(--bk); background: var(--lm2); padding: .28rem .6rem; border: none;
-  border-radius: 2px; transition: background .15s, color .15s; white-space: nowrap; cursor: pointer;
-}
-.nav-pill:hover { background: var(--mg); color: var(--wh); }
-.nav-pill.active { background: var(--mg); color: var(--wh); }
-.nav-pill.alt { background: transparent; color: rgba(255,255,255,.4); border: 1px solid rgba(255,255,255,.15); }
-.nav-pill.alt:hover { background: var(--mg); color: var(--wh); border-color: var(--mg); }
-
-.snap-container { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth; }
-.snap-section {
-  height: 100vh; scroll-snap-align: start; scroll-snap-stop: always;
-  overflow-y: auto; display: flex; flex-direction: column;
-  padding-top: 56px; border-bottom: 2.5px solid var(--bk); position: relative;
-}
-
-.progress-dots { position: fixed; right: 1.2rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: .5rem; z-index: 150; }
-.pdot { width: 7px; height: 7px; border-radius: 50%; background: rgba(8,8,8,.15); border: 1px solid rgba(8,8,8,.25); cursor: pointer; transition: background .2s, transform .2s; padding: 0; }
-.pdot.active { background: var(--mg); border-color: var(--mg); transform: scale(1.3); }
-.pdot.on-dark { border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.15); }
-.pdot.on-dark.active { background: var(--mg); border-color: var(--mg); }
-
-/* LANDING */
-.landing { display: grid; grid-template-columns: 1fr 1fr; flex: 1; position: relative; overflow: hidden; }
 .tri { position: absolute; width: 0; height: 0; pointer-events: none; }
 .landing-left { position: relative; z-index: 5; padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; border-right: 2.5px solid var(--bk); }
 .land-h1 { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: clamp(2.6rem, 5.5vw, 5rem); line-height: .93; letter-spacing: -.04em; }
@@ -70,9 +41,42 @@ nav {
   transition: background .15s, color .15s;
 }
 .enter-btn:hover { background: var(--mg); border-color: var(--mg); }
-.enter-arrow { font-size: 1rem; }
 .landing-right { position: relative; z-index: 5; display: flex; align-items: center; justify-content: center; }
 .landing-ab { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: clamp(4.5rem, 11vw, 9rem); color: transparent; -webkit-text-stroke: 3px rgba(8,8,8,.1); line-height: 1; }
+
+/* ===== SITIO — oculto hasta tocar "explorar" ===== */
+#siteScreen { display: none; height: 100%; }
+#siteScreen.visible { display: block; }
+
+nav {
+  background: var(--bk); display: flex; align-items: center; justify-content: space-between;
+  padding: .8rem 1.8rem; border-bottom: 2.5px solid var(--mg);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  flex-wrap: wrap; gap: .4rem;
+}
+.nav-logo { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 1.05rem; color: var(--wh); letter-spacing: -.02em; cursor: pointer; background: none; border: none; }
+.nav-logo span { color: var(--mg); }
+.nav-pills { display: flex; gap: .3rem; flex-wrap: wrap; }
+.nav-pill {
+  font-size: .5rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--bk); background: var(--lm2); padding: .28rem .6rem; border: none;
+  border-radius: 2px; transition: background .15s, color .15s; white-space: nowrap; cursor: pointer;
+}
+.nav-pill:hover { background: var(--mg); color: var(--wh); }
+.nav-pill.active { background: var(--mg); color: var(--wh); }
+
+.snap-container { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+.snap-section {
+  height: 100vh; scroll-snap-align: start; scroll-snap-stop: always;
+  overflow-y: auto; display: flex; flex-direction: column;
+  padding-top: 56px; border-bottom: 2.5px solid var(--bk); position: relative;
+}
+
+.progress-dots { position: fixed; right: 1.2rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: .5rem; z-index: 150; }
+.pdot { width: 7px; height: 7px; border-radius: 50%; background: rgba(8,8,8,.15); border: 1px solid rgba(8,8,8,.25); cursor: pointer; transition: background .2s, transform .2s; padding: 0; }
+.pdot.active { background: var(--mg); border-color: var(--mg); transform: scale(1.3); }
+.pdot.on-dark { border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.15); }
+.pdot.on-dark.active { background: var(--mg); border-color: var(--mg); }
 
 .sec-head { display: flex; align-items: center; gap: 1rem; padding: 1rem 2rem; border-bottom: 1.5px solid rgba(8,8,8,.08); flex-shrink: 0; }
 .sec-num { font-family: 'Unbounded', sans-serif; font-size: .5rem; font-weight: 900; letter-spacing: .2em; opacity: .2; }
@@ -80,7 +84,6 @@ nav {
 .sec-dot { width: 14px; height: 14px; border-radius: 50%; margin-left: auto; border: 2px solid var(--bk); flex-shrink: 0; }
 .sec-body { flex: 1; overflow-y: auto; padding: 1.6rem 2rem; }
 
-/* UNIVERSOS */
 .universos { display: grid; grid-template-columns: repeat(5, 1fr); flex: 1; }
 .ucard { padding: 1.2rem; border-right: 1.5px solid var(--bk); border-bottom: 1.5px solid var(--bk); display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; overflow: hidden; position: relative; text-decoration: none; transition: filter .15s; }
 .ucard:nth-child(5n) { border-right: none; }
@@ -198,7 +201,7 @@ nav {
 .footer-links button:hover { color: var(--mg); }
 
 @media (max-width: 768px) {
-  .landing { grid-template-columns: 1fr; }
+  #landingScreen { grid-template-columns: 1fr; }
   .landing-right { display: none; }
   .universos { grid-template-columns: 1fr 1fr; }
   .interior-grid { grid-template-columns: 1fr 1fr; }
@@ -214,20 +217,47 @@ nav {
 </head>
 <body>
 
+<!-- ===== PANTALLA DE ENTRADA — sin scroll, sin nav ===== -->
+<div id="landingScreen">
+  <div class="tri" style="border-left:130px solid transparent;border-right:130px solid transparent;border-bottom:220px solid var(--mg);opacity:.85;top:-70px;left:-90px;transform:rotate(8deg);"></div>
+  <div class="tri" style="border-left:110px solid transparent;border-right:110px solid transparent;border-bottom:190px solid var(--rs2);opacity:.8;top:-30px;right:-70px;transform:rotate(-12deg);"></div>
+  <div class="tri" style="border-left:95px solid transparent;border-right:95px solid transparent;border-bottom:170px solid var(--lm2);opacity:.6;bottom:-90px;left:32%;transform:rotate(20deg);"></div>
+  <div class="landing-left">
+    <div>
+      <h1 class="land-h1">
+        <span class="ll1">TODO</span>
+        <span class="ll2">LO QUE</span>
+        <span class="ll3">SOY</span>
+      </h1>
+      <div class="land-pills">
+        <span class="land-pill" style="background:var(--mg);color:#fff;">Ecléctico</span>
+        <span class="land-pill" style="background:var(--lm1);color:var(--bk);">Inquieto</span>
+        <span class="land-pill" style="background:var(--bk);color:var(--lm2);">Renacentista</span>
+      </div>
+      <p class="land-bio">gestor cultural · speaker · columnista · interiorista<br>curador · líder Airbnb</p>
+      <button class="enter-btn" onclick="enterSite()">explorar <span>→</span></button>
+    </div>
+  </div>
+  <div class="landing-right"><div class="landing-ab">AB</div></div>
+</div>
+
+<!-- ===== SITIO COMPLETO — oculto hasta tocar "explorar" ===== -->
+<div id="siteScreen">
+
 <nav>
   <button class="nav-logo" onclick="goTo(0)">arturo<span>blas</span></button>
   <div class="nav-pills" id="navPills">
-    <button class="nav-pill" onclick="goTo(1)">universos</button>
-    <button class="nav-pill" onclick="goTo(2)">bio</button>
-    <button class="nav-pill" onclick="goTo(3)">textos</button>
-    <button class="nav-pill" onclick="goTo(4)">speaker</button>
-    <button class="nav-pill" onclick="goTo(5)">interiorismo</button>
-    <button class="nav-pill" onclick="goTo(6)">curaduría</button>
-    <button class="nav-pill" onclick="goTo(7)">airbnb</button>
-    <button class="nav-pill" onclick="goTo(8)">arturismo</button>
-    <button class="nav-pill" onclick="goTo(9)">entrevistas</button>
-    <button class="nav-pill" onclick="goTo(10)">cultura nación</button>
-    <button class="nav-pill alt" onclick="goTo(11)">●</button>
+    <button class="nav-pill" onclick="goTo(0)">universos</button>
+    <button class="nav-pill" onclick="goTo(1)">bio</button>
+    <button class="nav-pill" onclick="goTo(2)">textos</button>
+    <button class="nav-pill" onclick="goTo(3)">speaker</button>
+    <button class="nav-pill" onclick="goTo(4)">interiorismo</button>
+    <button class="nav-pill" onclick="goTo(5)">curaduría</button>
+    <button class="nav-pill" onclick="goTo(6)">airbnb</button>
+    <button class="nav-pill" onclick="goTo(7)">arturismo</button>
+    <button class="nav-pill" onclick="goTo(8)">entrevistas</button>
+    <button class="nav-pill" onclick="goTo(9)">cultura nación</button>
+    <button class="nav-pill" onclick="goTo(10)">●</button>
   </div>
 </nav>
 
@@ -235,46 +265,19 @@ nav {
 
 <div class="snap-container" id="snapContainer">
 
-  <!-- 0: LANDING -->
-  <section class="snap-section" data-name="presentación">
-    <div class="landing">
-      <div class="tri" style="border-left:130px solid transparent;border-right:130px solid transparent;border-bottom:220px solid var(--mg);opacity:.85;top:-70px;left:-90px;transform:rotate(8deg);"></div>
-      <div class="tri" style="border-left:110px solid transparent;border-right:110px solid transparent;border-bottom:190px solid var(--rs2);opacity:.8;top:-30px;right:-70px;transform:rotate(-12deg);"></div>
-      <div class="tri" style="border-left:95px solid transparent;border-right:95px solid transparent;border-bottom:170px solid var(--lm2);opacity:.6;bottom:-90px;left:32%;transform:rotate(20deg);"></div>
-      <div class="landing-left">
-        <div>
-          <h1 class="land-h1">
-            <span class="ll1">TODO</span>
-            <span class="ll2">LO QUE</span>
-            <span class="ll3">SOY</span>
-          </h1>
-          <div class="land-pills">
-            <span class="land-pill" style="background:var(--mg);color:#fff;">Ecléctico</span>
-            <span class="land-pill" style="background:var(--lm1);color:var(--bk);">Inquieto</span>
-            <span class="land-pill" style="background:var(--bk);color:var(--lm2);">Renacentista</span>
-          </div>
-          <p class="land-bio">gestor cultural · speaker · columnista · interiorista<br>curador · líder Airbnb</p>
-          <button class="enter-btn" onclick="goTo(1)">explorar <span class="enter-arrow">→</span></button>
-        </div>
-      </div>
-      <div class="landing-right"><div class="landing-ab">AB</div></div>
-    </div>
-  </section>
-
-  <!-- 1: UNIVERSOS -->
   <section class="snap-section" data-name="universos">
     <div class="sec-head"><span class="sec-num">00</span><h2 class="sec-title">los universos de arturo</h2><span class="sec-dot" style="background:var(--mg)"></span></div>
     <div class="universos">
-      <a href="javascript:void(0)" onclick="goTo(2)" class="ucard uc0"><span class="uc-num">01</span><p class="uc-name">Bio & trayectoria</p><span class="uc-tag">presentación</span></a>
-      <a href="javascript:void(0)" onclick="goTo(3)" class="ucard uc1"><span class="uc-num">02</span><p class="uc-name">Textos & opinión</p><span class="uc-tag">ensayos, hashtags</span></a>
-      <a href="javascript:void(0)" onclick="goTo(4)" class="ucard uc2"><span class="uc-num">03</span><p class="uc-name">Speaker</p><span class="uc-tag">charlas, ponencias</span></a>
-      <a href="javascript:void(0)" onclick="goTo(5)" class="ucard uc3"><span class="uc-num">04</span><p class="uc-name">Interiorismo</p><span class="uc-tag">proyectos & renders</span></a>
-      <a href="javascript:void(0)" onclick="goTo(6)" class="ucard uc4"><span class="uc-num">05</span><p class="uc-name">Curaduría</p><span class="uc-tag">galería de arte</span></a>
-      <a href="javascript:void(0)" onclick="goTo(7)" class="ucard uc5"><span class="uc-num">06</span><p class="uc-name">Airbnb</p><span class="uc-tag">anfitrión & comunidad</span></a>
-      <a href="javascript:void(0)" onclick="goTo(8)" class="ucard uc6"><span class="uc-num">07</span><p class="uc-name">Arturismo</p><span class="uc-tag">FM La Tribu</span></a>
-      <a href="javascript:void(0)" onclick="goTo(9)" class="ucard uc7"><span class="uc-num">08</span><p class="uc-name">Entrevistas</p><span class="uc-tag">Ray-Ban Meta</span></a>
-      <a href="javascript:void(0)" onclick="goTo(10)" class="ucard uc8"><span class="uc-num">09</span><p class="uc-name">Cultura Nación</p><span class="uc-tag">15 años · archivo</span></a>
-      <a href="javascript:void(0)" onclick="goTo(11)" class="ucard uc9"><span class="uc-num">10</span><p class="uc-name">??? — próximamente</p><span class="uc-tag">en construcción</span></a>
+      <a href="javascript:void(0)" onclick="goTo(1)" class="ucard uc0"><span class="uc-num">01</span><p class="uc-name">Bio & trayectoria</p><span class="uc-tag">presentación</span></a>
+      <a href="javascript:void(0)" onclick="goTo(2)" class="ucard uc1"><span class="uc-num">02</span><p class="uc-name">Textos & opinión</p><span class="uc-tag">ensayos, hashtags</span></a>
+      <a href="javascript:void(0)" onclick="goTo(3)" class="ucard uc2"><span class="uc-num">03</span><p class="uc-name">Speaker</p><span class="uc-tag">charlas, ponencias</span></a>
+      <a href="javascript:void(0)" onclick="goTo(4)" class="ucard uc3"><span class="uc-num">04</span><p class="uc-name">Interiorismo</p><span class="uc-tag">proyectos & renders</span></a>
+      <a href="javascript:void(0)" onclick="goTo(5)" class="ucard uc4"><span class="uc-num">05</span><p class="uc-name">Curaduría</p><span class="uc-tag">galería de arte</span></a>
+      <a href="javascript:void(0)" onclick="goTo(6)" class="ucard uc5"><span class="uc-num">06</span><p class="uc-name">Airbnb</p><span class="uc-tag">anfitrión & comunidad</span></a>
+      <a href="javascript:void(0)" onclick="goTo(7)" class="ucard uc6"><span class="uc-num">07</span><p class="uc-name">Arturismo</p><span class="uc-tag">FM La Tribu</span></a>
+      <a href="javascript:void(0)" onclick="goTo(8)" class="ucard uc7"><span class="uc-num">08</span><p class="uc-name">Entrevistas</p><span class="uc-tag">Ray-Ban Meta</span></a>
+      <a href="javascript:void(0)" onclick="goTo(9)" class="ucard uc8"><span class="uc-num">09</span><p class="uc-name">Cultura Nación</p><span class="uc-tag">15 años · archivo</span></a>
+      <a href="javascript:void(0)" onclick="goTo(10)" class="ucard uc9"><span class="uc-num">10</span><p class="uc-name">??? — próximamente</p><span class="uc-tag">en construcción</span></a>
     </div>
   </section>
 
@@ -420,51 +423,57 @@ nav {
         <span class="fp">Ecléctico</span><span class="fp">Inquieto</span><span class="fp">Renacentista</span>
       </div>
       <div class="footer-links">
-        <button onclick="goTo(1)">universos</button><button onclick="goTo(2)">bio</button>
-        <button onclick="goTo(3)">textos</button><button onclick="goTo(4)">speaker</button>
-        <button onclick="goTo(5)">interiorismo</button><button onclick="goTo(6)">curaduría</button>
-        <button onclick="goTo(7)">airbnb</button><button onclick="goTo(8)">arturismo</button>
-        <button onclick="goTo(9)">entrevistas</button><button onclick="goTo(10)">cultura nación</button>
-        <button onclick="goTo(0)">volver al inicio</button>
+        <button onclick="goTo(0)">universos</button><button onclick="goTo(1)">bio</button>
+        <button onclick="goTo(2)">textos</button><button onclick="goTo(3)">speaker</button>
+        <button onclick="goTo(4)">interiorismo</button><button onclick="goTo(5)">curaduría</button>
+        <button onclick="goTo(6)">airbnb</button><button onclick="goTo(7)">arturismo</button>
+        <button onclick="goTo(8)">entrevistas</button><button onclick="goTo(9)">cultura nación</button>
       </div>
     </div>
   </section>
 
 </div>
+</div>
 
 <script>
-  const container = document.getElementById('snapContainer');
-  const sections = Array.from(document.querySelectorAll('.snap-section'));
-  const navPills = Array.from(document.querySelectorAll('#navPills .nav-pill'));
-  const darkSections = new Set([10, 11, 12]);
+  function enterSite() {
+    document.getElementById('landingScreen').style.display = 'none';
+    document.getElementById('siteScreen').classList.add('visible');
+    initSite();
+  }
 
-  function buildDots() {
-    const wrap = document.getElementById('progressDots');
+  let initialized = false;
+  function initSite() {
+    if (initialized) return;
+    initialized = true;
+
+    const container = document.getElementById('snapContainer');
+    const sections = Array.from(document.querySelectorAll('.snap-section'));
+    const navPills = Array.from(document.querySelectorAll('#navPills .nav-pill'));
+    const darkSections = new Set([9, 10, 11]);
+
+    const dotsWrap = document.getElementById('progressDots');
     sections.forEach((sec, i) => {
       const d = document.createElement('button');
       d.className = 'pdot' + (darkSections.has(i) ? ' on-dark' : '');
       d.setAttribute('aria-label', sec.dataset.name);
       d.onclick = () => goTo(i);
-      wrap.appendChild(d);
+      dotsWrap.appendChild(d);
     });
-  }
-  buildDots();
-  const dots = Array.from(document.querySelectorAll('.pdot'));
+    const dots = Array.from(document.querySelectorAll('.pdot'));
 
-  function goTo(index) {
-    sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-  window.goTo = goTo;
+    window.goTo = function(index) {
+      sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
 
-  function updateActive() {
-    const idx = Math.round(container.scrollTop / window.innerHeight);
-    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-    const navMap = { 1:0, 2:1, 3:2, 4:3, 5:4, 6:5, 7:6, 8:7, 9:8, 10:9 };
-    navPills.forEach(p => p.classList.remove('active'));
-    if (navMap[idx] !== undefined) navPills[navMap[idx]].classList.add('active');
+    function updateActive() {
+      const idx = Math.round(container.scrollTop / window.innerHeight);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      navPills.forEach((p, i) => p.classList.toggle('active', i === idx));
+    }
+    container.addEventListener('scroll', () => { window.requestAnimationFrame(updateActive); });
+    updateActive();
   }
-  container.addEventListener('scroll', () => { window.requestAnimationFrame(updateActive); });
-  updateActive();
 </script>
 
 </body>
