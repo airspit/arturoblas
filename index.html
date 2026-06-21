@@ -245,7 +245,7 @@ nav {
 <div id="siteScreen">
 
 <nav>
-  <button class="nav-logo" onclick="goTo(0)">arturo<span>blas</span></button>
+  <button class="nav-logo" onclick="backToLanding()">arturo<span>blas</span></button>
   <div class="nav-pills" id="navPills">
     <button class="nav-pill" onclick="goTo(0)">universos</button>
     <button class="nav-pill" onclick="goTo(1)">bio</button>
@@ -440,6 +440,11 @@ nav {
     document.getElementById('landingScreen').style.display = 'none';
     document.getElementById('siteScreen').classList.add('visible');
     initSite();
+  }
+
+  function backToLanding() {
+    document.getElementById('siteScreen').classList.remove('visible');
+    document.getElementById('landingScreen').style.display = 'grid';
   }
 
   let initialized = false;
