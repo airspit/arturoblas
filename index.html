@@ -104,14 +104,11 @@ nav {
 .uc9 { background: var(--bk); color: var(--wh); border: 1.5px dashed rgba(255,255,255,.3); }
 
 .bio-body { font-size: .75rem; line-height: 2; color: rgba(8,8,8,.55); max-width: 64ch; }
-.bio-name { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 2rem; letter-spacing: -.03em; margin-bottom: 1.6rem; }
-.bio-facts { display: flex; flex-direction: column; gap: 1.1rem; max-width: 56ch; margin-bottom: 2rem; }
-.bio-fact { font-size: 1rem; line-height: 1.7; color: var(--bk); }
-.bio-fact strong { font-family: 'Unbounded', sans-serif; font-weight: 700; }
-.bio-studies { display: flex; flex-direction: column; gap: .5rem; margin: .3rem 0 1.8rem; }
-.bio-study-pill { font-family: 'Unbounded', sans-serif; font-size: .68rem; font-weight: 700; padding: .55rem 1rem; border-radius: 999px; border: 1.5px solid var(--bk); width: fit-content; }
-.bio-closing-line { font-size: 1.05rem; line-height: 1.8; max-width: 52ch; padding-top: 1.6rem; border-top: 2px solid var(--bk); font-weight: 500; }
-.bio-closing-line .hl { color: var(--mg); font-family: 'Unbounded', sans-serif; font-weight: 700; }
+.bio-name { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 2rem; letter-spacing: -.03em; margin-bottom: .3rem; }
+.bio-place { font-size: .85rem; color: rgba(8,8,8,.45); margin-bottom: 1.8rem; }
+.bio-text { display: flex; flex-direction: column; gap: 1.1rem; max-width: 64ch; }
+.bio-text p { font-size: .9rem; line-height: 1.85; color: var(--bk); }
+.bio-text strong { font-family: 'Unbounded', sans-serif; font-weight: 700; }
 
 .hashtag-row { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
 .htag { font-family: 'Unbounded', sans-serif; font-size: .52rem; font-weight: 700; padding: .3rem .75rem; border-radius: 999px; border: 1.5px solid var(--bk); cursor: pointer; transition: background .12s, color .12s; background: none; }
@@ -293,19 +290,17 @@ nav {
     <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">bio & trayectoria</h2><span class="sec-dot" style="background:var(--mg)"></span></div>
     <div class="sec-body">
       <p class="bio-name">Arturo Blas</p>
+      <p class="bio-place">La Plata, septiembre de 1988 · Buenos Aires desde hace más de 15 años</p>
 
-      <div class="bio-facts">
-        <p class="bio-fact">Nací en <strong>La Plata</strong> en septiembre de 1988, y hace 15 años vivo en la <strong>Ciudad de Buenos Aires</strong>.</p>
+      <div class="bio-text">
+        <p>Se considera una persona <strong>ecléctica, inquieta y renacentista</strong>, impulsada por una curiosidad permanente y una necesidad constante de construir.</p>
+        <p>A lo largo de su recorrido ha desarrollado proyectos vinculados a la cultura, la cooperación internacional, la comunicación, la tecnología, el diseño de experiencias, el desarrollo de productos digitales y la construcción de comunidades.</p>
+        <p>Estudió la Tecnicatura en Fotografía Creativa y Experimental y la carrera de Artes Audiovisuales en la Universidad Nacional de La Plata (UNLP), Curaduría en Artes en la Universidad Nacional de las Artes (UNA) y la Licenciatura en Publicidad en la Universidad Kennedy (UK).</p>
+        <p>Durante más de quince años trabajó en el ámbito de la gestión cultural pública y la cooperación internacional, participando en iniciativas junto a artistas, instituciones, gobiernos y organizaciones de Argentina e Iberoamérica.</p>
+        <p>También se reconoce como <strong>artista</strong>. A lo largo de los años desarrolló distintas series y proyectos en diversos soportes y lenguajes, explorando la fotografía, el arte conceptual, la instalación, la escritura y otros formatos de expresión. Su producción artística no responde a una única disciplina ni a una búsqueda lineal, sino a la necesidad de encontrar, en cada momento, el medio adecuado para expresar una idea.</p>
+        <p>Le interesan especialmente las ciudades, la cultura contemporánea, el comportamiento humano, la innovación, las comunidades y los espacios donde disciplinas aparentemente diferentes encuentran puntos de encuentro.</p>
+        <p>Este sitio reúne parte de ese recorrido: proyectos, escritos, conferencias, experiencias, exploraciones creativas y algunas de las preguntas que continúan acompañándolo.</p>
       </div>
-
-      <div class="bio-studies">
-        <span class="bio-study-pill" style="background:var(--mg);color:#fff;border-color:var(--mg);">Fotografía Creativa y Experimental — UNLP</span>
-        <span class="bio-study-pill" style="background:var(--lm1);color:var(--bk);border-color:var(--lm1);">Artes Audiovisuales (Cine) — UNLP</span>
-        <span class="bio-study-pill" style="background:var(--rs2);color:var(--bk);border-color:var(--rs2);">Curaduría en Artes — UNA</span>
-        <span class="bio-study-pill" style="background:var(--bk);color:var(--lm2);">Lic. en Publicidad Creativa — Universidad Kennedy</span>
-      </div>
-
-      <p class="bio-closing-line">No me define mi formación, sino mi <span class="hl">sed por construir</span>. Soy todo lo que construí, lo que pienso, lo que creo.</p>
     </div>
   </section>
 
