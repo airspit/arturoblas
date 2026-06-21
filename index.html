@@ -10,7 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Caveat:wght@500;700&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
 
 :root {
   --pk: #FF2D78; --yw: #FFE500; --gr: #00FF88; --bl: #1400FF;
@@ -18,445 +17,457 @@ html { scroll-behavior: smooth; }
   --bk: #080808; --wh: #FAFAF5;
 }
 
-body { background: var(--wh); font-family: 'Space Grotesk', sans-serif; color: var(--bk); overflow-x: hidden; }
+html, body { height: 100%; overflow: hidden; }
+body { background: var(--wh); font-family: 'Space Grotesk', sans-serif; color: var(--bk); }
 
-/* NAV */
 nav {
   background: var(--bk); display: flex; align-items: center; justify-content: space-between;
-  padding: .8rem 1.8rem; border-bottom: 2.5px solid var(--yw); position: sticky; top: 0; z-index: 100;
+  padding: .8rem 1.8rem; border-bottom: 2.5px solid var(--yw);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   flex-wrap: wrap; gap: .4rem;
 }
-.nav-logo { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 1.05rem; color: var(--wh); letter-spacing: -.02em; text-decoration: none; }
+.nav-logo { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 1.05rem; color: var(--wh); letter-spacing: -.02em; text-decoration: none; cursor: pointer; background: none; border: none; }
 .nav-logo span { color: var(--pk); }
 .nav-pills { display: flex; gap: .3rem; flex-wrap: wrap; }
 .nav-pill {
   font-size: .5rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
-  color: var(--bk); background: var(--yw); padding: .28rem .6rem; text-decoration: none;
-  border-radius: 2px; transition: background .15s, color .15s; white-space: nowrap;
+  color: var(--bk); background: var(--yw); padding: .28rem .6rem; border: none;
+  border-radius: 2px; transition: background .15s, color .15s; white-space: nowrap; cursor: pointer;
 }
 .nav-pill:hover { background: var(--pk); color: var(--wh); }
+.nav-pill.active { background: var(--pk); color: var(--wh); }
 .nav-pill.alt { background: transparent; color: rgba(250,250,245,.4); border: 1px solid rgba(250,250,245,.15); }
 .nav-pill.alt:hover { background: var(--pk); color: var(--wh); border-color: var(--pk); }
 
-/* HERO */
-.hero {
-  display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh;
-  border-bottom: 2.5px solid var(--bk); position: relative; overflow: hidden;
+.snap-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
+.snap-section {
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 56px;
+  border-bottom: 2.5px solid var(--bk);
+  position: relative;
+}
+
+.progress-dots {
+  position: fixed; right: 1.2rem; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: .5rem; z-index: 150;
+}
+.pdot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(8,8,8,.15); border: 1px solid rgba(8,8,8,.25);
+  cursor: pointer; transition: background .2s, transform .2s; padding: 0;
+}
+.pdot.active { background: var(--pk); border-color: var(--pk); transform: scale(1.3); }
+.pdot.on-dark { border-color: rgba(250,250,245,.3); background: rgba(250,250,245,.15); }
+.pdot.on-dark.active { background: var(--pk); border-color: var(--pk); }
+
+.scroll-cue {
+  position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);
+  font-size: .5rem; letter-spacing: .18em; text-transform: uppercase; opacity: .3;
+}
+
+.hero { display: grid; grid-template-columns: 1fr 1fr; flex: 1; position: relative; overflow: hidden; }
 .blob { position: absolute; border-radius: 50%; pointer-events: none; }
 .b1 { width: 400px; height: 400px; background: var(--yw); opacity: .85; top: -100px; left: -100px; }
 .b2 { width: 320px; height: 320px; background: var(--pk); opacity: .8; top: 10px; right: -80px; }
 .b3 { width: 280px; height: 280px; background: var(--cy); opacity: .55; bottom: -80px; left: 33%; }
-
-.hero-left {
-  position: relative; z-index: 5; padding: 4rem 2.5rem 3rem;
-  display: flex; flex-direction: column; justify-content: space-between; border-right: 2.5px solid var(--bk);
-}
-.hero-tag {
-  font-family: 'Caveat', cursive; font-size: 1.1rem; font-weight: 700;
-  display: inline-block; background: var(--yw); color: var(--bk);
-  padding: .25rem .85rem; border: 2px solid var(--bk); transform: rotate(-1.5deg);
-  width: fit-content; margin-bottom: 2rem;
-}
-.hero-h1 { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: clamp(2.6rem, 5.5vw, 5rem); line-height: .93; letter-spacing: -.04em; }
+.hero-left { position: relative; z-index: 5; padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; border-right: 2.5px solid var(--bk); }
+.hero-tag { font-family: 'Caveat', cursive; font-size: 1.1rem; font-weight: 700; display: inline-block; background: var(--yw); color: var(--bk); padding: .25rem .85rem; border: 2px solid var(--bk); transform: rotate(-1.5deg); width: fit-content; margin-bottom: 2rem; }
+.hero-h1 { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: clamp(2.4rem, 5vw, 4.5rem); line-height: .93; letter-spacing: -.04em; }
 .l1 { display: block; color: var(--bk); }
 .l2 { display: block; -webkit-text-stroke: 2.5px var(--pk); color: transparent; }
 .l3 { display: block; background: var(--bl); color: var(--yw); padding: .08em .2em; margin-top: .05em; }
-.l4 {
-  display: block; font-family: 'Caveat', cursive; font-size: .42em; font-weight: 700;
-  color: var(--or); letter-spacing: .02em; margin-top: .3em; -webkit-text-stroke: 0;
-}
-.hero-bio { font-size: .68rem; line-height: 2; color: rgba(8,8,8,.5); text-transform: uppercase; letter-spacing: .05em; max-width: 34ch; margin-top: 2rem; }
-
+.l4 { display: block; font-family: 'Caveat', cursive; font-size: .42em; font-weight: 700; color: var(--or); letter-spacing: .02em; margin-top: .3em; -webkit-text-stroke: 0; }
+.hero-bio { font-size: .65rem; line-height: 1.9; color: rgba(8,8,8,.5); text-transform: uppercase; letter-spacing: .05em; max-width: 34ch; margin-top: 1.6rem; }
 .hero-right { position: relative; z-index: 5; display: flex; align-items: center; justify-content: center; }
-.hero-ab {
-  font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: clamp(5rem, 12vw, 10rem);
-  color: transparent; -webkit-text-stroke: 3px rgba(8,8,8,.12); line-height: 1;
-}
+.hero-ab { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: clamp(4.5rem, 11vw, 9rem); color: transparent; -webkit-text-stroke: 3px rgba(8,8,8,.12); line-height: 1; }
 
-/* TICKER */
-.ticker { background: var(--pk); border-top: 2px solid var(--bk); border-bottom: 2px solid var(--bk); overflow: hidden; white-space: nowrap; padding: .5rem 0; }
-.ticker-inner { display: inline-flex; gap: 2.5rem; animation: tick 22s linear infinite; }
-@keyframes tick { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-.ti { font-family: 'Unbounded', sans-serif; font-size: .68rem; font-weight: 700; color: var(--wh); letter-spacing: .04em; text-transform: uppercase; flex-shrink: 0; }
-.td { color: var(--yw); }
-
-/* SECCIONES */
-.sec { border-bottom: 2.5px solid var(--bk); }
-.sec-head { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 2rem; border-bottom: 1.5px solid rgba(8,8,8,.08); }
+.sec-head { display: flex; align-items: center; gap: 1rem; padding: 1rem 2rem; border-bottom: 1.5px solid rgba(8,8,8,.08); flex-shrink: 0; }
 .sec-num { font-family: 'Unbounded', sans-serif; font-size: .5rem; font-weight: 900; letter-spacing: .2em; opacity: .2; }
-.sec-title { font-family: 'Unbounded', sans-serif; font-size: 1.15rem; font-weight: 900; letter-spacing: -.03em; }
+.sec-title { font-family: 'Unbounded', sans-serif; font-size: 1.1rem; font-weight: 900; letter-spacing: -.03em; }
 .sec-dot { width: 14px; height: 14px; border-radius: 50%; margin-left: auto; border: 2px solid var(--bk); flex-shrink: 0; }
+.sec-body { flex: 1; overflow-y: auto; padding: 1.6rem 2rem; }
 
-/* UNIVERSOS */
-.universos { display: grid; grid-template-columns: repeat(5, 1fr); grid-auto-rows: 180px; }
-.ucard {
-  padding: 1.2rem; border-right: 1.5px solid var(--bk); border-bottom: 1.5px solid var(--bk);
-  display: flex; flex-direction: column; justify-content: space-between; cursor: pointer;
-  overflow: hidden; position: relative; text-decoration: none; transition: filter .15s;
-}
+.universos { display: grid; grid-template-columns: repeat(5, 1fr); flex: 1; }
+.ucard { padding: 1.2rem; border-right: 1.5px solid var(--bk); border-bottom: 1.5px solid var(--bk); display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; overflow: hidden; position: relative; text-decoration: none; transition: filter .15s; }
 .ucard:nth-child(5n) { border-right: none; }
+.ucard:nth-last-child(-n+5) { border-bottom: none; }
 .ucard:hover { filter: brightness(.88); }
 .uc-num { font-family: 'Unbounded', sans-serif; font-size: .48rem; font-weight: 900; letter-spacing: .18em; opacity: .25; }
-.uc-name { font-family: 'Unbounded', sans-serif; font-size: .72rem; font-weight: 700; line-height: 1.2; letter-spacing: -.02em; margin: auto 0; padding: .3rem 0; }
+.uc-name { font-family: 'Unbounded', sans-serif; font-size: .78rem; font-weight: 700; line-height: 1.2; letter-spacing: -.02em; margin: auto 0; padding: .3rem 0; }
 .uc-tag { font-size: .46rem; letter-spacing: .1em; text-transform: uppercase; opacity: .4; font-weight: 500; }
-.uc0 { background: var(--pk); color: var(--wh); }
-.uc1 { background: var(--yw); color: var(--bk); }
-.uc2 { background: var(--bl); color: var(--wh); }
-.uc3 { background: var(--mt); color: var(--wh); }
-.uc4 { background: var(--vl); color: var(--wh); }
-.uc5 { background: var(--gr); color: var(--bk); }
-.uc6 { background: var(--or); color: var(--wh); }
-.uc7 { background: var(--cy); color: var(--bk); }
-.uc8 { background: var(--rd); color: var(--wh); }
-.uc9 { background: var(--bk); color: var(--wh); border: 1.5px dashed rgba(250,250,245,.3); }
+.uc0 { background: var(--pk); color: var(--wh); } .uc1 { background: var(--yw); color: var(--bk); }
+.uc2 { background: var(--bl); color: var(--wh); } .uc3 { background: var(--mt); color: var(--wh); }
+.uc4 { background: var(--vl); color: var(--wh); } .uc5 { background: var(--gr); color: var(--bk); }
+.uc6 { background: var(--or); color: var(--wh); } .uc7 { background: var(--cy); color: var(--bk); }
+.uc8 { background: var(--rd); color: var(--wh); } .uc9 { background: var(--bk); color: var(--wh); border: 1.5px dashed rgba(250,250,245,.3); }
 
-/* BIO */
-.bio-body { padding: 2rem; font-size: .72rem; line-height: 2; color: rgba(8,8,8,.55); max-width: 64ch; }
+.bio-body { font-size: .75rem; line-height: 2; color: rgba(8,8,8,.55); max-width: 64ch; }
 
-/* TEXTOS */
-.textos-body { padding: 2rem; }
 .hashtag-row { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
-.htag { font-family: 'Unbounded', sans-serif; font-size: .52rem; font-weight: 700; padding: .3rem .75rem; border-radius: 999px; border: 1.5px solid var(--bk); cursor: pointer; transition: background .12s, color .12s; }
+.htag { font-family: 'Unbounded', sans-serif; font-size: .52rem; font-weight: 700; padding: .3rem .75rem; border-radius: 999px; border: 1.5px solid var(--bk); cursor: pointer; transition: background .12s, color .12s; background: none; }
 .htag:hover { background: var(--bk); color: var(--wh); }
 .text-list { display: flex; flex-direction: column; }
 .text-row { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1.2rem; padding: .9rem 0; border-top: 1px solid rgba(8,8,8,.08); cursor: pointer; transition: padding-left .15s; text-decoration: none; color: var(--bk); }
 .text-row:hover { padding-left: .5rem; }
-.text-tags { display: flex; gap: .3rem; flex-shrink: 0; }
 .text-tag-sm { font-size: .46rem; letter-spacing: .08em; text-transform: uppercase; background: var(--yw); padding: .16rem .45rem; border-radius: 999px; white-space: nowrap; }
 .text-title { font-family: 'Unbounded', sans-serif; font-size: .74rem; font-weight: 700; letter-spacing: -.01em; }
 .text-date { font-size: .5rem; letter-spacing: .06em; opacity: .3; white-space: nowrap; }
 
-/* SPEAKER */
-.speaker-body { padding: 2rem; }
 .speaker-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(8,8,8,.08); margin-bottom: 1.5rem; }
-.sp-item { background: var(--wh); padding: 1.2rem; cursor: pointer; transition: background .12s; text-decoration: none; color: var(--bk); }
+.sp-item { background: var(--wh); padding: 1.1rem; cursor: pointer; transition: background .12s; text-decoration: none; color: var(--bk); }
 .sp-item:hover { background: var(--yw); }
 .sp-loc { font-family: 'Unbounded', sans-serif; font-size: .5rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; color: var(--bl); margin-bottom: .4rem; }
-.sp-title { font-family: 'Unbounded', sans-serif; font-size: .76rem; font-weight: 700; line-height: 1.3; letter-spacing: -.01em; margin-bottom: .3rem; }
+.sp-title { font-family: 'Unbounded', sans-serif; font-size: .74rem; font-weight: 700; line-height: 1.3; letter-spacing: -.01em; margin-bottom: .3rem; }
 .sp-meta { font-size: .5rem; letter-spacing: .06em; opacity: .35; }
 .prox-label { font-family: 'Caveat', cursive; font-size: 1.1rem; font-weight: 700; color: var(--pk); margin-bottom: 1rem; }
-.prox-rows { display: flex; flex-direction: column; }
-.prox-row { display: flex; align-items: center; gap: 1rem; padding: .85rem 0; border-top: 1px solid rgba(8,8,8,.07); cursor: pointer; transition: padding-left .15s; text-decoration: none; color: var(--bk); }
+.prox-row { display: flex; align-items: center; gap: 1rem; padding: .8rem 0; border-top: 1px solid rgba(8,8,8,.07); cursor: pointer; transition: padding-left .15s; text-decoration: none; color: var(--bk); }
 .prox-row:hover { padding-left: .5rem; }
-.prox-fecha { font-family: 'Unbounded', sans-serif; font-size: .62rem; font-weight: 900; color: var(--wh); background: var(--pk); padding: .3rem .65rem; flex-shrink: 0; border-radius: 3px; }
-.prox-tit { font-family: 'Unbounded', sans-serif; font-size: .72rem; font-weight: 700; letter-spacing: -.01em; }
+.prox-fecha { font-family: 'Unbounded', sans-serif; font-size: .6rem; font-weight: 900; color: var(--wh); background: var(--pk); padding: .3rem .65rem; flex-shrink: 0; border-radius: 3px; }
+.prox-tit { font-family: 'Unbounded', sans-serif; font-size: .7rem; font-weight: 700; letter-spacing: -.01em; }
 .prox-lugar { font-size: .52rem; opacity: .35; margin-top: .1rem; }
 
-/* INTERIORISMO */
-.interior-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 170px; }
+.interior-grid { display: grid; grid-template-columns: repeat(4, 1fr); flex: 1; }
 .int-cell { border-right: 1.5px solid var(--bk); border-bottom: 1.5px solid var(--bk); display: flex; align-items: center; justify-content: center; font-size: .48rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(8,8,8,.2); cursor: pointer; overflow: hidden; transition: filter .15s; font-weight: 500; }
 .int-cell:hover { filter: brightness(.9); }
 .int-cell:nth-child(4n) { border-right: none; }
 .i0 { background: #E8DDD0; } .i1 { background: #D4C4B0; } .i2 { background: #C9B8A3; } .i3 { background: #E0D2C0; }
 .i4 { background: #F0E6D8; } .i5 { background: #DCC9B4; } .i6 { background: #D0BFA8; } .i7 { background: #E5D8C8; }
 
-/* CURADURÍA */
-.curaduria-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
-.cur-cell { aspect-ratio: 1; border-right: 1px solid rgba(8,8,8,.08); border-bottom: 1px solid rgba(8,8,8,.08); display: flex; align-items: center; justify-content: center; font-size: .44rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(8,8,8,.2); cursor: pointer; transition: filter .15s; }
+.curaduria-grid { display: grid; grid-template-columns: repeat(5, 1fr); flex: 1; }
+.cur-cell { border-right: 1px solid rgba(8,8,8,.08); border-bottom: 1px solid rgba(8,8,8,.08); display: flex; align-items: center; justify-content: center; font-size: .44rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(8,8,8,.2); cursor: pointer; transition: filter .15s; }
 .cur-cell:nth-child(5n) { border-right: none; }
 .cur-cell:hover { filter: brightness(.92); }
 .cu0 { background: #F5E0E8; } .cu1 { background: #E0E8F5; } .cu2 { background: #E8F5E0; } .cu3 { background: #F5EEE0; } .cu4 { background: #EEE0F5; }
 .cu5 { background: #E0F5F0; } .cu6 { background: #F5E0E0; } .cu7 { background: #E0E0F5; } .cu8 { background: #F0F5E0; } .cu9 { background: #F5E8E0; }
 
-/* AIRBNB */
-.airbnb-bento { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 160px; }
+.airbnb-bento { display: grid; grid-template-columns: repeat(4, 1fr); flex: 1; }
 .ab-cell { padding: 1.2rem; border-right: 1.5px solid var(--bk); border-bottom: 1.5px solid var(--bk); display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; }
 .ab-cell:nth-child(4n) { border-right: none; }
 .ab0 { background: var(--mt); color: var(--wh); } .ab1 { background: var(--wh); } .ab2 { background: var(--gr); } .ab3 { background: var(--bk); color: var(--wh); }
 .ab-role { font-size: .46rem; letter-spacing: .14em; text-transform: uppercase; opacity: .4; font-weight: 500; }
-.ab-title { font-family: 'Unbounded', sans-serif; font-size: .72rem; font-weight: 700; line-height: 1.2; letter-spacing: -.02em; margin: auto 0; padding: .3rem 0; }
+.ab-title { font-family: 'Unbounded', sans-serif; font-size: .74rem; font-weight: 700; line-height: 1.2; letter-spacing: -.02em; margin: auto 0; padding: .3rem 0; }
 .ab-detail { font-size: .46rem; letter-spacing: .06em; opacity: .3; }
 
-/* ARTURISMO */
-.art-wrap { padding: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.art-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 .yt-embed { aspect-ratio: 16/9; background: var(--bk); border-radius: 6px; display: flex; align-items: center; justify-content: center; cursor: pointer; position: relative; text-decoration: none; }
 .yt-play { width: 46px; height: 46px; border-radius: 50%; background: var(--rd); display: flex; align-items: center; justify-content: center; }
 .yt-tri { width: 0; height: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 13px solid var(--wh); margin-left: 2px; }
 .yt-label { position: absolute; bottom: .8rem; left: .8rem; font-family: 'Unbounded', sans-serif; font-size: .58rem; font-weight: 700; color: var(--wh); }
-.art-desc-text { font-size: .68rem; line-height: 1.9; color: rgba(8,8,8,.55); }
+.art-desc-text { font-size: .7rem; line-height: 1.9; color: rgba(8,8,8,.55); }
 
-/* RAYBAN */
-.rayban-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
-.rb-cell { border-right: 1.5px solid var(--bk); padding: 1.4rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 170px; cursor: pointer; transition: background .12s; text-decoration: none; color: var(--bk); }
+.rayban-grid { display: grid; grid-template-columns: repeat(3, 1fr); flex: 1; }
+.rb-cell { border-right: 1.5px solid var(--bk); padding: 1.4rem; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: background .12s; text-decoration: none; color: var(--bk); }
 .rb-cell:last-child { border-right: none; }
 .rb-cell:hover { background: var(--yw); }
 .rb-tag { font-size: .46rem; letter-spacing: .14em; text-transform: uppercase; color: var(--cy); font-weight: 700; }
-.rb-name { font-family: 'Unbounded', sans-serif; font-size: .76rem; font-weight: 700; line-height: 1.25; margin: auto 0; }
+.rb-name { font-family: 'Unbounded', sans-serif; font-size: .78rem; font-weight: 700; line-height: 1.25; margin: auto 0; }
 .rb-meta { font-size: .46rem; opacity: .35; }
 
-/* CULTURA NACIÓN */
 .cultura-sec { background: #1A1610; color: var(--wh); }
 .cultura-sec .sec-title { color: var(--yw); }
 .cultura-sec .sec-num { color: rgba(250,250,245,.2); }
-.cultura-intro { padding: 1.2rem 2rem 1.5rem; font-family: 'Caveat', cursive; font-size: 1.1rem; color: rgba(250,250,245,.45); max-width: 62ch; border-bottom: 1px solid rgba(250,250,245,.06); }
-.timeline { padding: 2rem; position: relative; }
-.timeline::before { content: ''; position: absolute; left: 2.4rem; top: 2rem; bottom: 2rem; width: 2px; background: rgba(250,250,245,.15); }
-.tl-item { display: grid; grid-template-columns: 64px 1fr; gap: 1.2rem; padding-bottom: 2rem; position: relative; }
+.cultura-intro { font-family: 'Caveat', cursive; font-size: 1.05rem; color: rgba(250,250,245,.45); max-width: 62ch; padding-bottom: 1.2rem; border-bottom: 1px solid rgba(250,250,245,.06); margin-bottom: 1.5rem; }
+.timeline { position: relative; }
+.timeline::before { content: ''; position: absolute; left: .2rem; top: .3rem; bottom: .3rem; width: 2px; background: rgba(250,250,245,.15); }
+.tl-item { display: grid; grid-template-columns: 64px 1fr; gap: 1.2rem; padding-bottom: 1.6rem; position: relative; }
 .tl-item:last-child { padding-bottom: 0; }
-.tl-year { font-family: 'Unbounded', sans-serif; font-size: .62rem; font-weight: 900; color: var(--or); position: relative; z-index: 2; }
-.tl-dot { position: absolute; left: 2.4rem; width: 10px; height: 10px; border-radius: 50%; background: var(--or); transform: translateX(-4.5px); margin-top: .15rem; z-index: 2; border: 2px solid #1A1610; }
-.tl-content { background: rgba(250,250,245,.04); border: 1px solid rgba(250,250,245,.08); border-radius: 6px; padding: 1.1rem 1.3rem; }
-.tl-role { font-size: .48rem; letter-spacing: .14em; text-transform: uppercase; color: var(--or); margin-bottom: .4rem; }
-.tl-title { font-family: 'Unbounded', sans-serif; font-size: .8rem; font-weight: 700; letter-spacing: -.01em; margin-bottom: .5rem; }
-.tl-desc { font-size: .64rem; line-height: 1.7; color: rgba(250,250,245,.45); max-width: 56ch; }
-.tl-media { display: flex; gap: .4rem; margin-top: .7rem; flex-wrap: wrap; }
-.tl-media-tag { font-size: .44rem; letter-spacing: .1em; text-transform: uppercase; padding: .2rem .55rem; border: 1px solid rgba(250,250,245,.2); border-radius: 999px; color: rgba(250,250,245,.4); }
+.tl-year { font-family: 'Unbounded', sans-serif; font-size: .6rem; font-weight: 900; color: var(--or); position: relative; z-index: 2; }
+.tl-dot { position: absolute; left: .2rem; width: 10px; height: 10px; border-radius: 50%; background: var(--or); transform: translateX(-4.5px); margin-top: .15rem; z-index: 2; border: 2px solid #1A1610; }
+.tl-content { background: rgba(250,250,245,.04); border: 1px solid rgba(250,250,245,.08); border-radius: 6px; padding: 1rem 1.2rem; }
+.tl-role { font-size: .46rem; letter-spacing: .14em; text-transform: uppercase; color: var(--or); margin-bottom: .4rem; }
+.tl-title { font-family: 'Unbounded', sans-serif; font-size: .76rem; font-weight: 700; letter-spacing: -.01em; margin-bottom: .5rem; }
+.tl-desc { font-size: .62rem; line-height: 1.7; color: rgba(250,250,245,.45); max-width: 56ch; }
+.tl-media { display: flex; gap: .4rem; margin-top: .6rem; flex-wrap: wrap; }
+.tl-media-tag { font-size: .42rem; letter-spacing: .1em; text-transform: uppercase; padding: .2rem .55rem; border: 1px solid rgba(250,250,245,.2); border-radius: 999px; color: rgba(250,250,245,.4); }
 
-/* PRÓXIMAMENTE */
 .secreto-sec { background: var(--bk); color: var(--wh); }
-.secreto-body { padding: 2.5rem 2rem; text-align: center; }
-.secreto-pulse { width: 62px; height: 62px; border-radius: 50%; border: 2px dashed var(--pk); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; }
+.secreto-body { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+.secreto-pulse { width: 62px; height: 62px; border-radius: 50%; border: 2px dashed var(--pk); display: flex; align-items: center; justify-content: center; margin-bottom: 1.2rem; }
 .secreto-q { font-family: 'Unbounded', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--pk); }
-.secreto-title { font-family: 'Unbounded', sans-serif; font-size: 1.15rem; font-weight: 900; letter-spacing: -.02em; margin-bottom: .6rem; }
-.secreto-desc { font-size: .68rem; line-height: 1.8; color: rgba(250,250,245,.45); max-width: 44ch; margin: 0 auto; }
+.secreto-title { font-family: 'Unbounded', sans-serif; font-size: 1.2rem; font-weight: 900; letter-spacing: -.02em; margin-bottom: .6rem; }
+.secreto-desc { font-size: .7rem; line-height: 1.8; color: rgba(250,250,245,.45); max-width: 44ch; }
 .secreto-badge { display: inline-block; margin-top: 1.2rem; font-size: .5rem; letter-spacing: .16em; text-transform: uppercase; background: var(--pk); color: var(--wh); padding: .35rem .9rem; border-radius: 999px; font-weight: 700; }
 
-/* FOOTER */
-footer { background: var(--bk); border-top: 3px solid var(--yw); padding: 2.5rem 2rem; display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; }
-.footer-logo { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 1.8rem; letter-spacing: -.04em; color: var(--wh); line-height: 1; }
+.footer-sec { background: var(--bk); color: var(--wh); }
+.footer-body { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem; text-align: center; }
+.footer-logo { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 2.4rem; letter-spacing: -.04em; color: var(--wh); line-height: 1; }
 .footer-logo span { color: var(--pk); }
-.footer-sub { font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(250,250,245,.4); margin-top: .6rem; display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
+.footer-sub { font-size: .65rem; letter-spacing: .16em; text-transform: uppercase; color: rgba(250,250,245,.4); display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; justify-content: center; }
 .footer-sub .sep { color: var(--pk); }
-.footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem .8rem; align-content: start; }
-.footer-links a { font-size: .52rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(250,250,245,.2); text-decoration: none; transition: color .15s; }
-.footer-links a:hover { color: var(--pk); }
+.footer-links { display: flex; gap: .8rem 1.4rem; flex-wrap: wrap; justify-content: center; max-width: 600px; }
+.footer-links button { font-size: .54rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(250,250,245,.3); background: none; border: none; cursor: pointer; transition: color .15s; }
+.footer-links button:hover { color: var(--pk); }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
   .hero { grid-template-columns: 1fr; }
   .hero-right { display: none; }
-  .universos { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; }
-  .ucard { min-height: 140px; }
+  .universos { grid-template-columns: 1fr 1fr; }
   .interior-grid { grid-template-columns: 1fr 1fr; }
   .airbnb-bento { grid-template-columns: 1fr 1fr; }
   .art-wrap { grid-template-columns: 1fr; }
   .speaker-grid { grid-template-columns: 1fr; }
   .rayban-grid { grid-template-columns: 1fr; }
   .curaduria-grid { grid-template-columns: repeat(3, 1fr); }
-  footer { grid-template-columns: 1fr; }
   nav { flex-wrap: wrap; gap: .5rem; padding: .8rem 1rem; }
+  .progress-dots { display: none; }
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">arturo<span>blas</span></a>
-  <div class="nav-pills">
-    <a href="#bio" class="nav-pill">bio</a>
-    <a href="#textos" class="nav-pill">textos</a>
-    <a href="#speaker" class="nav-pill">speaker</a>
-    <a href="#interiorismo" class="nav-pill">interiorismo</a>
-    <a href="#curaduria" class="nav-pill">curaduría</a>
-    <a href="#airbnb" class="nav-pill">airbnb</a>
-    <a href="#arturismo" class="nav-pill">arturismo</a>
-    <a href="#rayban" class="nav-pill">entrevistas</a>
-    <a href="#cultura" class="nav-pill">cultura nación</a>
-    <a href="#proximamente" class="nav-pill alt">●</a>
+  <button class="nav-logo" onclick="goTo(0)">arturo<span>blas</span></button>
+  <div class="nav-pills" id="navPills">
+    <button class="nav-pill" onclick="goTo(2)">bio</button>
+    <button class="nav-pill" onclick="goTo(3)">textos</button>
+    <button class="nav-pill" onclick="goTo(4)">speaker</button>
+    <button class="nav-pill" onclick="goTo(5)">interiorismo</button>
+    <button class="nav-pill" onclick="goTo(6)">curaduría</button>
+    <button class="nav-pill" onclick="goTo(7)">airbnb</button>
+    <button class="nav-pill" onclick="goTo(8)">arturismo</button>
+    <button class="nav-pill" onclick="goTo(9)">entrevistas</button>
+    <button class="nav-pill" onclick="goTo(10)">cultura nación</button>
+    <button class="nav-pill alt" onclick="goTo(11)">●</button>
   </div>
 </nav>
 
-<section class="hero">
-  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
-  <div class="hero-left">
-    <div>
-      <div class="hero-tag">arturoblas.com</div>
-      <h1 class="hero-h1">
-        <span class="l1">TODO</span>
-        <span class="l2">LO QUE</span>
-        <span class="l3">SOY</span>
-        <span class="l4">ecléctico · inquieto · curioso · creativo</span>
-      </h1>
-      <p class="hero-bio">gestor cultural · speaker · columnista · interiorista<br>curador · líder Airbnb</p>
+<div class="progress-dots" id="progressDots"></div>
+
+<div class="snap-container" id="snapContainer">
+
+  <section class="snap-section" data-name="inicio">
+    <div class="hero">
+      <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+      <div class="hero-left">
+        <div>
+          <div class="hero-tag">arturoblas.com</div>
+          <h1 class="hero-h1">
+            <span class="l1">TODO</span>
+            <span class="l2">LO QUE</span>
+            <span class="l3">SOY</span>
+            <span class="l4">ecléctico · inquieto · curioso · creativo</span>
+          </h1>
+          <p class="hero-bio">gestor cultural · speaker · columnista · interiorista<br>curador · líder Airbnb</p>
+        </div>
+      </div>
+      <div class="hero-right"><div class="hero-ab">AB</div></div>
     </div>
-  </div>
-  <div class="hero-right"><div class="hero-ab">AB</div></div>
-</section>
+    <div class="scroll-cue">scrollear ↓</div>
+  </section>
 
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ti">textos & ensayos <span class="td">✦</span></span>
-    <span class="ti">speaker internacional <span class="td">✦</span></span>
-    <span class="ti">interiorismo <span class="td">✦</span></span>
-    <span class="ti">curaduría de arte <span class="td">✦</span></span>
-    <span class="ti">líder de comunidad airbnb <span class="td">✦</span></span>
-    <span class="ti">arturismo — FM La Tribu <span class="td">✦</span></span>
-    <span class="ti">entrevistas Ray-Ban Meta <span class="td">✦</span></span>
-    <span class="ti">15 años — Cultura Nación <span class="td">✦</span></span>
-    <span class="ti">textos & ensayos <span class="td">✦</span></span>
-    <span class="ti">speaker internacional <span class="td">✦</span></span>
-    <span class="ti">interiorismo <span class="td">✦</span></span>
-    <span class="ti">curaduría de arte <span class="td">✦</span></span>
-    <span class="ti">líder de comunidad airbnb <span class="td">✦</span></span>
-    <span class="ti">arturismo — FM La Tribu <span class="td">✦</span></span>
-    <span class="ti">entrevistas Ray-Ban Meta <span class="td">✦</span></span>
-    <span class="ti">15 años — Cultura Nación <span class="td">✦</span></span>
-  </div>
-</div>
-
-<section class="sec">
-  <div class="sec-head"><span class="sec-num">00</span><h2 class="sec-title">los universos de arturo</h2><span class="sec-dot" style="background:var(--pk)"></span></div>
-  <div class="universos">
-    <a href="#bio" class="ucard uc0"><span class="uc-num">01</span><p class="uc-name">Bio & trayectoria</p><span class="uc-tag">presentación</span></a>
-    <a href="#textos" class="ucard uc1"><span class="uc-num">02</span><p class="uc-name">Textos & opinión</p><span class="uc-tag">ensayos, hashtags</span></a>
-    <a href="#speaker" class="ucard uc2"><span class="uc-num">03</span><p class="uc-name">Speaker</p><span class="uc-tag">charlas, ponencias</span></a>
-    <a href="#interiorismo" class="ucard uc3"><span class="uc-num">04</span><p class="uc-name">Interiorismo</p><span class="uc-tag">proyectos & renders</span></a>
-    <a href="#curaduria" class="ucard uc4"><span class="uc-num">05</span><p class="uc-name">Curaduría</p><span class="uc-tag">galería de arte</span></a>
-    <a href="#airbnb" class="ucard uc5"><span class="uc-num">06</span><p class="uc-name">Airbnb</p><span class="uc-tag">anfitrión & comunidad</span></a>
-    <a href="#arturismo" class="ucard uc6"><span class="uc-num">07</span><p class="uc-name">Arturismo</p><span class="uc-tag">FM La Tribu</span></a>
-    <a href="#rayban" class="ucard uc7"><span class="uc-num">08</span><p class="uc-name">Entrevistas</p><span class="uc-tag">Ray-Ban Meta</span></a>
-    <a href="#cultura" class="ucard uc8"><span class="uc-num">09</span><p class="uc-name">Cultura Nación</p><span class="uc-tag">15 años · archivo</span></a>
-    <a href="#proximamente" class="ucard uc9"><span class="uc-num">10</span><p class="uc-name">??? — próximamente</p><span class="uc-tag">en construcción</span></a>
-  </div>
-</section>
-
-<section class="sec" id="bio">
-  <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">bio & trayectoria</h2><span class="sec-dot" style="background:var(--pk)"></span></div>
-  <div class="bio-body">Acá va tu presentación completa — quién sos, de dónde venís, qué te mueve. Espacio para una bio extensa, en tu voz.</div>
-</section>
-
-<section class="sec" id="textos">
-  <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">textos & opinión</h2><span class="sec-dot" style="background:var(--yw)"></span></div>
-  <div class="textos-body">
-    <div class="hashtag-row">
-      <span class="htag">#turismo</span><span class="htag">#cultura</span><span class="htag">#identidad</span>
-      <span class="htag">#viajes</span><span class="htag">#ciudad</span><span class="htag">#opinión</span><span class="htag">#vida</span>
+  <section class="snap-section" data-name="universos">
+    <div class="sec-head"><span class="sec-num">00</span><h2 class="sec-title">los universos de arturo</h2><span class="sec-dot" style="background:var(--pk)"></span></div>
+    <div class="universos">
+      <a href="javascript:void(0)" onclick="goTo(2)" class="ucard uc0"><span class="uc-num">01</span><p class="uc-name">Bio & trayectoria</p><span class="uc-tag">presentación</span></a>
+      <a href="javascript:void(0)" onclick="goTo(3)" class="ucard uc1"><span class="uc-num">02</span><p class="uc-name">Textos & opinión</p><span class="uc-tag">ensayos, hashtags</span></a>
+      <a href="javascript:void(0)" onclick="goTo(4)" class="ucard uc2"><span class="uc-num">03</span><p class="uc-name">Speaker</p><span class="uc-tag">charlas, ponencias</span></a>
+      <a href="javascript:void(0)" onclick="goTo(5)" class="ucard uc3"><span class="uc-num">04</span><p class="uc-name">Interiorismo</p><span class="uc-tag">proyectos & renders</span></a>
+      <a href="javascript:void(0)" onclick="goTo(6)" class="ucard uc4"><span class="uc-num">05</span><p class="uc-name">Curaduría</p><span class="uc-tag">galería de arte</span></a>
+      <a href="javascript:void(0)" onclick="goTo(7)" class="ucard uc5"><span class="uc-num">06</span><p class="uc-name">Airbnb</p><span class="uc-tag">anfitrión & comunidad</span></a>
+      <a href="javascript:void(0)" onclick="goTo(8)" class="ucard uc6"><span class="uc-num">07</span><p class="uc-name">Arturismo</p><span class="uc-tag">FM La Tribu</span></a>
+      <a href="javascript:void(0)" onclick="goTo(9)" class="ucard uc7"><span class="uc-num">08</span><p class="uc-name">Entrevistas</p><span class="uc-tag">Ray-Ban Meta</span></a>
+      <a href="javascript:void(0)" onclick="goTo(10)" class="ucard uc8"><span class="uc-num">09</span><p class="uc-name">Cultura Nación</p><span class="uc-tag">15 años · archivo</span></a>
+      <a href="javascript:void(0)" onclick="goTo(11)" class="ucard uc9"><span class="uc-num">10</span><p class="uc-name">??? — próximamente</p><span class="uc-tag">en construcción</span></a>
     </div>
-    <div class="text-list">
-      <a href="#" class="text-row"><div class="text-tags"><span class="text-tag-sm">turismo</span></div><span class="text-title">Título del ensayo o columna</span><span class="text-date">may 2025</span></a>
-      <a href="#" class="text-row"><div class="text-tags"><span class="text-tag-sm">identidad</span></div><span class="text-title">Otro texto de opinión</span><span class="text-date">abr 2025</span></a>
-      <a href="#" class="text-row"><div class="text-tags"><span class="text-tag-sm">ciudad</span></div><span class="text-title">Un tercer texto de ejemplo</span><span class="text-date">mar 2025</span></a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="sec" id="speaker">
-  <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">speaker — charlas & ponencias</h2><span class="sec-dot" style="background:var(--bl)"></span></div>
-  <div class="speaker-body">
-    <div class="speaker-grid">
-      <a href="#" class="sp-item"><p class="sp-loc">México</p><p class="sp-title">Título de la ponencia</p><p class="sp-meta">congreso · 2025</p></a>
-      <a href="#" class="sp-item"><p class="sp-loc">España</p><p class="sp-title">Nombre del evento</p><p class="sp-meta">masterclass · 2024</p></a>
-      <a href="#" class="sp-item"><p class="sp-loc">Colombia</p><p class="sp-title">Charla principal</p><p class="sp-meta">conferencia · 2024</p></a>
-      <a href="#" class="sp-item"><p class="sp-loc">Chile</p><p class="sp-title">Workshop intensivo</p><p class="sp-meta">masterclass · 2023</p></a>
+  <section class="snap-section" id="bio" data-name="bio">
+    <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">bio & trayectoria</h2><span class="sec-dot" style="background:var(--pk)"></span></div>
+    <div class="sec-body"><p class="bio-body">Acá va tu presentación completa — quién sos, de dónde venís, qué te mueve. Espacio para una bio extensa, en tu voz.</p></div>
+  </section>
+
+  <section class="snap-section" id="textos" data-name="textos">
+    <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">textos & opinión</h2><span class="sec-dot" style="background:var(--yw)"></span></div>
+    <div class="sec-body">
+      <div class="hashtag-row">
+        <button class="htag">#turismo</button><button class="htag">#cultura</button><button class="htag">#identidad</button>
+        <button class="htag">#viajes</button><button class="htag">#ciudad</button><button class="htag">#opinión</button><button class="htag">#vida</button>
+      </div>
+      <div class="text-list">
+        <a href="#" class="text-row"><span class="text-tag-sm">turismo</span><span class="text-title">Título del ensayo o columna</span><span class="text-date">may 2025</span></a>
+        <a href="#" class="text-row"><span class="text-tag-sm">identidad</span><span class="text-title">Otro texto de opinión</span><span class="text-date">abr 2025</span></a>
+        <a href="#" class="text-row"><span class="text-tag-sm">ciudad</span><span class="text-title">Un tercer texto de ejemplo</span><span class="text-date">mar 2025</span></a>
+      </div>
     </div>
-    <div class="prox-label">próximas fechas →</div>
-    <div class="prox-rows">
+  </section>
+
+  <section class="snap-section" id="speaker" data-name="speaker">
+    <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">speaker — charlas & ponencias</h2><span class="sec-dot" style="background:var(--bl)"></span></div>
+    <div class="sec-body">
+      <div class="speaker-grid">
+        <a href="#" class="sp-item"><p class="sp-loc">México</p><p class="sp-title">Título de la ponencia</p><p class="sp-meta">congreso · 2025</p></a>
+        <a href="#" class="sp-item"><p class="sp-loc">España</p><p class="sp-title">Nombre del evento</p><p class="sp-meta">masterclass · 2024</p></a>
+        <a href="#" class="sp-item"><p class="sp-loc">Colombia</p><p class="sp-title">Charla principal</p><p class="sp-meta">conferencia · 2024</p></a>
+        <a href="#" class="sp-item"><p class="sp-loc">Chile</p><p class="sp-title">Workshop intensivo</p><p class="sp-meta">masterclass · 2023</p></a>
+      </div>
+      <div class="prox-label">próximas fechas →</div>
       <a href="#" class="prox-row"><span class="prox-fecha">JUN 25</span><div><div class="prox-tit">Nombre del evento</div><div class="prox-lugar">ciudad · país</div></div></a>
       <a href="#" class="prox-row"><span class="prox-fecha">AGO 25</span><div><div class="prox-tit">Próxima ponencia</div><div class="prox-lugar">ciudad · país</div></div></a>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="sec" id="interiorismo">
-  <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">interiorismo</h2><span class="sec-dot" style="background:var(--mt)"></span></div>
-  <div class="interior-grid">
-    <div class="int-cell i0">proyecto</div><div class="int-cell i1">render</div><div class="int-cell i2">proyecto</div><div class="int-cell i3">render</div>
-    <div class="int-cell i4">proyecto</div><div class="int-cell i5">render</div><div class="int-cell i6">proyecto</div><div class="int-cell i7">render</div>
-  </div>
-</section>
+  <section class="snap-section" id="interiorismo" data-name="interiorismo">
+    <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">interiorismo</h2><span class="sec-dot" style="background:var(--mt)"></span></div>
+    <div class="interior-grid">
+      <div class="int-cell i0">proyecto</div><div class="int-cell i1">render</div><div class="int-cell i2">proyecto</div><div class="int-cell i3">render</div>
+      <div class="int-cell i4">proyecto</div><div class="int-cell i5">render</div><div class="int-cell i6">proyecto</div><div class="int-cell i7">render</div>
+    </div>
+  </section>
 
-<section class="sec" id="curaduria">
-  <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">curaduría de arte</h2><span class="sec-dot" style="background:var(--vl)"></span></div>
-  <div class="curaduria-grid">
-    <div class="cur-cell cu0">galería</div><div class="cur-cell cu1">galería</div><div class="cur-cell cu2">galería</div><div class="cur-cell cu3">galería</div><div class="cur-cell cu4">galería</div>
-    <div class="cur-cell cu5">galería</div><div class="cur-cell cu6">galería</div><div class="cur-cell cu7">galería</div><div class="cur-cell cu8">galería</div><div class="cur-cell cu9">galería</div>
-  </div>
-</section>
+  <section class="snap-section" id="curaduria" data-name="curaduría">
+    <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">curaduría de arte</h2><span class="sec-dot" style="background:var(--vl)"></span></div>
+    <div class="curaduria-grid">
+      <div class="cur-cell cu0">galería</div><div class="cur-cell cu1">galería</div><div class="cur-cell cu2">galería</div><div class="cur-cell cu3">galería</div><div class="cur-cell cu4">galería</div>
+      <div class="cur-cell cu5">galería</div><div class="cur-cell cu6">galería</div><div class="cur-cell cu7">galería</div><div class="cur-cell cu8">galería</div><div class="cur-cell cu9">galería</div>
+    </div>
+  </section>
 
-<section class="sec" id="airbnb">
-  <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">airbnb — mundo anfitrión</h2><span class="sec-dot" style="background:var(--gr)"></span></div>
-  <div class="airbnb-bento">
-    <div class="ab-cell ab0"><span class="ab-role">rol</span><p class="ab-title">Líder de comunidad Buenos Aires</p><span class="ab-detail">Argentina</span></div>
-    <div class="ab-cell ab1"><span class="ab-role">iniciativa</span><p class="ab-title">Fondo de comunidad</p><span class="ab-detail">gestión</span></div>
-    <div class="ab-cell ab2"><span class="ab-role">global</span><p class="ab-title">Consejo asesor global</p><span class="ab-detail">miembro activo</span></div>
-    <div class="ab-cell ab3"><span class="ab-role">servicio</span><p class="ab-title">Administración de deptos</p><span class="ab-detail">hospitalidad</span></div>
-  </div>
-</section>
+  <section class="snap-section" id="airbnb" data-name="airbnb">
+    <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">airbnb — mundo anfitrión</h2><span class="sec-dot" style="background:var(--gr)"></span></div>
+    <div class="airbnb-bento">
+      <div class="ab-cell ab0"><span class="ab-role">rol</span><p class="ab-title">Líder de comunidad Buenos Aires</p><span class="ab-detail">Argentina</span></div>
+      <div class="ab-cell ab1"><span class="ab-role">iniciativa</span><p class="ab-title">Fondo de comunidad</p><span class="ab-detail">gestión</span></div>
+      <div class="ab-cell ab2"><span class="ab-role">global</span><p class="ab-title">Consejo asesor global</p><span class="ab-detail">miembro activo</span></div>
+      <div class="ab-cell ab3"><span class="ab-role">servicio</span><p class="ab-title">Administración de deptos</p><span class="ab-detail">hospitalidad</span></div>
+    </div>
+  </section>
 
-<section class="sec" id="arturismo">
-  <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title">arturismo — FM La Tribu</h2><span class="sec-dot" style="background:var(--or)"></span></div>
-  <div class="art-wrap">
-    <a href="#" class="yt-embed"><div class="yt-play"><div class="yt-tri"></div></div><span class="yt-label">Episodio más reciente</span></a>
-    <p class="art-desc-text">Columna semanal en FM La Tribu 88.7. Acá se embeben los videos de YouTube de cada episodio con un breve texto.</p>
-  </div>
-</section>
-
-<section class="sec" id="rayban">
-  <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title">entrevistas — Ray-Ban Meta</h2><span class="sec-dot" style="background:var(--cy)"></span></div>
-  <div class="rayban-grid">
-    <a href="#" class="rb-cell"><span class="rb-tag">entrevista espontánea</span><p class="rb-name">Título de la entrevista</p><span class="rb-meta">YouTube · 2025</span></a>
-    <a href="#" class="rb-cell"><span class="rb-tag">entrevista espontánea</span><p class="rb-name">Otra entrevista</p><span class="rb-meta">YouTube · 2025</span></a>
-    <a href="#" class="rb-cell"><span class="rb-tag">entrevista espontánea</span><p class="rb-name">Una más</p><span class="rb-meta">YouTube · 2025</span></a>
-  </div>
-</section>
-
-<section class="sec cultura-sec" id="cultura">
-  <div class="sec-head"><span class="sec-num">09</span><h2 class="sec-title">cultura nación — 15 años</h2><span class="sec-dot" style="background:var(--rd);border-color:var(--rd)"></span></div>
-  <p class="cultura-intro">Casi 15 años en el Ministerio de Cultura de la Nación. Una línea de tiempo de los roles, proyectos y responsabilidades que marcaron esta etapa.</p>
-  <div class="timeline">
-    <div class="tl-item">
-      <div><div class="tl-dot"></div><span class="tl-year">2010</span></div>
-      <div class="tl-content">
-        <p class="tl-role">inicio</p>
-        <p class="tl-title">Ingreso al Ministerio de Cultura de la Nación</p>
-        <p class="tl-desc">Acá va el relato de cómo empezó esta etapa — el rol, el área, el contexto.</p>
-        <div class="tl-media"><span class="tl-media-tag">foto</span><span class="tl-media-tag">texto</span></div>
+  <section class="snap-section" id="arturismo" data-name="arturismo">
+    <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title">arturismo — FM La Tribu</h2><span class="sec-dot" style="background:var(--or)"></span></div>
+    <div class="sec-body">
+      <div class="art-wrap">
+        <a href="#" class="yt-embed"><div class="yt-play"><div class="yt-tri"></div></div><span class="yt-label">Episodio más reciente</span></a>
+        <p class="art-desc-text">Columna semanal en FM La Tribu 88.7. Acá se embeben los videos de YouTube de cada episodio con un breve texto.</p>
       </div>
     </div>
-    <div class="tl-item">
-      <div><div class="tl-dot"></div><span class="tl-year">2015</span></div>
-      <div class="tl-content">
-        <p class="tl-role">proyecto destacado</p>
-        <p class="tl-title">Nombre del proyecto o programa relevante</p>
-        <p class="tl-desc">Descripción del proyecto, impacto, equipo, logros.</p>
-        <div class="tl-media"><span class="tl-media-tag">video</span><span class="tl-media-tag">nota periodística</span></div>
-      </div>
-    </div>
-    <div class="tl-item">
-      <div><div class="tl-dot"></div><span class="tl-year">2020</span></div>
-      <div class="tl-content">
-        <p class="tl-role">ascenso / nuevo rol</p>
-        <p class="tl-title">Nuevo cargo o responsabilidad</p>
-        <p class="tl-desc">Qué cambió, qué responsabilidades nuevas, qué se logró.</p>
-        <div class="tl-media"><span class="tl-media-tag">foto</span><span class="tl-media-tag">archivo</span></div>
-      </div>
-    </div>
-    <div class="tl-item">
-      <div><div class="tl-dot"></div><span class="tl-year">2024</span></div>
-      <div class="tl-content">
-        <p class="tl-role">cierre de etapa</p>
-        <p class="tl-title">Renuncia — fin de una etapa de 15 años</p>
-        <p class="tl-desc">El cierre de este capítulo, la reflexión sobre lo construido, y lo que sigue.</p>
-        <div class="tl-media"><span class="tl-media-tag">texto</span><span class="tl-media-tag">nota periodística</span></div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="sec secreto-sec" id="proximamente">
-  <div class="sec-head"><span class="sec-num">10</span><h2 class="sec-title" style="color:var(--yw)">próximamente</h2><span class="sec-dot" style="background:var(--pk);border-color:var(--pk)"></span></div>
-  <div class="secreto-body">
-    <div class="secreto-pulse"><span class="secreto-q">?</span></div>
-    <p class="secreto-title">Una red social está a punto de nacer</p>
-    <p class="secreto-desc">Algo nuevo se está gestando. Todavía no es momento de decir el nombre — pero pronto vas a poder conocerlo acá.</p>
-    <span class="secreto-badge">en construcción</span>
-  </div>
-</section>
+  <section class="snap-section" id="rayban" data-name="entrevistas">
+    <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title">entrevistas — Ray-Ban Meta</h2><span class="sec-dot" style="background:var(--cy)"></span></div>
+    <div class="rayban-grid">
+      <a href="#" class="rb-cell"><span class="rb-tag">entrevista espontánea</span><p class="rb-name">Título de la entrevista</p><span class="rb-meta">YouTube · 2025</span></a>
+      <a href="#" class="rb-cell"><span class="rb-tag">entrevista espontánea</span><p class="rb-name">Otra entrevista</p><span class="rb-meta">YouTube · 2025</span></a>
+      <a href="#" class="rb-cell"><span class="rb-tag">entrevista espontánea</span><p class="rb-name">Una más</p><span class="rb-meta">YouTube · 2025</span></a>
+    </div>
+  </section>
 
-<footer>
-  <div>
-    <div class="footer-logo">arturo<span>blas</span></div>
-    <div class="footer-sub">ecléctico <span class="sep">·</span> inquieto <span class="sep">·</span> renacentista</div>
-  </div>
-  <div class="footer-links">
-    <a href="#bio">bio</a><a href="#textos">textos</a>
-    <a href="#speaker">speaker</a><a href="#interiorismo">interiorismo</a>
-    <a href="#curaduria">curaduría</a><a href="#airbnb">airbnb</a>
-    <a href="#arturismo">arturismo</a><a href="#rayban">entrevistas</a>
-    <a href="#cultura">cultura nación</a><a href="#proximamente">próximamente</a>
-  </div>
-</footer>
+  <section class="snap-section cultura-sec" id="cultura" data-name="cultura nación">
+    <div class="sec-head"><span class="sec-num">09</span><h2 class="sec-title">cultura nación — 15 años</h2><span class="sec-dot" style="background:var(--rd);border-color:var(--rd)"></span></div>
+    <div class="sec-body">
+      <p class="cultura-intro">Casi 15 años en el Ministerio de Cultura de la Nación. Una línea de tiempo de los roles, proyectos y responsabilidades que marcaron esta etapa.</p>
+      <div class="timeline">
+        <div class="tl-item">
+          <div><div class="tl-dot"></div><span class="tl-year">2010</span></div>
+          <div class="tl-content">
+            <p class="tl-role">inicio</p>
+            <p class="tl-title">Ingreso al Ministerio de Cultura de la Nación</p>
+            <p class="tl-desc">Acá va el relato de cómo empezó esta etapa — el rol, el área, el contexto.</p>
+            <div class="tl-media"><span class="tl-media-tag">foto</span><span class="tl-media-tag">texto</span></div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div><div class="tl-dot"></div><span class="tl-year">2015</span></div>
+          <div class="tl-content">
+            <p class="tl-role">proyecto destacado</p>
+            <p class="tl-title">Nombre del proyecto o programa relevante</p>
+            <p class="tl-desc">Descripción del proyecto, impacto, equipo, logros.</p>
+            <div class="tl-media"><span class="tl-media-tag">video</span><span class="tl-media-tag">nota periodística</span></div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div><div class="tl-dot"></div><span class="tl-year">2020</span></div>
+          <div class="tl-content">
+            <p class="tl-role">ascenso / nuevo rol</p>
+            <p class="tl-title">Nuevo cargo o responsabilidad</p>
+            <p class="tl-desc">Qué cambió, qué responsabilidades nuevas, qué se logró.</p>
+            <div class="tl-media"><span class="tl-media-tag">foto</span><span class="tl-media-tag">archivo</span></div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div><div class="tl-dot"></div><span class="tl-year">2024</span></div>
+          <div class="tl-content">
+            <p class="tl-role">cierre de etapa</p>
+            <p class="tl-title">Renuncia — fin de una etapa de 15 años</p>
+            <p class="tl-desc">El cierre de este capítulo, la reflexión sobre lo construido, y lo que sigue.</p>
+            <div class="tl-media"><span class="tl-media-tag">texto</span><span class="tl-media-tag">nota periodística</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="snap-section secreto-sec" id="proximamente" data-name="próximamente">
+    <div class="sec-head"><span class="sec-num">10</span><h2 class="sec-title" style="color:var(--yw)">próximamente</h2><span class="sec-dot" style="background:var(--pk);border-color:var(--pk)"></span></div>
+    <div class="secreto-body">
+      <div class="secreto-pulse"><span class="secreto-q">?</span></div>
+      <p class="secreto-title">Una red social está a punto de nacer</p>
+      <p class="secreto-desc">Algo nuevo se está gestando. Todavía no es momento de decir el nombre — pero pronto vas a poder conocerlo acá.</p>
+      <span class="secreto-badge">en construcción</span>
+    </div>
+  </section>
+
+  <section class="snap-section footer-sec" data-name="cierre">
+    <div class="footer-body">
+      <div class="footer-logo">arturo<span>blas</span></div>
+      <div class="footer-sub">ecléctico <span class="sep">·</span> inquieto <span class="sep">·</span> renacentista</div>
+      <div class="footer-links">
+        <button onclick="goTo(2)">bio</button><button onclick="goTo(3)">textos</button>
+        <button onclick="goTo(4)">speaker</button><button onclick="goTo(5)">interiorismo</button>
+        <button onclick="goTo(6)">curaduría</button><button onclick="goTo(7)">airbnb</button>
+        <button onclick="goTo(8)">arturismo</button><button onclick="goTo(9)">entrevistas</button>
+        <button onclick="goTo(10)">cultura nación</button><button onclick="goTo(0)">volver al inicio</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const container = document.getElementById('snapContainer');
+  const sections = Array.from(document.querySelectorAll('.snap-section'));
+  const navPills = Array.from(document.querySelectorAll('#navPills .nav-pill'));
+  const darkSections = new Set([10, 11, 12]);
+
+  function buildDots() {
+    const wrap = document.getElementById('progressDots');
+    sections.forEach((sec, i) => {
+      const d = document.createElement('button');
+      d.className = 'pdot' + (darkSections.has(i) ? ' on-dark' : '');
+      d.setAttribute('aria-label', sec.dataset.name);
+      d.onclick = () => goTo(i);
+      wrap.appendChild(d);
+    });
+  }
+  buildDots();
+  const dots = Array.from(document.querySelectorAll('.pdot'));
+
+  function goTo(index) {
+    sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  window.goTo = goTo;
+
+  function updateActive() {
+    const idx = Math.round(container.scrollTop / window.innerHeight);
+    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    const navMap = { 2:0, 3:1, 4:2, 5:3, 6:4, 7:5, 8:6, 9:7, 10:8, 11:9 };
+    navPills.forEach(p => p.classList.remove('active'));
+    if (navMap[idx] !== undefined) navPills[navMap[idx]].classList.add('active');
+  }
+  container.addEventListener('scroll', () => {
+    window.requestAnimationFrame(updateActive);
+  });
+  updateActive();
+</script>
 
 </body>
 </html>
