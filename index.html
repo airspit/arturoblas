@@ -1082,6 +1082,20 @@ nav {
 </div>
 
 <script>
+  function openTxt(i) {
+    document.querySelectorAll('.txt-modal-item').forEach(function(el){ el.style.display = 'none'; });
+    document.getElementById('txt-modal-' + i).style.display = 'block';
+    var modal = document.getElementById('txtModal');
+    modal.style.display = 'block';
+    modal.scrollTop = 0;
+  }
+  function closeTxt() {
+    document.getElementById('txtModal').style.display = 'none';
+    document.querySelectorAll('.txt-modal-item').forEach(function(el){ el.style.display = 'none'; });
+  }
+  function goToTop() {
+    document.getElementById('snapContainer').scrollTo({ top: 0, behavior: 'smooth' });
+  }
   function enterSite() {
     
     
@@ -1092,6 +1106,9 @@ nav {
     
     
   }
+
+  // Inicializar automáticamente al cargar (sin landing)
+  document.addEventListener('DOMContentLoaded', function() { initSite(); });
 
   let initialized = false;
   function initSite() {
