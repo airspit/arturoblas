@@ -21,10 +21,7 @@ html, body { height: 100%; overflow: hidden; }
 body { background: var(--wh); font-family: 'Space Grotesk', sans-serif; color: var(--bk); }
 
 /* ===== LANDING — pantalla cerrada, sin scroll, sin nav ===== */
-#landingScreen {
-  position: fixed; inset: 0; z-index: 500; background: var(--wh);
-  display: grid; grid-template-columns: 1fr 1fr; overflow: hidden;
-}
+
 .tri { position: absolute; width: 0; height: 0; pointer-events: none; }
 .landing-left { position: relative; z-index: 5; padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; border-right: 2.5px solid var(--bk); }
 .land-h1 { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: clamp(2.6rem, 5.5vw, 5rem); line-height: .93; letter-spacing: -.04em; }
@@ -36,17 +33,16 @@ body { background: var(--wh); font-family: 'Space Grotesk', sans-serif; color: v
 .land-bio { font-size: .65rem; line-height: 1.9; color: rgba(8,8,8,.5); text-transform: uppercase; letter-spacing: .05em; max-width: 34ch; margin-top: 1.8rem; }
 .enter-btn {
   margin-top: 2.4rem; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: .85rem;
-  background: var(--bk); color: var(--wh); border: 2px solid var(--bk); padding: .9rem 1.8rem;
-  border-radius: 999px; cursor: pointer; width: fit-content; display: flex; align-items: center; gap: .6rem;
+  background: var(--mg); color: var(--wh); border: 2px solid var(--mg); padding: .9rem 1.8rem;
+  border-radius: 0; cursor: pointer; width: fit-content; display: flex; align-items: center; gap: .6rem;
   transition: background .15s, color .15s;
 }
-.enter-btn:hover { background: var(--mg); border-color: var(--mg); }
+.enter-btn:hover { background: var(--wh); color: var(--bk); border-color: var(--wh); }
 .landing-right { position: relative; z-index: 5; display: flex; align-items: center; justify-content: center; }
 .landing-ab { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: clamp(4.5rem, 11vw, 9rem); color: transparent; -webkit-text-stroke: 3px rgba(8,8,8,.1); line-height: 1; }
 
 /* ===== SITIO — oculto hasta tocar "explorar" ===== */
-#siteScreen { display: none; height: 100%; }
-#siteScreen.visible { display: block; }
+
 
 nav {
   background: var(--bk); display: flex; align-items: center; justify-content: space-between;
@@ -104,6 +100,33 @@ nav {
 .uc9 { background: var(--bk); color: var(--wh); border: 1.5px dashed rgba(255,255,255,.3); }
 
 .bio-body { font-size: .75rem; line-height: 2; color: rgba(8,8,8,.55); max-width: 64ch; }
+/* HERO LANDING */
+.hero-landing { background: var(--bk); padding: 2rem 2rem 1.8rem; position: relative; overflow: hidden; }
+.hero-tri { position: absolute; width: 0; height: 0; pointer-events: none; }
+.hero-tri-1 { border-left: 130px solid transparent; border-right: 130px solid transparent; border-bottom: 220px solid var(--mg); opacity: .18; top: -70px; right: -60px; transform: rotate(-12deg); }
+.hero-tri-2 { border-left: 90px solid transparent; border-right: 90px solid transparent; border-bottom: 160px solid var(--lm1); opacity: .12; bottom: -60px; left: 40%; transform: rotate(20deg); }
+.hero-inner-wrap { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; position: relative; z-index: 1; }
+.hero-main-title { font-family: 'Unbounded', sans-serif; font-weight: 900; line-height: .93; letter-spacing: -.03em; }
+.hmt-1, .hmt-2 { display: block; color: #ffffff; font-size: clamp(1.8rem, 5vw, 3.6rem); }
+.hmt-3 { display: block; color: var(--mg); font-size: clamp(1.8rem, 5vw, 3.6rem); }
+.hero-pills-row { display: flex; gap: .4rem; margin-top: .9rem; flex-wrap: wrap; }
+.hero-lp { font-family: 'Space Mono', monospace; font-size: .48rem; font-weight: 700; letter-spacing: .1em; padding: .25rem .6rem; border: 1.5px solid var(--lm2); color: var(--lm2); text-transform: uppercase; }
+.hero-right-col { text-align: right; flex-shrink: 0; }
+.hero-sub-text { font-size: .8rem; color: rgba(255,255,255,.5); line-height: 1.6; max-width: 26ch; text-align: right; margin-bottom: .8rem; }
+.hero-ver-btn { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: .6rem; letter-spacing: .08em; padding: .65rem 1.3rem; background: var(--mg) !important; color: #ffffff !important; border: none; cursor: pointer; text-transform: uppercase; }
+.universos-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
+.universos-grid .ucard { border-right: 1.5px solid var(--bk); border-bottom: none; text-decoration: none; padding: 1rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 90px; cursor: pointer; }
+.universos-grid .ucard:nth-child(5n) { border-right: none; }
+@media (max-width: 700px) {
+  .hero-inner-wrap { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .hero-right-col { text-align: left; }
+  .hero-sub-text { text-align: left; }
+  .hmt-1, .hmt-2, .hmt-3 { font-size: clamp(1.6rem, 10vw, 2.8rem); }
+  .universos-grid { grid-template-columns: 1fr 1fr; }
+  .universos-grid .ucard:nth-child(5n) { border-right: 1.5px solid var(--bk); }
+  .universos-grid .ucard:nth-child(2n) { border-right: none; }
+}
+
 /* SERVICIOS */
 .servicios-layout { display: flex; flex-direction: column; height: 100%; overflow-y: auto; padding: .7rem 2rem 1rem; }
 .servicios-lead { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 1.4rem; letter-spacing: -.03em; color: var(--bk); margin-bottom: .4rem; }
@@ -299,35 +322,11 @@ nav {
 <body>
 
 <!-- ===== PANTALLA DE ENTRADA — sin scroll, sin nav ===== -->
-<div id="landingScreen">
-  <div class="tri" style="border-left:130px solid transparent;border-right:130px solid transparent;border-bottom:220px solid var(--mg);opacity:.85;top:-70px;left:-90px;transform:rotate(8deg);"></div>
-  <div class="tri" style="border-left:110px solid transparent;border-right:110px solid transparent;border-bottom:190px solid var(--rs2);opacity:.8;top:-30px;right:-70px;transform:rotate(-12deg);"></div>
-  <div class="tri" style="border-left:95px solid transparent;border-right:95px solid transparent;border-bottom:170px solid var(--lm2);opacity:.6;bottom:-90px;left:32%;transform:rotate(20deg);"></div>
-  <div class="landing-left">
-    <div>
-      <h1 class="land-h1">
-        <span class="ll1">DONDE HOSPEDAR</span>
-        <span class="ll2">DEJA DE SER</span>
-        <span class="ll3">UN HOBBY</span>
-      </h1>
-      <div class="land-pills">
-        <span class="land-pill" style="background:var(--lm2);color:var(--bk);">Asesor</span>
-        <span class="land-pill" style="background:var(--lm2);color:var(--bk);">Estratega Creativo</span>
-        <span class="land-pill" style="background:var(--lm2);color:var(--bk);">Speaker</span>
-      </div>
-      <p class="land-bio">gestor cultural · speaker · columnista · interiorista<br>curador · líder Airbnb</p>
-      <p style="font-family:'Space Grotesk',sans-serif;font-size:.9rem;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:1.2rem;max-width:38ch;">Explorá, conectá, hablemos.</p>
-      <button class="enter-btn" onclick="enterSite()">explorar <span>→</span></button>
-    </div>
-  </div>
-  <div class="landing-right"><div class="landing-ab">AB</div></div>
-</div>
+
 
 <!-- ===== SITIO COMPLETO — oculto hasta tocar "explorar" ===== -->
-<div id="siteScreen">
-
 <nav>
-  <button class="nav-logo" onclick="backToLanding()">arturo<span>blas</span></button>
+  <button class="nav-logo" onclick="goToTop()">arturo<span>blas</span></button>
   <div class="nav-pills" id="navPills">
     <button class="nav-pill" onclick="goTo(0)">servicios</button>
     <button class="nav-pill" onclick="goTo(1)">speaker</button>
@@ -348,6 +347,48 @@ nav {
 <div class="snap-container" id="snapContainer">
 
   
+
+  <section class="snap-section" id="hero-top" data-name="inicio" style="height:auto;min-height:auto;border-bottom:2.5px solid var(--bk);scroll-snap-align:none;overflow:visible;padding-top:56px;">
+    <div class="hero-landing">
+      <div class="hero-tri hero-tri-1"></div>
+      <div class="hero-tri hero-tri-2"></div>
+      <div class="hero-inner-wrap">
+        <div class="hero-left-col">
+          <h1 class="hero-main-title">
+            <span class="hmt-1">DONDE HOSPEDAR</span>
+            <span class="hmt-2">DEJA DE SER</span>
+            <span class="hmt-3">UN HOBBY</span>
+          </h1>
+          <div class="hero-pills-row">
+            <span class="hero-lp">Asesor</span>
+            <span class="hero-lp">Estratega Creativo</span>
+            <span class="hero-lp">Speaker</span>
+          </div>
+        </div>
+        <div class="hero-right-col">
+          <p class="hero-sub-text">Explorá, conectá, hablemos.</p>
+          <button class="hero-ver-btn" onclick="goTo(0)">Ver servicios →</button>
+        </div>
+      </div>
+    </div>
+    <div class="sec-head" style="background:var(--wh);">
+      <span class="sec-num">00</span>
+      <h2 class="sec-title">los universos de arturo</h2>
+      <span class="sec-dot" style="background:var(--mg)"></span>
+    </div>
+    <div class="universos-grid">
+      <a class="ucard uc0" onclick="goTo(0)" href="javascript:void(0)" style="background:var(--mg);"><span class="uc-num" style="color:#fff;opacity:.5;">01</span><p class="uc-name" style="color:#fff;">Servicios</p><span class="uc-tag" style="color:#fff;">consultoría</span></a>
+      <a class="ucard uc1" onclick="goTo(1)" href="javascript:void(0)" style="background:var(--bk);"><span class="uc-num" style="color:#fff;opacity:.5;">02</span><p class="uc-name" style="color:#fff;">Speaker</p><span class="uc-tag" style="color:#fff;">charlas, ponencias</span></a>
+      <a class="ucard uc2" onclick="goTo(2)" href="javascript:void(0)" style="background:var(--rs2);"><span class="uc-num" style="color:#fff;opacity:.5;">03</span><p class="uc-name" style="color:#fff;">Airbnb</p><span class="uc-tag" style="color:#fff;">anfitrión & comunidad</span></a>
+      <a class="ucard uc3" onclick="goTo(3)" href="javascript:void(0)" style="background:var(--lm1);"><span class="uc-num" style="color:#080808;opacity:.5;">04</span><p class="uc-name" style="color:#080808;">Interiorismo</p><span class="uc-tag" style="color:#080808;">proyectos & renders</span></a>
+      <a class="ucard uc4" onclick="goTo(4)" href="javascript:void(0)"><span class="uc-num">05</span><p class="uc-name">Textos</p><span class="uc-tag">ensayos, opinión</span></a>
+      <a class="ucard uc5" onclick="goTo(5)" href="javascript:void(0)"><span class="uc-num">06</span><p class="uc-name">Bio</p><span class="uc-tag">trayectoria</span></a>
+      <a class="ucard uc6" onclick="goTo(6)" href="javascript:void(0)" style="background:var(--lm2);"><span class="uc-num" style="color:#080808;opacity:.5;">07</span><p class="uc-name" style="color:#080808;">Virginio</p><span class="uc-tag" style="color:#080808;">galería de arte</span></a>
+      <a class="ucard uc7" onclick="goTo(7)" href="javascript:void(0)" style="background:var(--bk);"><span class="uc-num" style="color:#fff;opacity:.5;">08</span><p class="uc-name" style="color:#fff;">Cultura Nación</p><span class="uc-tag" style="color:#fff;">15 años · archivo</span></a>
+      <a class="ucard uc8" onclick="goTo(8)" href="javascript:void(0)" style="background:var(--mg);"><span class="uc-num" style="color:#fff;opacity:.5;">09</span><p class="uc-name" style="color:#fff;">Entrevistas</p><span class="uc-tag" style="color:#fff;">Ray-Ban Meta</span></a>
+      <a class="ucard uc9" onclick="goTo(9)" href="javascript:void(0)"><span class="uc-num">10</span><p class="uc-name">Arturismo</p><span class="uc-tag">FM La Tribu 88.7</span></a>
+    </div>
+  </section>
 
   <section class="snap-section" id="servicios" data-name="servicios">
     <div class="sec-head"><span class="sec-num">00</span><h2 class="sec-title">servicios</h2><span class="sec-dot" style="background:var(--mg)"></span></div>
@@ -645,14 +686,14 @@ nav {
 
 <script>
   function enterSite() {
-    document.getElementById('landingScreen').style.display = 'none';
-    document.getElementById('siteScreen').classList.add('visible');
+    
+    
     initSite();
   }
 
   function backToLanding() {
-    document.getElementById('siteScreen').classList.remove('visible');
-    document.getElementById('landingScreen').style.display = 'grid';
+    
+    
   }
 
   let initialized = false;
