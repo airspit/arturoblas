@@ -101,21 +101,21 @@ nav {
 
 .bio-body { font-size: .75rem; line-height: 2; color: rgba(8,8,8,.55); max-width: 64ch; }
 /* HERO LANDING */
-.hero-landing { background: var(--bk); padding: 2rem 2rem 1.8rem; position: relative; overflow: hidden; }
+.hero-landing { background: var(--bk); padding: 2.8rem 2.5rem 2.4rem; position: relative; overflow: hidden; }
 .hero-tri { position: absolute; width: 0; height: 0; pointer-events: none; }
 .hero-tri-1 { border-left: 130px solid transparent; border-right: 130px solid transparent; border-bottom: 220px solid var(--mg); opacity: .18; top: -70px; right: -60px; transform: rotate(-12deg); }
 .hero-tri-2 { border-left: 90px solid transparent; border-right: 90px solid transparent; border-bottom: 160px solid var(--lm1); opacity: .12; bottom: -60px; left: 40%; transform: rotate(20deg); }
 .hero-inner-wrap { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; position: relative; z-index: 1; }
 .hero-main-title { font-family: 'Unbounded', sans-serif; font-weight: 900; line-height: .93; letter-spacing: -.03em; }
-.hmt-1, .hmt-2 { display: block; color: #ffffff; font-size: clamp(1.8rem, 5vw, 3.6rem); }
-.hmt-3 { display: block; color: var(--mg); font-size: clamp(1.8rem, 5vw, 3.6rem); }
+.hmt-1, .hmt-2 { display: block; color: #ffffff; font-size: clamp(2.2rem, 6vw, 4.8rem); }
+.hmt-3 { display: block; color: var(--mg); font-size: clamp(2.2rem, 6vw, 4.8rem); }
 .hero-pills-row { display: flex; gap: .4rem; margin-top: .9rem; flex-wrap: wrap; }
 .hero-lp { font-family: 'Space Mono', monospace; font-size: .48rem; font-weight: 700; letter-spacing: .1em; padding: .25rem .6rem; border: 1.5px solid var(--lm2); color: var(--lm2); text-transform: uppercase; }
 .hero-right-col { text-align: right; flex-shrink: 0; }
 .hero-sub-text { font-size: .8rem; color: rgba(255,255,255,.5); line-height: 1.6; max-width: 26ch; text-align: right; margin-bottom: .8rem; }
 .hero-ver-btn { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: .6rem; letter-spacing: .08em; padding: .65rem 1.3rem; background: var(--mg) !important; color: #ffffff !important; border: none; cursor: pointer; text-transform: uppercase; }
 .universos-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
-.universos-grid .ucard { border-right: 1.5px solid var(--bk); border-bottom: none; text-decoration: none; padding: 1rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 90px; cursor: pointer; }
+.universos-grid .ucard { border-right: 1.5px solid var(--bk); border-bottom: none; text-decoration: none; padding: 1.4rem 1.2rem; display: flex; flex-direction: column; justify-content: space-between; min-height: 130px; cursor: pointer; }
 .universos-grid .ucard:nth-child(5n) { border-right: none; }
 @media (max-width: 700px) {
   .hero-inner-wrap { flex-direction: column; align-items: flex-start; gap: 1rem; }
@@ -328,17 +328,18 @@ nav {
 <nav>
   <button class="nav-logo" onclick="goToTop()">arturo<span>blas</span></button>
   <div class="nav-pills" id="navPills">
-    <button class="nav-pill" onclick="goTo(0)">servicios</button>
-    <button class="nav-pill" onclick="goTo(1)">speaker</button>
-    <button class="nav-pill" onclick="goTo(2)">airbnb</button>
-    <button class="nav-pill" onclick="goTo(3)">interiorismo</button>
-    <button class="nav-pill" onclick="goTo(4)">textos</button>
-    <button class="nav-pill" onclick="goTo(5)">bio</button>
-    <button class="nav-pill" onclick="goTo(6)">virginio</button>
-    <button class="nav-pill" onclick="goTo(7)">cultura nación</button>
-    <button class="nav-pill" onclick="goTo(8)">entrevistas</button>
-    <button class="nav-pill" onclick="goTo(9)">arturismo</button>
-    <button class="nav-pill" onclick="goTo(10)">●</button>
+    <button class="nav-pill" onclick="goToTop()">universos</button>
+    <button class="nav-pill" onclick="goTo(1)">servicios</button>
+    <button class="nav-pill" onclick="goTo(2)">speaker</button>
+    <button class="nav-pill" onclick="goTo(3)">airbnb</button>
+    <button class="nav-pill" onclick="goTo(4)">interiorismo</button>
+    <button class="nav-pill" onclick="goTo(5)">textos</button>
+    <button class="nav-pill" onclick="goTo(6)">bio</button>
+    <button class="nav-pill" onclick="goTo(7)">virginio</button>
+    <button class="nav-pill" onclick="goTo(8)">cultura nación</button>
+    <button class="nav-pill" onclick="goTo(9)">entrevistas</button>
+    <button class="nav-pill" onclick="goTo(10)">arturismo</button>
+    <button class="nav-pill" onclick="goTo(11)">●</button>
   </div>
 </nav>
 
@@ -348,7 +349,7 @@ nav {
 
   
 
-  <section class="snap-section" id="hero-top" data-name="inicio" style="height:auto;min-height:auto;border-bottom:2.5px solid var(--bk);scroll-snap-align:none;overflow:visible;padding-top:56px;">
+  <section class="snap-section" id="hero-top" data-name="inicio" style="overflow-y:auto;">
     <div class="hero-landing">
       <div class="hero-tri hero-tri-1"></div>
       <div class="hero-tri hero-tri-2"></div>
@@ -377,16 +378,16 @@ nav {
       <span class="sec-dot" style="background:var(--mg)"></span>
     </div>
     <div class="universos-grid">
-      <a class="ucard uc0" onclick="goTo(0)" href="javascript:void(0)" style="background:var(--mg);"><span class="uc-num" style="color:#fff;opacity:.5;">01</span><p class="uc-name" style="color:#fff;">Servicios</p><span class="uc-tag" style="color:#fff;">consultoría</span></a>
-      <a class="ucard uc1" onclick="goTo(1)" href="javascript:void(0)" style="background:var(--bk);"><span class="uc-num" style="color:#fff;opacity:.5;">02</span><p class="uc-name" style="color:#fff;">Speaker</p><span class="uc-tag" style="color:#fff;">charlas, ponencias</span></a>
-      <a class="ucard uc2" onclick="goTo(2)" href="javascript:void(0)" style="background:var(--rs2);"><span class="uc-num" style="color:#fff;opacity:.5;">03</span><p class="uc-name" style="color:#fff;">Airbnb</p><span class="uc-tag" style="color:#fff;">anfitrión & comunidad</span></a>
-      <a class="ucard uc3" onclick="goTo(3)" href="javascript:void(0)" style="background:var(--lm1);"><span class="uc-num" style="color:#080808;opacity:.5;">04</span><p class="uc-name" style="color:#080808;">Interiorismo</p><span class="uc-tag" style="color:#080808;">proyectos & renders</span></a>
-      <a class="ucard uc4" onclick="goTo(4)" href="javascript:void(0)"><span class="uc-num">05</span><p class="uc-name">Textos</p><span class="uc-tag">ensayos, opinión</span></a>
-      <a class="ucard uc5" onclick="goTo(5)" href="javascript:void(0)"><span class="uc-num">06</span><p class="uc-name">Bio</p><span class="uc-tag">trayectoria</span></a>
-      <a class="ucard uc6" onclick="goTo(6)" href="javascript:void(0)" style="background:var(--lm2);"><span class="uc-num" style="color:#080808;opacity:.5;">07</span><p class="uc-name" style="color:#080808;">Virginio</p><span class="uc-tag" style="color:#080808;">galería de arte</span></a>
-      <a class="ucard uc7" onclick="goTo(7)" href="javascript:void(0)" style="background:var(--bk);"><span class="uc-num" style="color:#fff;opacity:.5;">08</span><p class="uc-name" style="color:#fff;">Cultura Nación</p><span class="uc-tag" style="color:#fff;">15 años · archivo</span></a>
-      <a class="ucard uc8" onclick="goTo(8)" href="javascript:void(0)" style="background:var(--mg);"><span class="uc-num" style="color:#fff;opacity:.5;">09</span><p class="uc-name" style="color:#fff;">Entrevistas</p><span class="uc-tag" style="color:#fff;">Ray-Ban Meta</span></a>
-      <a class="ucard uc9" onclick="goTo(9)" href="javascript:void(0)"><span class="uc-num">10</span><p class="uc-name">Arturismo</p><span class="uc-tag">FM La Tribu 88.7</span></a>
+      <a class="ucard uc0" onclick="goTo(1)" href="javascript:void(0)" style="background:var(--mg);"><span class="uc-num" style="color:#fff;opacity:.5;">01</span><p class="uc-name" style="color:#fff;">Servicios</p><span class="uc-tag" style="color:#fff;">consultoría</span></a>
+      <a class="ucard uc1" onclick="goTo(2)" href="javascript:void(0)" style="background:var(--bk);"><span class="uc-num" style="color:#fff;opacity:.5;">02</span><p class="uc-name" style="color:#fff;">Speaker</p><span class="uc-tag" style="color:#fff;">charlas, ponencias</span></a>
+      <a class="ucard uc2" onclick="goTo(3)" href="javascript:void(0)" style="background:var(--rs2);"><span class="uc-num" style="color:#fff;opacity:.5;">03</span><p class="uc-name" style="color:#fff;">Airbnb</p><span class="uc-tag" style="color:#fff;">anfitrión & comunidad</span></a>
+      <a class="ucard uc3" onclick="goTo(4)" href="javascript:void(0)" style="background:var(--lm1);"><span class="uc-num" style="color:#080808;opacity:.5;">04</span><p class="uc-name" style="color:#080808;">Interiorismo</p><span class="uc-tag" style="color:#080808;">proyectos & renders</span></a>
+      <a class="ucard uc4" onclick="goTo(5)" href="javascript:void(0)"><span class="uc-num">05</span><p class="uc-name">Textos</p><span class="uc-tag">ensayos, opinión</span></a>
+      <a class="ucard uc5" onclick="goTo(6)" href="javascript:void(0)"><span class="uc-num">06</span><p class="uc-name">Bio</p><span class="uc-tag">trayectoria</span></a>
+      <a class="ucard uc6" onclick="goTo(7)" href="javascript:void(0)" style="background:var(--lm2);"><span class="uc-num" style="color:#080808;opacity:.5;">07</span><p class="uc-name" style="color:#080808;">Virginio</p><span class="uc-tag" style="color:#080808;">galería de arte</span></a>
+      <a class="ucard uc7" onclick="goTo(8)" href="javascript:void(0)" style="background:var(--bk);"><span class="uc-num" style="color:#fff;opacity:.5;">08</span><p class="uc-name" style="color:#fff;">Cultura Nación</p><span class="uc-tag" style="color:#fff;">15 años · archivo</span></a>
+      <a class="ucard uc8" onclick="goTo(9)" href="javascript:void(0)" style="background:var(--mg);"><span class="uc-num" style="color:#fff;opacity:.5;">09</span><p class="uc-name" style="color:#fff;">Entrevistas</p><span class="uc-tag" style="color:#fff;">Ray-Ban Meta</span></a>
+      <a class="ucard uc9" onclick="goTo(10)" href="javascript:void(0)"><span class="uc-num">10</span><p class="uc-name">Arturismo</p><span class="uc-tag">FM La Tribu 88.7</span></a>
     </div>
   </section>
 
