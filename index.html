@@ -329,16 +329,16 @@ nav {
 <nav>
   <button class="nav-logo" onclick="backToLanding()">arturo<span>blas</span></button>
   <div class="nav-pills" id="navPills">
-    <button class="nav-pill" onclick="goTo(0)">universos</button>
-    <button class="nav-pill" onclick="goTo(1)">bio</button>
-    <button class="nav-pill" onclick="goTo(2)">textos</button>
-    <button class="nav-pill" onclick="goTo(3)">speaker</button>
-    <button class="nav-pill" onclick="goTo(4)">interiorismo</button>
-    <button class="nav-pill" onclick="goTo(5)">curaduría</button>
-    <button class="nav-pill" onclick="goTo(6)">airbnb</button>
-    <button class="nav-pill" onclick="goTo(7)">arturismo</button>
+    <button class="nav-pill" onclick="goTo(0)">servicios</button>
+    <button class="nav-pill" onclick="goTo(1)">speaker</button>
+    <button class="nav-pill" onclick="goTo(2)">airbnb</button>
+    <button class="nav-pill" onclick="goTo(3)">interiorismo</button>
+    <button class="nav-pill" onclick="goTo(4)">textos</button>
+    <button class="nav-pill" onclick="goTo(5)">bio</button>
+    <button class="nav-pill" onclick="goTo(6)">virginio</button>
+    <button class="nav-pill" onclick="goTo(7)">cultura nación</button>
     <button class="nav-pill" onclick="goTo(8)">entrevistas</button>
-    <button class="nav-pill" onclick="goTo(9)">cultura nación</button>
+    <button class="nav-pill" onclick="goTo(9)">arturismo</button>
     <button class="nav-pill" onclick="goTo(10)">●</button>
   </div>
 </nav>
@@ -347,21 +347,7 @@ nav {
 
 <div class="snap-container" id="snapContainer">
 
-  <section class="snap-section" data-name="servicios">
-    <div class="sec-head"><span class="sec-num">00</span><h2 class="sec-title">los universos de arturo</h2><span class="sec-dot" style="background:var(--mg)"></span></div>
-    <div class="universos">
-      <a href="javascript:void(0)" onclick="goTo(1)" class="ucard uc0"><span class="uc-num">01</span><p class="uc-name">Bio & trayectoria</p><span class="uc-tag">presentación</span></a>
-      <a href="javascript:void(0)" onclick="goTo(2)" class="ucard uc1"><span class="uc-num">02</span><p class="uc-name">Textos & opinión</p><span class="uc-tag">ensayos, hashtags</span></a>
-      <a href="javascript:void(0)" onclick="goTo(3)" class="ucard uc2"><span class="uc-num">03</span><p class="uc-name">Speaker</p><span class="uc-tag">charlas, ponencias</span></a>
-      <a href="javascript:void(0)" onclick="goTo(4)" class="ucard uc3"><span class="uc-num">04</span><p class="uc-name">Interiorismo</p><span class="uc-tag">proyectos & renders</span></a>
-      <a href="javascript:void(0)" onclick="goTo(5)" class="ucard uc4"><span class="uc-num">05</span><p class="uc-name">Curaduría</p><span class="uc-tag">galería de arte</span></a>
-      <a href="javascript:void(0)" onclick="goTo(6)" class="ucard uc5"><span class="uc-num">06</span><p class="uc-name">Airbnb</p><span class="uc-tag">anfitrión & comunidad</span></a>
-      <a href="javascript:void(0)" onclick="goTo(7)" class="ucard uc6"><span class="uc-num">07</span><p class="uc-name">Arturismo</p><span class="uc-tag">FM La Tribu</span></a>
-      <a href="javascript:void(0)" onclick="goTo(8)" class="ucard uc7"><span class="uc-num">08</span><p class="uc-name">Entrevistas</p><span class="uc-tag">Ray-Ban Meta</span></a>
-      <a href="javascript:void(0)" onclick="goTo(9)" class="ucard uc8"><span class="uc-num">09</span><p class="uc-name">Cultura Nación</p><span class="uc-tag">15 años · archivo</span></a>
-      <a href="javascript:void(0)" onclick="goTo(10)" class="ucard uc9"><span class="uc-num">10</span><p class="uc-name">??? — próximamente</p><span class="uc-tag">en construcción</span></a>
-    </div>
-  </section>
+  
 
   <section class="snap-section" id="servicios" data-name="servicios">
     <div class="sec-head"><span class="sec-num">00</span><h2 class="sec-title">servicios</h2><span class="sec-dot" style="background:var(--mg)"></span></div>
@@ -441,8 +427,56 @@ nav {
     </div>
   </section>
 
-  <section class="snap-section" id="bio" data-name="bio">
-    <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">bio & trayectoria</h2><span class="sec-dot" style="background:var(--mg)"></span></div>
+<section class="snap-section" id="speaker" data-name="speaker">
+    <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">speaker — charlas & ponencias</h2><span class="sec-dot" style="background:var(--rs2)"></span></div>
+    <div class="sec-body">
+      <div class="speaker-grid">
+        <a href="#" class="sp-item"><p class="sp-loc">México</p><p class="sp-title">Título de la ponencia</p><p class="sp-meta">congreso · 2025</p></a>
+        <a href="#" class="sp-item"><p class="sp-loc">España</p><p class="sp-title">Nombre del evento</p><p class="sp-meta">masterclass · 2024</p></a>
+        <a href="#" class="sp-item"><p class="sp-loc">Colombia</p><p class="sp-title">Charla principal</p><p class="sp-meta">conferencia · 2024</p></a>
+        <a href="#" class="sp-item"><p class="sp-loc">Chile</p><p class="sp-title">Workshop intensivo</p><p class="sp-meta">masterclass · 2023</p></a>
+      </div>
+      <div class="prox-label">próximas fechas →</div>
+      <a href="#" class="prox-row"><span class="prox-fecha">JUN 25</span><div><div class="prox-tit">Nombre del evento</div><div class="prox-lugar">ciudad · país</div></div></a>
+      <a href="#" class="prox-row"><span class="prox-fecha">AGO 25</span><div><div class="prox-tit">Próxima ponencia</div><div class="prox-lugar">ciudad · país</div></div></a>
+    </div>
+  </section>
+
+<section class="snap-section" id="airbnb" data-name="airbnb">
+    <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">airbnb — mundo anfitrión</h2><span class="sec-dot" style="background:var(--rs1)"></span></div>
+    <div class="airbnb-bento">
+      <div class="ab-cell ab0"><span class="ab-role">rol</span><p class="ab-title">Líder de comunidad Buenos Aires</p><span class="ab-detail">Argentina</span></div>
+      <div class="ab-cell ab1"><span class="ab-role">iniciativa</span><p class="ab-title">Fondo de comunidad</p><span class="ab-detail">gestión</span></div>
+      <div class="ab-cell ab2"><span class="ab-role">global</span><p class="ab-title">Consejo asesor global</p><span class="ab-detail">miembro activo</span></div>
+      <div class="ab-cell ab3"><span class="ab-role">servicio</span><p class="ab-title">Administración de deptos</p><span class="ab-detail">hospitalidad</span></div>
+    </div>
+  </section>
+
+<section class="snap-section" id="interiorismo" data-name="interiorismo">
+    <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">interiorismo</h2><span class="sec-dot" style="background:var(--lm1)"></span></div>
+    <div class="interior-grid">
+      <div class="int-cell i0">proyecto</div><div class="int-cell i1">render</div><div class="int-cell i2">proyecto</div><div class="int-cell i3">render</div>
+      <div class="int-cell i4">proyecto</div><div class="int-cell i5">render</div><div class="int-cell i6">proyecto</div><div class="int-cell i7">render</div>
+    </div>
+  </section>
+
+<section class="snap-section" id="textos" data-name="textos">
+    <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">textos & opinión</h2><span class="sec-dot" style="background:var(--rs1)"></span></div>
+    <div class="sec-body">
+      <div class="hashtag-row">
+        <button class="htag">#turismo</button><button class="htag">#cultura</button><button class="htag">#identidad</button>
+        <button class="htag">#viajes</button><button class="htag">#ciudad</button><button class="htag">#opinión</button><button class="htag">#vida</button>
+      </div>
+      <div class="text-list">
+        <a href="#" class="text-row"><span class="text-tag-sm">turismo</span><span class="text-title">Título del ensayo o columna</span><span class="text-date">may 2025</span></a>
+        <a href="#" class="text-row"><span class="text-tag-sm">identidad</span><span class="text-title">Otro texto de opinión</span><span class="text-date">abr 2025</span></a>
+        <a href="#" class="text-row"><span class="text-tag-sm">ciudad</span><span class="text-title">Un tercer texto de ejemplo</span><span class="text-date">mar 2025</span></a>
+      </div>
+    </div>
+  </section>
+
+<section class="snap-section" id="bio" data-name="bio">
+    <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">bio & trayectoria</h2><span class="sec-dot" style="background:var(--mg)"></span></div>
     <div class="bio-layout">
 
       <!-- nombre gigante -->
@@ -508,83 +542,16 @@ nav {
     </div>
   </section>
 
-  <section class="snap-section" id="textos" data-name="textos">
-    <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">textos & opinión</h2><span class="sec-dot" style="background:var(--rs1)"></span></div>
-    <div class="sec-body">
-      <div class="hashtag-row">
-        <button class="htag">#turismo</button><button class="htag">#cultura</button><button class="htag">#identidad</button>
-        <button class="htag">#viajes</button><button class="htag">#ciudad</button><button class="htag">#opinión</button><button class="htag">#vida</button>
-      </div>
-      <div class="text-list">
-        <a href="#" class="text-row"><span class="text-tag-sm">turismo</span><span class="text-title">Título del ensayo o columna</span><span class="text-date">may 2025</span></a>
-        <a href="#" class="text-row"><span class="text-tag-sm">identidad</span><span class="text-title">Otro texto de opinión</span><span class="text-date">abr 2025</span></a>
-        <a href="#" class="text-row"><span class="text-tag-sm">ciudad</span><span class="text-title">Un tercer texto de ejemplo</span><span class="text-date">mar 2025</span></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="snap-section" id="speaker" data-name="speaker">
-    <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">speaker — charlas & ponencias</h2><span class="sec-dot" style="background:var(--rs2)"></span></div>
-    <div class="sec-body">
-      <div class="speaker-grid">
-        <a href="#" class="sp-item"><p class="sp-loc">México</p><p class="sp-title">Título de la ponencia</p><p class="sp-meta">congreso · 2025</p></a>
-        <a href="#" class="sp-item"><p class="sp-loc">España</p><p class="sp-title">Nombre del evento</p><p class="sp-meta">masterclass · 2024</p></a>
-        <a href="#" class="sp-item"><p class="sp-loc">Colombia</p><p class="sp-title">Charla principal</p><p class="sp-meta">conferencia · 2024</p></a>
-        <a href="#" class="sp-item"><p class="sp-loc">Chile</p><p class="sp-title">Workshop intensivo</p><p class="sp-meta">masterclass · 2023</p></a>
-      </div>
-      <div class="prox-label">próximas fechas →</div>
-      <a href="#" class="prox-row"><span class="prox-fecha">JUN 25</span><div><div class="prox-tit">Nombre del evento</div><div class="prox-lugar">ciudad · país</div></div></a>
-      <a href="#" class="prox-row"><span class="prox-fecha">AGO 25</span><div><div class="prox-tit">Próxima ponencia</div><div class="prox-lugar">ciudad · país</div></div></a>
-    </div>
-  </section>
-
-  <section class="snap-section" id="interiorismo" data-name="interiorismo">
-    <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">interiorismo</h2><span class="sec-dot" style="background:var(--lm1)"></span></div>
-    <div class="interior-grid">
-      <div class="int-cell i0">proyecto</div><div class="int-cell i1">render</div><div class="int-cell i2">proyecto</div><div class="int-cell i3">render</div>
-      <div class="int-cell i4">proyecto</div><div class="int-cell i5">render</div><div class="int-cell i6">proyecto</div><div class="int-cell i7">render</div>
-    </div>
-  </section>
-
-  <section class="snap-section" id="curaduria" data-name="curaduría">
-    <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">curaduría de arte</h2><span class="sec-dot" style="background:var(--lm2)"></span></div>
+<section class="snap-section" id="virginio" data-name="virginio">
+    <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">Virginio — galería de arte</h2><span class="sec-dot" style="background:var(--lm2)"></span></div>
     <div class="curaduria-grid">
       <div class="cur-cell cu0">galería</div><div class="cur-cell cu1">galería</div><div class="cur-cell cu2">galería</div><div class="cur-cell cu3">galería</div><div class="cur-cell cu4">galería</div>
       <div class="cur-cell cu5">galería</div><div class="cur-cell cu6">galería</div><div class="cur-cell cu7">galería</div><div class="cur-cell cu8">galería</div><div class="cur-cell cu9">galería</div>
     </div>
   </section>
 
-  <section class="snap-section" id="airbnb" data-name="airbnb">
-    <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">airbnb — mundo anfitrión</h2><span class="sec-dot" style="background:var(--rs1)"></span></div>
-    <div class="airbnb-bento">
-      <div class="ab-cell ab0"><span class="ab-role">rol</span><p class="ab-title">Líder de comunidad Buenos Aires</p><span class="ab-detail">Argentina</span></div>
-      <div class="ab-cell ab1"><span class="ab-role">iniciativa</span><p class="ab-title">Fondo de comunidad</p><span class="ab-detail">gestión</span></div>
-      <div class="ab-cell ab2"><span class="ab-role">global</span><p class="ab-title">Consejo asesor global</p><span class="ab-detail">miembro activo</span></div>
-      <div class="ab-cell ab3"><span class="ab-role">servicio</span><p class="ab-title">Administración de deptos</p><span class="ab-detail">hospitalidad</span></div>
-    </div>
-  </section>
-
-  <section class="snap-section" id="arturismo" data-name="arturismo">
-    <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title">arturismo — FM La Tribu</h2><span class="sec-dot" style="background:var(--lm1)"></span></div>
-    <div class="sec-body">
-      <div class="art-wrap">
-        <a href="#" class="yt-embed"><div class="yt-play"><div class="yt-tri"></div></div><span class="yt-label">Episodio más reciente</span></a>
-        <p class="art-desc-text">Columna semanal en FM La Tribu 88.7. Acá se embeben los videos de YouTube de cada episodio con un breve texto.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="snap-section" id="rayban" data-name="entrevistas">
-    <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title">entrevistas — Ray-Ban Meta</h2><span class="sec-dot" style="background:var(--mg)"></span></div>
-    <div class="rayban-grid">
-      <a href="#" class="rb-cell"><span class="rb-tag">entrevista espontánea</span><p class="rb-name">Título de la entrevista</p><span class="rb-meta">YouTube · 2025</span></a>
-      <a href="#" class="rb-cell"><span class="rb-tag">entrevista espontánea</span><p class="rb-name">Otra entrevista</p><span class="rb-meta">YouTube · 2025</span></a>
-      <a href="#" class="rb-cell"><span class="rb-tag">entrevista espontánea</span><p class="rb-name">Una más</p><span class="rb-meta">YouTube · 2025</span></a>
-    </div>
-  </section>
-
-  <section class="snap-section cultura-sec" id="cultura" data-name="cultura nación">
-    <div class="sec-head"><span class="sec-num">09</span><h2 class="sec-title">cultura nación — 15 años</h2><span class="sec-dot" style="background:var(--mg);border-color:var(--mg)"></span></div>
+<section class="snap-section cultura-sec" id="cultura" data-name="cultura nación">
+    <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title">cultura nación — 15 años</h2><span class="sec-dot" style="background:var(--mg);border-color:var(--mg)"></span></div>
     <div class="sec-body">
       <p class="cultura-intro">Casi 15 años en el Ministerio de Cultura de la Nación. Una línea de tiempo de los roles, proyectos y responsabilidades que marcaron esta etapa.</p>
       <div class="timeline">
@@ -628,8 +595,27 @@ nav {
     </div>
   </section>
 
-  <section class="snap-section secreto-sec" id="proximamente" data-name="próximamente">
-    <div class="sec-head"><span class="sec-num">10</span><h2 class="sec-title" style="color:var(--lm2)">próximamente</h2><span class="sec-dot" style="background:var(--mg);border-color:var(--mg)"></span></div>
+<section class="snap-section" id="rayban" data-name="entrevistas">
+    <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title">entrevistas — Ray-Ban Meta</h2><span class="sec-dot" style="background:var(--mg)"></span></div>
+    <div class="rayban-grid">
+      <a href="#" class="rb-cell"><span class="rb-tag">entrevista espontánea</span><p class="rb-name">Título de la entrevista</p><span class="rb-meta">YouTube · 2025</span></a>
+      <a href="#" class="rb-cell"><span class="rb-tag">entrevista espontánea</span><p class="rb-name">Otra entrevista</p><span class="rb-meta">YouTube · 2025</span></a>
+      <a href="#" class="rb-cell"><span class="rb-tag">entrevista espontánea</span><p class="rb-name">Una más</p><span class="rb-meta">YouTube · 2025</span></a>
+    </div>
+  </section>
+
+<section class="snap-section" id="arturismo" data-name="arturismo">
+    <div class="sec-head"><span class="sec-num">09</span><h2 class="sec-title">Columna sobre cultura y hospitalidad en FM La Tribu 88.7</h2><span class="sec-dot" style="background:var(--lm1)"></span></div>
+    <div class="sec-body">
+      <div class="art-wrap">
+        <a href="#" class="yt-embed"><div class="yt-play"><div class="yt-tri"></div></div><span class="yt-label">Episodio más reciente</span></a>
+        <p class="art-desc-text">Columna semanal en FM La Tribu 88.7. Acá se embeben los videos de YouTube de cada episodio con un breve texto.</p>
+      </div>
+    </div>
+  </section>
+
+<section class="snap-section secreto-sec" id="proximamente" data-name="próximamente">
+    <div class="sec-head"><span class="sec-num">10</span><h2 class="sec-title" style="color:var(--lm2)">La app de voces donde la gente dice lo que realmente piensa</h2><span class="sec-dot" style="background:var(--mg);border-color:var(--mg)"></span></div>
     <div class="secreto-body">
       <div class="secreto-pulse"><span class="secreto-q">?</span></div>
       <p class="secreto-title">Una red social está a punto de nacer</p>
@@ -638,14 +624,14 @@ nav {
     </div>
   </section>
 
-  <section class="snap-section footer-sec" data-name="cierre">
+<section class="snap-section footer-sec" data-name="cierre">
     <div class="footer-body">
       <div class="footer-logo">arturo<span>blas</span></div>
       <div class="footer-sub">
         <span class="fp">Ecléctico</span><span class="fp">Inquieto</span><span class="fp">Renacentista</span>
       </div>
       <div class="footer-links">
-        <button onclick="goTo(0)">universos</button><button onclick="goTo(1)">bio</button>
+        <button onclick="goTo(0)">servicios</button><button onclick="goTo(1)">bio</button>
         <button onclick="goTo(2)">textos</button><button onclick="goTo(3)">speaker</button>
         <button onclick="goTo(4)">interiorismo</button><button onclick="goTo(5)">curaduría</button>
         <button onclick="goTo(6)">airbnb</button><button onclick="goTo(7)">arturismo</button>
