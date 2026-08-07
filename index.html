@@ -210,6 +210,11 @@ nav {
   .txt-content { padding: .8rem 1rem 1.2rem; }
   .txt-content p { font-size: .88rem; }
 }
+/* SOCIAL BAR */
+.social-bar { display: flex; gap: .6rem; flex-wrap: wrap; padding: .8rem 2rem; border-top: 1.5px solid rgba(8,8,8,.1); margin-top: auto; }
+.social-link { font-family: 'Space Mono', monospace; font-size: .5rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--bk); border: 1.5px solid var(--bk); padding: .35rem .75rem; text-decoration: none; transition: background .15s, color .15s; }
+.social-link:hover { background: var(--mg); border-color: var(--mg); color: #fff; }
+
 /* BIO LAYOUT */
 .bio-layout { display: flex; flex-direction: column; height: 100%; overflow-y: auto; padding: .7rem 2rem 1rem; }
 .bio-hero { flex-shrink: 0; margin-bottom: .5rem; }
@@ -377,17 +382,10 @@ nav {
   <button class="nav-logo" onclick="goToTop()">arturo<span>blas</span></button>
   <div class="nav-pills" id="navPills">
     <button class="nav-pill" onclick="goToTop()">universos</button>
-    <button class="nav-pill" onclick="goTo(1)">servicios</button>
+    <button class="nav-pill" onclick="goTo(6)">bio</button>
     <button class="nav-pill" onclick="goTo(2)">speaker</button>
     <button class="nav-pill" onclick="goTo(3)">airbnb</button>
-    <button class="nav-pill" onclick="goTo(4)">interiorismo</button>
-    <button class="nav-pill" onclick="goTo(5)">textos</button>
-    <button class="nav-pill" onclick="goTo(6)">bio</button>
-    <button class="nav-pill" onclick="goTo(7)">virginio</button>
-    <button class="nav-pill" onclick="goTo(8)">cultura nación</button>
-    <button class="nav-pill" onclick="goTo(9)">entrevistas</button>
-    <button class="nav-pill" onclick="goTo(10)">arturismo</button>
-    <button class="nav-pill" onclick="goTo(11)">●</button>
+    <button class="nav-pill" onclick="goTo(1)">servicios</button>
   </div>
 </nav>
 
@@ -425,17 +423,11 @@ nav {
       <h2 class="sec-title">los universos de arturo</h2>
       <span class="sec-dot" style="background:var(--mg)"></span>
     </div>
-    <div class="universos-grid">
-      <a class="ucard uc0" onclick="goTo(1)" href="javascript:void(0)" style="background:var(--mg);"><span class="uc-num" style="color:#fff;opacity:.5;">01</span><p class="uc-name" style="color:#fff;">Servicios</p><span class="uc-tag" style="color:#fff;">consultoría</span></a>
-      <a class="ucard uc1" onclick="goTo(2)" href="javascript:void(0)" style="background:var(--bk);"><span class="uc-num" style="color:#fff;opacity:.5;">02</span><p class="uc-name" style="color:#fff;">Speaker</p><span class="uc-tag" style="color:#fff;">charlas, ponencias</span></a>
-      <a class="ucard uc2" onclick="goTo(3)" href="javascript:void(0)" style="background:var(--rs2);"><span class="uc-num" style="color:#fff;opacity:.5;">03</span><p class="uc-name" style="color:#fff;">Airbnb</p><span class="uc-tag" style="color:#fff;">anfitrión & comunidad</span></a>
-      <a class="ucard uc3" onclick="goTo(4)" href="javascript:void(0)" style="background:var(--lm1);"><span class="uc-num" style="color:#080808;opacity:.5;">04</span><p class="uc-name" style="color:#080808;">Interiorismo</p><span class="uc-tag" style="color:#080808;">proyectos & renders</span></a>
-      <a class="ucard uc4" onclick="goTo(5)" href="javascript:void(0)"><span class="uc-num">05</span><p class="uc-name">Textos</p><span class="uc-tag">ensayos, opinión</span></a>
-      <a class="ucard uc5" onclick="goTo(6)" href="javascript:void(0)"><span class="uc-num">06</span><p class="uc-name">Bio</p><span class="uc-tag">trayectoria</span></a>
-      <a class="ucard uc6" onclick="goTo(7)" href="javascript:void(0)" style="background:var(--lm2);"><span class="uc-num" style="color:#080808;opacity:.5;">07</span><p class="uc-name" style="color:#080808;">Virginio</p><span class="uc-tag" style="color:#080808;">galería de arte</span></a>
-      <a class="ucard uc7" onclick="goTo(8)" href="javascript:void(0)" style="background:var(--bk);"><span class="uc-num" style="color:#fff;opacity:.5;">08</span><p class="uc-name" style="color:#fff;">Cultura Nación</p><span class="uc-tag" style="color:#fff;">15 años · archivo</span></a>
-      <a class="ucard uc8" onclick="goTo(9)" href="javascript:void(0)" style="background:var(--mg);"><span class="uc-num" style="color:#fff;opacity:.5;">09</span><p class="uc-name" style="color:#fff;">Entrevistas</p><span class="uc-tag" style="color:#fff;">Ray-Ban Meta</span></a>
-      <a class="ucard uc9" onclick="goTo(10)" href="javascript:void(0)"><span class="uc-num">10</span><p class="uc-name">Arturismo</p><span class="uc-tag">FM La Tribu 88.7</span></a>
+        <div class="universos-grid">
+      <a class="ucard" onclick="goTo(1)" href="javascript:void(0)" style="background:var(--mg);"><span class="uc-num" style="color:#fff;opacity:.5;">01</span><p class="uc-name" style="color:#fff;">Servicios</p><span class="uc-tag" style="color:#fff;">consultoría</span></a>
+      <a class="ucard" onclick="goTo(2)" href="javascript:void(0)" style="background:var(--bk);"><span class="uc-num" style="color:#fff;opacity:.5;">02</span><p class="uc-name" style="color:#fff;">Speaker</p><span class="uc-tag" style="color:#fff;">charlas, ponencias</span></a>
+      <a class="ucard" onclick="goTo(3)" href="javascript:void(0)" style="background:var(--rs2);"><span class="uc-num" style="color:#fff;opacity:.5;">03</span><p class="uc-name" style="color:#fff;">Airbnb</p><span class="uc-tag" style="color:#fff;">anfitrión & comunidad</span></a>
+      <a class="ucard" onclick="goTo(6)" href="javascript:void(0)" style="background:var(--lm2);"><span class="uc-num" style="color:#080808;opacity:.5;">04</span><p class="uc-name" style="color:#080808;">Bio</p><span class="uc-tag" style="color:#080808;">trayectoria</span></a>
     </div>
   </section>
 
@@ -542,7 +534,7 @@ nav {
     </div>
   </section>
 
-<section class="snap-section" id="interiorismo" data-name="interiorismo">
+<section class="snap-section" id="interiorismo" style="display:none;" data-name="interiorismo">
     <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">interiorismo</h2><span class="sec-dot" style="background:var(--lm1)"></span></div>
     <div class="interior-grid">
       <div class="int-cell i0">proyecto</div><div class="int-cell i1">render</div><div class="int-cell i2">proyecto</div><div class="int-cell i3">render</div>
@@ -550,7 +542,7 @@ nav {
     </div>
   </section>
 
-<section class="snap-section" id="textos" data-name="textos">
+<section class="snap-section" id="textos" style="display:none;" data-name="textos">
     <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">textos &amp; opinión</h2><span class="sec-dot" style="background:var(--rs1)"></span></div>
     <div class="textos-layout">
       <div class="txt-grid">
@@ -905,7 +897,7 @@ nav {
     </div>
   </section>
 
-<section class="snap-section" id="virginio" data-name="virginio">
+<section class="snap-section" id="virginio" style="display:none;" data-name="virginio">
     <div class="sec-head"><span class="sec-num">06</span><h2 class="sec-title">Virginio — galería de arte</h2><span class="sec-dot" style="background:var(--lm2)"></span></div>
     <div class="curaduria-grid">
       <div class="cur-cell cu0">galería</div><div class="cur-cell cu1">galería</div><div class="cur-cell cu2">galería</div><div class="cur-cell cu3">galería</div><div class="cur-cell cu4">galería</div>
@@ -913,7 +905,7 @@ nav {
     </div>
   </section>
 
-<section class="snap-section cultura-sec" id="cultura" data-name="cultura nación">
+<section class="snap-section cultura-sec" id="cultura" style="display:none;" data-name="cultura nación">
     <div class="sec-head"><span class="sec-num">07</span><h2 class="sec-title">cultura nación — 15 años</h2><span class="sec-dot" style="background:var(--mg);border-color:var(--mg)"></span></div>
     <div class="sec-body">
       <p class="cultura-intro">Casi 15 años en el Ministerio de Cultura de la Nación. Una línea de tiempo de los roles, proyectos y responsabilidades que marcaron esta etapa.</p>
@@ -958,7 +950,7 @@ nav {
     </div>
   </section>
 
-<section class="snap-section" id="rayban" data-name="entrevistas">
+<section class="snap-section" id="rayban" style="display:none;" data-name="entrevistas">
     <div class="sec-head"><span class="sec-num">08</span><h2 class="sec-title">entrevistas — Ray-Ban Meta</h2><span class="sec-dot" style="background:var(--mg)"></span></div>
     <div class="rayban-grid">
       <a href="#" class="rb-cell"><span class="rb-tag">entrevista espontánea</span><p class="rb-name">Título de la entrevista</p><span class="rb-meta">YouTube · 2025</span></a>
@@ -967,7 +959,7 @@ nav {
     </div>
   </section>
 
-<section class="snap-section" id="arturismo" data-name="arturismo">
+<section class="snap-section" id="arturismo" style="display:none;" data-name="arturismo">
     <div class="sec-head"><span class="sec-num">09</span><h2 class="sec-title">Columna sobre cultura y hospitalidad en FM La Tribu 88.7</h2><span class="sec-dot" style="background:var(--lm1)"></span></div>
     <div class="sec-body">
       <div class="art-wrap">
@@ -977,7 +969,7 @@ nav {
     </div>
   </section>
 
-<section class="snap-section secreto-sec" id="proximamente" data-name="próximamente">
+<section class="snap-section secreto-sec" id="proximamente" style="display:none;" data-name="próximamente">
     <div class="sec-head"><span class="sec-num">10</span><h2 class="sec-title" style="color:var(--lm2)">La app de voces donde la gente dice lo que realmente piensa</h2><span class="sec-dot" style="background:var(--mg);border-color:var(--mg)"></span></div>
     <div class="secreto-body">
       <div class="secreto-pulse"><span class="secreto-q">?</span></div>
