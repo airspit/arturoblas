@@ -286,7 +286,7 @@ nav {
 .bio-tags-label-left { font-family: 'Space Mono', monospace; font-size: .48rem; color: var(--mg); letter-spacing: .1em; text-transform: uppercase; margin-bottom: .5rem; }
 .bio-tags-left-wrap { display: flex; flex-wrap: wrap; gap: .4rem; }
 /* BIO LAYOUT */
-.bio-layout { display: flex; flex-direction: column; height: 100%; overflow-y: auto; padding: .7rem 2rem 1rem; }
+.bio-layout { display: flex; flex-direction: column; height: 100%; overflow: hidden; padding: .7rem 2rem 1rem; }
 .bio-hero { flex-shrink: 0; margin-bottom: .5rem; }
 .bio-big-name { font-family: 'Unbounded', sans-serif; font-weight: 900; line-height: .9; letter-spacing: -.03em; }
 .bio-n1 { display: block; font-size: clamp(2rem, 5vw, 3.8rem); color: var(--bk); }
@@ -297,7 +297,7 @@ nav {
 .bio-rule { height: 2px; background: var(--bk); margin-top: .5rem; }
 .bio-cols { display: grid; grid-template-columns: 240px 1fr; gap: 1.4rem; flex: 1; min-height: 0; overflow: hidden; max-height: 100%; }
 .bio-left { display: flex; flex-direction: column; gap: .5rem; overflow: hidden; }
-.bio-photo-wrap { position: relative; flex-shrink: 0; }
+.bio-photo-wrap, .bio-photo-wrap-outer { position: relative; flex-shrink: 0; }
 .bio-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; }
 .bio-photo-label { position: absolute; bottom: 0; left: 0; right: 0; font-family: 'Space Mono', monospace; font-size: .48rem; font-weight: 700; letter-spacing: .1em; color: var(--wh); background: var(--bk); padding: .3rem .5rem; }
 .bio-origin { background: var(--lm2); padding: .6rem .8rem; }
@@ -330,7 +330,7 @@ nav {
   .bio-tag { font-size: .55rem; }
   /* en mobile bio no tiene altura fija — fluye */
   #bio { height: auto !important; min-height: 100svh; scroll-snap-align: start; }
-  .snap-container { scroll-snap-type: none; }
+  /* snap kept on mobile */
 }
 
 .hashtag-row { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
@@ -551,8 +551,6 @@ nav {
               <span class="bio-tag" style="border-color:var(--lm2);color:var(--bk);">HOSPITALIDAD</span>
               <span class="bio-tag" style="border-color:var(--mg);color:var(--mg);">ARTES</span>
             </div>
-          </div>
-            <div class="bio-origin-val">LA PLATA → BUENOS AIRES</div>
           </div>
         </div>
 
