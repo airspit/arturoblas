@@ -7,7 +7,7 @@
 <title>Arturo Blas</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Space+Grotesk:wght@300;400;500&family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=Space+Grotesk:wght@300;400;500&family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -64,9 +64,13 @@ nav {
 .snap-container { height: 100vh; overflow-y: scroll; scroll-snap-type: y mandatory; scroll-behavior: smooth; }
 .snap-section {
   height: 100vh; scroll-snap-align: start; scroll-snap-stop: always;
-  overflow-y: auto; display: flex; flex-direction: column;
+  overflow-y: hidden; display: flex; flex-direction: column;
   padding-top: 56px; border-bottom: 2.5px solid var(--bk); position: relative;
 }
+/* Bio: internal scroll only on the right column */
+#bio { overflow-y: hidden; }
+#bio .bio-right { overflow-y: auto; max-height: 100%; }
+#bio .bio-layout { overflow: hidden; }
 
 .progress-dots { position: fixed; right: 1.2rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: .5rem; z-index: 150; }
 .pdot { width: 7px; height: 7px; border-radius: 50%; background: rgba(8,8,8,.15); border: 1px solid rgba(8,8,8,.25); cursor: pointer; transition: background .2s, transform .2s; padding: 0; }
@@ -287,7 +291,7 @@ nav {
 .bio-pill-sm { color: var(--bk); background: var(--lm2); padding: .2rem .55rem; border-radius: 2px; }
 .bio-pill-dot { color: rgba(8,8,8,.3); }
 .bio-rule { height: 2px; background: var(--bk); margin-top: .5rem; }
-.bio-cols { display: grid; grid-template-columns: 240px 1fr; gap: 1.4rem; flex: 1; min-height: 0; overflow: hidden; }
+.bio-cols { display: grid; grid-template-columns: 240px 1fr; gap: 1.4rem; flex: 1; min-height: 0; overflow: hidden; max-height: 100%; }
 .bio-left { display: flex; flex-direction: column; gap: .5rem; overflow: hidden; }
 .bio-photo-wrap { position: relative; flex-shrink: 0; }
 .bio-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; }
@@ -297,11 +301,12 @@ nav {
 .bio-origin-val { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: .7rem; letter-spacing: -.01em; color: var(--bk); }
 .bio-unis { display: flex; gap: .4rem; }
 .bio-uni { font-family: 'Space Mono', monospace; font-weight: 700; font-size: .6rem; letter-spacing: .08em; border: 2px solid var(--bk); padding: .4rem .7rem; flex: 1; text-align: center; background: var(--wh); }
-.bio-right { overflow-y: auto; display: flex; flex-direction: column; gap: .5rem; padding-right: .5rem; }
+.bio-right { overflow-y: auto; display: flex; flex-direction: column; gap: .5rem; padding-right: .5rem; -webkit-overflow-scrolling: touch; }
 .bio-text-header { display: flex; align-items: center; gap: .8rem; }
 .bio-text-label { font-family: 'Space Mono', monospace; font-size: .65rem; font-weight: 700; color: var(--mg); letter-spacing: .08em; white-space: nowrap; }
 .bio-text-rule { flex: 1; height: 2px; background: var(--mg); }
-.bio-body-text p { font-family: 'Spectral', serif; font-size: .88rem; line-height: 1.68; color: var(--bk); text-align: justify; }
+.bio-body-text p { font-family: 'Unbounded', sans-serif; font-weight: 300; font-size: .68rem; line-height: 1.9; color: var(--bk); text-align: justify; margin-bottom: .9rem; }
+.bio-body-text p:last-child { margin-bottom: 0; }
 .bio-tags-label { font-family: 'Space Mono', monospace; font-size: .55rem; color: var(--mg); letter-spacing: .1em; margin-bottom: .5rem; }
 .bio-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
 .bio-tag { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: .5rem; color: var(--bk); border: 2px solid var(--bk); padding: .3rem .65rem; border-radius: 999px; }
@@ -547,13 +552,12 @@ nav {
             <span class="bio-text-rule"></span>
           </div>
           <div class="bio-body-text">
-            <p>Arturo Blas es publicista, productor cultural y especialista en hospitalidad, comunidades, estrategia de producto y diseño de experiencias. Desde hace casi veinte años desarrolla proyectos en la intersección entre cultura, innovación, turismo y tecnología, colaborando con organismos públicos, empresas y comunidades de América Latina.</p>
-            <p>Durante quince años integró el Ministerio de Cultura de la Nación Argentina, donde participó en el diseño, la producción y la coordinación de programas de alcance federal e internacional vinculados con la cooperación cultural, las industrias creativas y la gestión pública. Fue productor general de la Dirección Nacional de Acción Federal, coordinador de postproducción de la Dirección de Prensa y Difusión y creador del área de Proyectos Creativos Culturales Transversales de la Dirección Nacional de Cooperación Internacional.</p>
-            <p>En el sector privado fue uno de los primeros Property Managers especializados en alquileres temporarios de Buenos Aires, administrando hasta cincuenta alojamientos cuando la figura del coanfitrión aún no existía en la industria. Además, desarrolló un enfoque propio de interiorismo estratégico aplicado a alojamientos turísticos, creando espacios de alto impacto donde convergen diseño, identidad, experiencia del huésped y posicionamiento comercial.</p>
-            <p>En Airbnb es Líder de la Comunidad de Buenos Aires desde 2020 y, desde 2026, también acompaña la comunidad de Montevideo. En 2025 fue seleccionado entre los más de 8 millones de anfitriones de Airbnb en todo el mundo para integrar el Global Host Advisory Board, integrado por veintitrés anfitriones de diecisiete países que colaboran directamente con equipos globales de la compañía en la evolución de la plataforma. Se convirtió en el primer anfitrión sudamericano de habla hispana en integrar este consejo asesor y posteriormente fue reelegido para un segundo mandato durante 2026. Su trabajo fue reconocido por Airbnb con distinciones al liderazgo comunitario, la organización de eventos, la promoción de la diversidad e inclusión y sus aportes permanentes de retroalimentación estratégica a equipos globales.</p>
-            <p>Actualmente participa en programas piloto internacionales colaborando con equipos globales de Producto, Experiencia de Usuario, Operaciones, Trust y Payments en la validación de nuevas funcionalidades y soluciones financieras. Su trabajo incluye investigación de usuarios, validación de producto, análisis del comportamiento, evaluación de flujos, diseño de experiencia, detección de errores, control de calidad, identificación de riesgos y oportunidades de mejora antes de su lanzamiento global.</p>
-            <p>Como conferencista se presentó en Argentina, Colombia, Chile, Ecuador, Guatemala, República Dominicana, Uruguay, México y España, además de exponer en universidades, congresos y encuentros internacionales sobre hospitalidad, cultura, innovación, turismo y economía colaborativa.</p>
-            <p>Su trabajo consiste en comprender el comportamiento de las personas y transformarlo en decisiones estratégicas para productos, servicios, comunidades y experiencias, integrando cultura, hospitalidad, tecnología y diseño desde una perspectiva centrada en las personas.</p>
+            <p>Arturo Blas es referente del ecosistema Airbnb en Latinoamérica. Desde hace más de una década trabaja en hospitalidad, combinando administración de alojamientos, diseño de experiencias, estrategia, comunidad e innovación.</p>
+            <p>Fue pionero en la gestión profesional de alojamientos temporarios en Buenos Aires, desarrollando modelos de gestión y coanfitrionaje antes de su consolidación en la industria. A lo largo de su trayectoria gestionó decenas de propiedades y desarrolló un enfoque propio para crear y transformar alojamientos, integrando diseño, identidad, experiencia del huésped y posicionamiento comercial.</p>
+            <p>Desde 2020 es el primer Líder de la Comunidad Airbnb de Buenos Aires y, desde 2026, también lidera la comunidad de Montevideo, impulsando encuentros, iniciativas educativas y proyectos que lo consolidaron como una voz de referencia para anfitriones de la región.</p>
+            <p>En 2025, Airbnb lo seleccionó entre millones de anfitriones para integrar su Global Host Advisory Board, un consejo internacional de 23 anfitriones de 17 países que colabora directamente con equipos globales de la compañía. Se convirtió así en el primer anfitrión sudamericano de habla hispana en integrar el consejo y fue reelegido para un segundo mandato en 2026.</p>
+            <p>Desde ese rol colabora con equipos globales de Producto, Experiencia de Usuario y Operaciones, entre otros. Participa además en investigaciones y programas piloto internacionales, evaluando nuevas funcionalidades, detectando oportunidades y contribuyendo a la evolución de la plataforma.</p>
+            <p>Como speaker, se presentó en Argentina, Colombia, Chile, Ecuador, Guatemala, República Dominicana, Uruguay, México y España. Sus conferencias, masterclasses y workshops exploran la profesionalización de anfitriones, el diseño de alojamientos, la experiencia del huésped, las tendencias, la innovación, las comunidades y el futuro de la hospitalidad.</p>
             </div>
           <div class="bio-tags-label">CAMPOS / INTERESES</div>
           <div class="bio-tags">
