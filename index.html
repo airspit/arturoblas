@@ -69,7 +69,7 @@ nav {
 }
 /* Bio: internal scroll only on the right column */
 #bio { overflow-y: hidden; }
-#bio .bio-right { overflow-y: auto; max-height: 100%; }
+#bio .bio-right { overflow-y: auto; max-height: 100%; scrollbar-width: thin; }
 #bio .bio-layout { overflow: hidden; }
 
 .progress-dots { position: fixed; right: 1.2rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: .5rem; z-index: 150; }
@@ -283,20 +283,20 @@ nav {
 
 
 .bio-tags-left { margin-top: .5rem; }
-.bio-tags-label-left { font-family: 'Space Mono', monospace; font-size: .48rem; color: var(--mg); letter-spacing: .1em; text-transform: uppercase; margin-bottom: .5rem; }
-.bio-tags-left-wrap { display: flex; flex-wrap: wrap; gap: .4rem; }
+.bio-tags-label-left { font-family: 'Space Mono', monospace; font-size: .42rem; color: var(--mg); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .3rem; }
+.bio-tags-left-wrap { display: flex; flex-wrap: wrap; gap: .3rem; }
 /* BIO LAYOUT */
-.bio-layout { display: flex; flex-direction: column; height: 100%; overflow: hidden; padding: .7rem 2rem 1rem; }
-.bio-hero { flex-shrink: 0; margin-bottom: .5rem; }
-.bio-big-name { font-family: 'Unbounded', sans-serif; font-weight: 900; line-height: .9; letter-spacing: -.03em; }
+.bio-layout { display: flex; flex-direction: column; height: 100%; overflow: hidden; padding: .4rem 1.5rem .5rem; }
+.bio-hero { flex-shrink: 0; margin-bottom: .3rem; }
+.bio-big-name { font-family: 'Unbounded', sans-serif; font-weight: 900; line-height: 1.1; letter-spacing: -.03em; }
 .bio-n1 { display: block; font-size: clamp(2rem, 5vw, 3.8rem); color: var(--bk); }
 .bio-n2 { display: block; font-size: clamp(2rem, 5vw, 3.8rem); color: var(--mg); }
-.bio-pills-row { display: flex; align-items: center; gap: .5rem; margin-top: .4rem; font-family: 'Space Mono', monospace; font-size: .62rem; font-weight: 700; letter-spacing: .12em; }
-.bio-pill-sm { color: var(--bk); background: var(--lm2); padding: .2rem .55rem; border-radius: 2px; }
+.bio-pills-row { display: flex; align-items: center; gap: .4rem; margin-top: .2rem; font-family: 'Space Mono', monospace; font-size: .5rem; font-weight: 700; letter-spacing: .08em; }
+.bio-pill-sm { color: var(--bk); background: var(--lm2); padding: .15rem .4rem; border-radius: 2px; font-size: .5rem; }
 .bio-pill-dot { color: rgba(8,8,8,.3); }
-.bio-rule { height: 2px; background: var(--bk); margin-top: .5rem; }
-.bio-cols { display: grid; grid-template-columns: 240px 1fr; gap: 1.4rem; flex: 1; min-height: 0; overflow: hidden; max-height: 100%; }
-.bio-left { display: flex; flex-direction: column; gap: .5rem; overflow: visible; }
+.bio-rule { height: 2px; background: var(--bk); margin-top: .3rem; }
+.bio-cols { display: grid; grid-template-columns: 210px 1fr; gap: 1rem; flex: 1; min-height: 0; overflow: hidden; max-height: 100%; }
+.bio-left { display: flex; flex-direction: column; gap: .4rem; overflow: visible; min-height: 0; }
 .bio-photo-wrap, .bio-photo-wrap-outer { position: relative; flex-shrink: 0; }
 .bio-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; }
 .bio-photo-label { position: absolute; bottom: 0; left: 0; right: 0; font-family: 'Space Mono', monospace; font-size: .48rem; font-weight: 700; letter-spacing: .1em; color: var(--wh); background: var(--bk); padding: .3rem .5rem; }
@@ -313,7 +313,7 @@ nav {
 .bio-body-text p:last-child { margin-bottom: 0; }
 .bio-tags-label { font-family: 'Space Mono', monospace; font-size: .55rem; color: var(--mg); letter-spacing: .1em; margin-bottom: .5rem; }
 .bio-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-.bio-tag { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: .5rem; color: var(--bk); border: 2px solid var(--bk); padding: .3rem .65rem; border-radius: 999px; }
+.bio-tag { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: .42rem; color: var(--bk); border: 1.5px solid var(--bk); padding: .22rem .5rem; border-radius: 999px; }
 
 @media (max-width: 700px) {
   .bio-layout { padding: .8rem 1rem 1.5rem; height: auto; overflow-y: visible; }
@@ -516,8 +516,7 @@ nav {
       <!-- nombre gigante -->
       <div class="bio-hero">
         <div class="bio-big-name">
-          <span class="bio-n1">ARTURO</span>
-          <span class="bio-n2">BLAS</span>
+          <span class="bio-n1">ARTURO </span><span class="bio-n2">BLAS</span>
         </div>
         <div class="bio-pills-row">
           <span class="bio-pill-sm">ECLÉCTICO</span>
