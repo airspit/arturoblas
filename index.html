@@ -155,6 +155,40 @@ nav {
   .universos-grid .ucard:nth-child(2n) { border-right: none; }
 }
 
+/* SERVICIOS V2 */
+.srv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; flex: 1; min-height: 0; }
+.srv2-card { display: flex; flex-direction: column; padding: 1.1rem; position: relative; overflow: hidden; }
+.srv2-tag { font-family: 'Space Mono', monospace; font-size: .5rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; padding: .22rem .55rem; display: inline-block; margin-bottom: .6rem; width: fit-content; }
+.srv2-title { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: .75rem; letter-spacing: -.02em; line-height: 1.25; margin-bottom: .35rem; }
+.srv2-desc { font-size: .7rem; line-height: 1.5; flex: 1; margin-bottom: .6rem; }
+.srv2-meta { font-family: 'Space Mono', monospace; font-size: .58rem; margin-bottom: .7rem; display: flex; flex-direction: column; gap: .2rem; }
+.srv2-meta span { opacity: .75; }
+.srv2-cta { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: .5rem; letter-spacing: .06em; text-transform: uppercase; padding: .52rem .9rem; display: inline-flex; align-items: center; justify-content: center; gap: .4rem; text-decoration: none; width: 100%; text-align: center; cursor: pointer; border: none; transition: transform .15s ease; }
+.srv2-cta:hover { transform: scale(1.02); }
+.srv2-arrow { display: inline-block; transition: transform .25s ease; }
+.srv2-cta:hover .srv2-arrow { transform: translateX(5px); }
+.srv2-a { background: var(--bk); color: var(--wh); }
+.srv2-a .srv2-tag { background: var(--mg); color: #fff; }
+.srv2-a .srv2-desc { color: rgba(255,255,255,.65); }
+.srv2-a .srv2-meta span { color: rgba(255,255,255,.85); }
+.srv2-a .srv2-cta { background: var(--mg); color: #fff; }
+.srv2-b { background: var(--wh); border: 2px solid var(--mg); color: var(--bk); }
+.srv2-b .srv2-tag { background: var(--mg); color: #fff; }
+.srv2-b .srv2-desc { color: rgba(8,8,8,.6); }
+.srv2-b .srv2-cta { background: var(--mg); color: #fff; }
+.srv2-c { background: var(--lm2); color: var(--bk); }
+.srv2-c .srv2-tag { background: var(--bk); color: #fff; }
+.srv2-c .srv2-desc { color: rgba(8,8,8,.65); }
+.srv2-c .srv2-cta { background: var(--bk); color: #fff; }
+.srv2-d { background: var(--mg); color: var(--wh); }
+.srv2-d .srv2-tag { background: #fff; color: var(--mg); }
+.srv2-d .srv2-desc { color: rgba(255,255,255,.75); }
+.srv2-d .srv2-meta span { color: rgba(255,255,255,.9); }
+.srv2-d .srv2-cta { background: #fff; color: var(--mg); }
+@media (max-width: 700px) {
+  .srv-grid { grid-template-columns: 1fr; overflow-y: auto; }
+}
+
 /* SERVICIOS */
 .servicios-layout { display: flex; flex-direction: column; height: 100%; overflow: hidden; padding: .4rem 1.5rem .6rem; }
 .servicios-lead { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 1.1rem; letter-spacing: -.03em; color: var(--bk); margin-bottom: .25rem; }
@@ -562,72 +596,59 @@ nav {
     </div>
   </section>
 <section class="snap-section" id="servicios" data-name="servicios">
-    <div class="sec-head"><span class="sec-num">00</span><h2 class="sec-title">servicios</h2><span class="sec-dot" style="background:var(--mg)"></span></div>
+    <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">servicios</h2><span class="sec-dot" style="background:var(--mg)"></span></div>
     <div class="servicios-layout">
       <div class="servicios-intro">
         <p class="servicios-lead">¿En qué puedo ayudarte?</p>
         <div class="servicios-rule"></div>
       </div>
-      <div class="servicios-grid">
+      <div class="srv-grid">
 
-        <div class="srv-card">
-          <div class="srv-tag">Airbnb</div>
-          <div class="srv-nombre">Creación de anuncio de Airbnb</div>
-          <div class="srv-desc">Diseño y redacción de tu anuncio para maximizar visibilidad y reservas.</div>
-          <div class="srv-meta">
-            <span class="srv-meta-item"><span>Duración</span><strong>A coordinar</strong></span>
-            <span class="srv-meta-item"><span>Modalidad</span><strong>Online</strong></span>
+        <div class="srv2-card srv2-a">
+          <span class="srv2-tag">individual</span>
+          <p class="srv2-title">Creación de anuncio de Airbnb</p>
+          <p class="srv2-desc">Diseño y redacción de tu anuncio para maximizar visibilidad y reservas.</p>
+          <div class="srv2-meta">
+            <span>Duración · A coordinar</span>
+            <span>Modalidad · Online</span>
           </div>
-          <a class="srv-btn" href="https://wa.me/5491176262765" target="_blank" rel="noopener">Consultar precio →</a>
+          <a class="srv2-cta" href="https://wa.me/5491176262765" target="_blank" rel="noopener">Consultar precio <span class="srv2-arrow">→</span></a>
         </div>
 
-        <div class="srv-card srv-featured">
-          <div class="srv-tag">Interiorismo</div>
-          <div class="srv-nombre">Diseño creativo para alojamiento</div>
-          <div class="srv-desc">Diseño creativo apto alojamiento temporario, maqueta digital y referencias.</div>
-          <div class="srv-meta">
-            <span class="srv-meta-item"><span>Incluye</span><strong>Maqueta + refs</strong></span>
-            <span class="srv-meta-item"><span>Modalidad</span><strong>Online</strong></span>
+        <div class="srv2-card srv2-b">
+          <span class="srv2-tag">individual</span>
+          <p class="srv2-title">Diseño creativo para alojamiento</p>
+          <p class="srv2-desc">Diseño creativo apto alojamiento temporario, maqueta digital y referencias.</p>
+          <div class="srv2-meta">
+            <span>Incluye · Maqueta + refs</span>
+            <span>Modalidad · Online</span>
           </div>
-          <a class="srv-btn" href="https://wa.me/5491176262765" target="_blank" rel="noopener">Consultar precio →</a>
+          <a class="srv2-cta" href="https://wa.me/5491176262765" target="_blank" rel="noopener">Consultar precio <span class="srv2-arrow">→</span></a>
         </div>
 
-        <div class="srv-card">
-          <div class="srv-tag">Grupal</div>
-          <div class="srv-nombre">Asesoría grupal con ponencia</div>
-          <div class="srv-desc">Sesión grupal con presentación y ronda de preguntas y respuestas.</div>
-          <div class="srv-meta">
-            <span class="srv-meta-item"><span>Incluye</span><strong>Ponencia + Q&amp;A</strong></span>
-            <span class="srv-meta-item"><span>Formato</span><strong>Grupo</strong></span>
+        <div class="srv2-card srv2-c">
+          <span class="srv2-tag">grupal</span>
+          <p class="srv2-title">Asesoría grupal con ponencia</p>
+          <p class="srv2-desc">Sesión grupal con presentación y ronda de preguntas y respuestas.</p>
+          <div class="srv2-meta">
+            <span>Incluye · Ponencia + Q&A</span>
+            <span>Modalidad · Online</span>
           </div>
-          <a class="srv-btn" href="https://wa.me/5491176262765" target="_blank" rel="noopener">Consultar precio →</a>
+          <a class="srv2-cta" href="https://wa.me/5491176262765" target="_blank" rel="noopener">Consultar precio <span class="srv2-arrow">→</span></a>
         </div>
 
-        <div class="srv-card">
-          <div class="srv-tag">Individual</div>
-          <div class="srv-nombre">Asesoría individual integral</div>
-          <div class="srv-desc">Sesión personalizada one-on-one para trabajar tu situación específica.</div>
-          <div class="srv-meta">
-            <span class="srv-meta-item"><span>Incluye</span><strong>Sesión completa</strong></span>
-            <span class="srv-meta-item"><span>Formato</span><strong>1 a 1</strong></span>
+        <div class="srv2-card srv2-d">
+          <span class="srv2-tag">individual</span>
+          <p class="srv2-title">Asesoría integral</p>
+          <p class="srv2-desc">Sesión personalizada one-on-one para trabajar tu situación específica.</p>
+          <div class="srv2-meta">
+            <span>Incluye · Sesión completa</span>
+            <span>Modalidad · Online</span>
           </div>
-          <a class="srv-btn" href="https://wa.me/5491176262765" target="_blank" rel="noopener">Consultar precio →</a>
-        </div>
-
-        <div class="srv-card srv-speaker">
-          <div class="srv-speaker-left">
-            <div class="srv-tag" style="background:var(--bk);">Speaker</div>
-            <div class="srv-nombre">Charlas, ponencias &amp; masterclasses</div>
-            <div class="srv-desc">Hospitalidad, comunidad, producto, cultura digital, ciudades, experiencia.</div>
-          </div>
-          <div class="srv-speaker-right">
-            <div class="srv-precio" style="font-size:.9rem;color:var(--bk);">Precio<br>a consultar</div>
-            <a class="srv-btn srv-btn-lm" href="https://wa.me/5491176262765" target="_blank" rel="noopener">Escribime →</a>
-          </div>
+          <a class="srv2-cta" href="https://wa.me/5491176262765" target="_blank" rel="noopener">Consultar precio <span class="srv2-arrow">→</span></a>
         </div>
 
       </div>
-      <p class="srv-note">Todos los servicios se abonan por transferencia bancaria · El código de descuento se valida al confirmar</p>
     </div>
   </section>
 
