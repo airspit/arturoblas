@@ -160,7 +160,19 @@ nav {
 .spk-layout { display: flex; flex-direction: column; height: 100%; overflow: hidden; }
 .spk-body { flex: 1; overflow-y: auto; overflow-x: hidden; min-height: 0; padding: 0 1.1rem; }
 .spk-metrics-band { display: flex; flex-wrap: wrap; gap: .5rem; padding: 1.3rem 0 1.1rem; }
-.spk-header { padding-top: .4rem; }
+.spk-header { padding-top: .4rem; display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; }
+.spk-header-text { flex: 1; min-width: 0; }
+.spk-header-cta { flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; gap: .5rem; }
+.spk-header-cta-btn { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: .72rem; letter-spacing: .01em; text-transform: uppercase; color: var(--wh); background: var(--mg); padding: .8rem 1.3rem; border-radius: 40px; text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; box-shadow: 0 8px 20px rgba(229,9,127,.35); transition: transform .18s ease, box-shadow .18s ease; white-space: nowrap; }
+.spk-header-cta-btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 12px 26px rgba(229,9,127,.45); }
+.spk-header-cta-btn svg { width: 1rem; height: 1rem; transition: transform .18s ease; }
+.spk-header-cta-btn:hover svg { transform: translateX(3px); }
+.spk-header-cta-note { font-family: 'Space Grotesk', sans-serif; font-size: .68rem; color: rgba(8,8,8,.5); text-align: right; max-width: 22ch; line-height: 1.4; }
+@media (max-width: 700px) {
+  .spk-header { flex-direction: column; align-items: flex-start; }
+  .spk-header-cta { align-items: flex-start; }
+  .spk-header-cta-note { text-align: left; }
+}
 .spk-kicker { font-family: 'Space Mono', monospace; font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--mg); font-weight: 700; margin: 0 0 .5rem; }
 .spk-headline { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: clamp(1.5rem, 3vw, 2.1rem); letter-spacing: -.03em; line-height: 1.08; color: var(--bk); margin: 0 0 .6rem; }
 .spk-sub { font-family: 'Space Grotesk', sans-serif; font-size: .88rem; line-height: 1.55; color: rgba(8,8,8,.68); max-width: 62ch; margin: 0; }
@@ -775,9 +787,18 @@ nav {
 
       <div class="spk-body">
       <div class="spk-header">
-        <p class="spk-kicker">Speaker internacional</p>
-        <h2 class="spk-headline">Profesionalizar para crecer</h2>
-        <p class="spk-sub">Respuestas concretas, certezas y estrategias para que los anfitriones trabajen menos y mejor, eviten errores costosos, potencien el valor de sus propiedades y conviertan su autenticidad en una verdadera ventaja competitiva. Porque las buenas intenciones no alcanzan: para destacarse y ganar más, hay que aprender a hacer las cosas bien.</p>
+        <div class="spk-header-text">
+          <p class="spk-kicker">Speaker internacional</p>
+          <h2 class="spk-headline">Profesionalizar para crecer</h2>
+          <p class="spk-sub">Respuestas concretas, certezas y estrategias para que los anfitriones trabajen menos y mejor, eviten errores costosos, potencien el valor de sus propiedades y conviertan su autenticidad en una verdadera ventaja competitiva. Porque las buenas intenciones no alcanzan: para destacarse y ganar más, hay que aprender a hacer las cosas bien.</p>
+        </div>
+        <div class="spk-header-cta">
+          <a class="spk-header-cta-btn" href="https://wa.me/5491176262765" target="_blank" rel="noopener">
+            Convocame a tu evento
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <span class="spk-header-cta-note">Charlas, masterclasses y workshops, presenciales y virtuales</span>
+        </div>
       </div>
       <!-- MÉTRICAS -->
       <div class="spk-metrics-band">
@@ -993,11 +1014,7 @@ nav {
           </div>
         </div>
       </div>
-      <!-- CTA -->
-      <div class="spk-cta-bar">
-        <p class="spk-cta-text">Charlas, masterclasses y workshops sobre estrategia, posicionamiento, diferenciación y cómo convertir tu propiedad en la opción obvia del mercado.</p>
-        <a class="spk-cta-btn" href="https://wa.me/5491176262765" target="_blank" rel="noopener">Quiero que hables en mi evento →</a>
-      </div>
+      <!-- CTA moved to header -->
 
       <div class="ab-detail-overlay" id="abDetailUba">
         <div class="ab-detail-topbar"></div>
