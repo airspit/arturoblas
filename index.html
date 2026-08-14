@@ -129,19 +129,21 @@ nav {
 .social-card:nth-child(4) svg, .social-card:nth-child(4) span { color: var(--bk); }
 .social-card span { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; }
 
-.hero-carousel { position: relative; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem; height: clamp(260px, 36vh, 400px); background: var(--bk); border-top: 1.5px solid rgba(255,255,255,.08); padding: 1.2rem 1rem; }
-.hero-carousel-frame { position: relative; width: clamp(190px, 20vw, 260px); aspect-ratio: 4 / 5; flex-shrink: 0; }
-.hero-carousel-slide { position: absolute; inset: 0; opacity: 0; transform: scale(.96); transition: opacity .7s ease, transform .7s ease; border-radius: 14px; overflow: hidden; }
-.hero-carousel-slide.is-active { opacity: 1; transform: scale(1); z-index: 1; }
-.hero-carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 12px; box-sizing: border-box; }
-.hero-carousel-slide.hcs-mg img { border: 4px double var(--mg); animation: abGlowMg 2.2s ease-in-out infinite; }
-.hero-carousel-slide.hcs-lm img { border: 4px double var(--lm2); animation: abGlowLm 2.2s ease-in-out infinite; }
-.hero-carousel-caption { text-align: center; }
-.hero-carousel-name { display: block; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: .82rem; color: var(--wh); letter-spacing: -.01em; }
-.hero-carousel-role { display: block; font-family: 'Space Grotesk', sans-serif; font-size: .66rem; color: rgba(255,255,255,.62); margin-top: .2rem; }
-.hero-carousel-dots { display: flex; gap: .4rem; justify-content: center; }
-.hero-carousel-dot { width: 18px; height: 3px; background: rgba(255,255,255,.3); cursor: pointer; transition: background .2s; padding: 0; border: none; }
+.hero-carousel { position: relative; flex-shrink: 0; height: clamp(180px, 26vh, 320px); overflow: hidden; background: var(--bk); border-top: 1.5px solid rgba(255,255,255,.1); }
+.hero-carousel-track { display: flex; height: 100%; width: 100%; position: relative; }
+.hero-carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease; }
+.hero-carousel-slide.is-active { opacity: 1; z-index: 1; }
+.hero-carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-carousel-scrim { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,8,8,.92) 0%, rgba(8,8,8,.35) 45%, rgba(8,8,8,0) 75%); }
+.hero-carousel-caption { position: absolute; left: clamp(1.2rem, 3vw, 2.5rem); bottom: 1.1rem; z-index: 2; }
+.hero-carousel-name { display: block; font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(.9rem, 1.6vw, 1.15rem); color: var(--wh); letter-spacing: -.01em; }
+.hero-carousel-role { display: block; font-family: 'Space Grotesk', sans-serif; font-size: .72rem; color: rgba(255,255,255,.68); margin-top: .2rem; }
+.hero-carousel-dots { position: absolute; right: clamp(1.2rem, 3vw, 2.5rem); bottom: 1.2rem; z-index: 2; display: flex; gap: .4rem; }
+.hero-carousel-dot { width: 22px; height: 3px; background: rgba(255,255,255,.3); cursor: pointer; transition: background .2s; padding: 0; border: none; }
 .hero-carousel-dot.is-active { background: var(--mg); }
+@media (max-width: 700px) {
+  .hero-carousel-dots { display: none; }
+}
 
 /* HERO LANDING */
 .hero-landing { background: var(--bk); padding: 2.4rem 2.5rem 1.4rem; position: relative; overflow: hidden; flex: 1; display: flex; flex-direction: column; justify-content: flex-start; }
@@ -624,11 +626,7 @@ nav {
       </div>
     </div>
     <div class="hero-carousel" id="heroCarousel">
-      <div class="hero-carousel-frame" id="heroCarouselFrame"></div>
-      <div class="hero-carousel-caption">
-        <span class="hero-carousel-name" id="heroCarouselName"></span>
-        <span class="hero-carousel-role" id="heroCarouselRole"></span>
-      </div>
+      <div class="hero-carousel-track" id="heroCarouselTrack"></div>
       <div class="hero-carousel-dots" id="heroCarouselDots"></div>
     </div>
   </section>
@@ -1399,36 +1397,39 @@ nav {
   document.addEventListener('DOMContentLoaded', function() { initSite(); initHeroCarousel(); });
 
   function initHeroCarousel() {
-    var frame = document.getElementById('heroCarouselFrame');
-    var nameEl = document.getElementById('heroCarouselName');
-    var roleEl = document.getElementById('heroCarouselRole');
+    var track = document.getElementById('heroCarouselTrack');
     var dotsWrap = document.getElementById('heroCarouselDots');
-    if (!frame || !dotsWrap) return;
+    if (!track || !dotsWrap) return;
 
     var sources = [
-      { selector: 'img[alt="Arturo Blas con Brian Chesky"]', name: 'Con Brian Chesky', role: 'Fundador y CEO de Airbnb', color: 'mg' },
-      { selector: 'img[alt="Arturo Blas con Nate Blecharczyk"]', name: 'Con Nate Blecharczyk', role: 'Fundador y Chief Strategy Officer de Airbnb', color: 'lm' },
-      { selector: '.spk-album:nth-of-type(9) .spk-album-front', name: 'Copa del Mundo Airbnb × FIFA', role: 'Buenos Aires, Argentina · 2025', color: 'lm' },
-      { selector: '.spk-album:nth-of-type(13) .spk-album-front', name: '1er Encuentro Nacional de Anfitriones', role: 'Mazatlán, México · 2026', color: 'mg' },
-      { selector: '.spk-album:nth-of-type(12) .spk-album-front', name: 'Club de Anfitriones · Masterclass', role: 'Cancún, México · 2026', color: 'lm' },
-      { selector: '.spk-album:nth-of-type(6) .spk-album-front', name: 'Workshop con la comunidad', role: 'San José, Costa Rica · 2024', color: 'mg' }
+      { selector: 'img[alt="Arturo Blas con Brian Chesky"]', name: 'Con Brian Chesky', role: 'Fundador y CEO de Airbnb' },
+      { selector: 'img[alt="Arturo Blas con Nate Blecharczyk"]', name: 'Con Nate Blecharczyk', role: 'Fundador y Chief Strategy Officer de Airbnb' },
+      { selector: '.spk-album:nth-of-type(9) .spk-album-front', name: 'Copa del Mundo Airbnb × FIFA', role: 'Buenos Aires, Argentina · 2025' },
+      { selector: '.spk-album:nth-of-type(13) .spk-album-front', name: '1er Encuentro Nacional de Anfitriones', role: 'Mazatlán, México · 2026' },
+      { selector: '.spk-album:nth-of-type(12) .spk-album-front', name: 'Club de Anfitriones · Masterclass', role: 'Cancún, México · 2026' },
+      { selector: '.spk-album:nth-of-type(6) .spk-album-front', name: 'Workshop con la comunidad', role: 'San José, Costa Rica · 2024' }
     ];
 
     var slides = [];
-    var meta = [];
     sources.forEach(function(s) {
       var src = document.querySelector(s.selector);
       if (!src || !src.src) return;
       var slide = document.createElement('div');
-      slide.className = 'hero-carousel-slide ' + (s.color === 'mg' ? 'hcs-mg' : 'hcs-lm');
+      slide.className = 'hero-carousel-slide';
       var img = document.createElement('img');
       img.src = src.src;
       img.alt = s.name;
       img.loading = 'eager';
+      var scrim = document.createElement('div');
+      scrim.className = 'hero-carousel-scrim';
+      var caption = document.createElement('div');
+      caption.className = 'hero-carousel-caption';
+      caption.innerHTML = '<span class="hero-carousel-name">' + s.name + '</span><span class="hero-carousel-role">' + s.role + '</span>';
       slide.appendChild(img);
-      frame.appendChild(slide);
+      slide.appendChild(scrim);
+      slide.appendChild(caption);
+      track.appendChild(slide);
       slides.push(slide);
-      meta.push(s);
     });
 
     if (!slides.length) return;
@@ -1451,8 +1452,6 @@ nav {
       current = i;
       slides[current].classList.add('is-active');
       dots[current].classList.add('is-active');
-      nameEl.textContent = meta[current].name;
-      roleEl.textContent = meta[current].role;
     }
     function nextSlide() { goToSlide((current + 1) % slides.length); }
     function resetTimer() {
