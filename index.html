@@ -300,23 +300,40 @@ nav {
 .opinion-lead { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 1.1rem; letter-spacing: -.03em; color: var(--bk); margin-bottom: .1rem; }
 .opinion-sublead { font-family: 'Space Grotesk', sans-serif; font-size: .68rem; color: rgba(8,8,8,.55); margin-bottom: .4rem; }
 .opinion-rule { height: 2px; background: var(--bk); margin-bottom: .8rem; }
-.opinion-list { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: .6rem; }
-.opinion-item { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .85rem 1.1rem; background: var(--wh); border: 2px solid var(--bk); text-decoration: none; transition: transform .15s ease, border-color .15s ease; }
-.opinion-item:hover { transform: translateX(4px); border-color: var(--mg); }
-.opinion-item-main { display: flex; flex-direction: column; gap: .3rem; min-width: 0; }
-.opinion-item-meta { font-family: 'Space Mono', monospace; font-size: .5rem; letter-spacing: .1em; text-transform: uppercase; color: var(--mg); font-weight: 700; display: flex; gap: .6rem; align-items: center; }
-.opinion-item-meta .opinion-fecha { color: rgba(8,8,8,.4); font-weight: 400; letter-spacing: .06em; }
-.opinion-item-title { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: .78rem; letter-spacing: -.015em; color: var(--bk); line-height: 1.3; }
-.opinion-item-cta { font-family: 'Space Mono', monospace; font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; color: var(--bk); display: flex; align-items: center; gap: .35rem; flex-shrink: 0; white-space: nowrap; }
-.opinion-item-arrow { display: inline-block; transition: transform .25s ease; }
-.opinion-item:hover .opinion-item-arrow { transform: translateX(4px); }
+.opinion-grid { flex: 1; min-height: 0; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: .8rem; align-content: start; }
+.opinion-card { display: flex; flex-direction: column; padding: 1.1rem 1.2rem; text-decoration: none; position: relative; overflow: hidden; transition: transform .15s ease; }
+.opinion-card:hover { transform: translateY(-3px); }
+.opinion-tag { font-family: 'Space Mono', monospace; font-size: .52rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; padding: .25rem .6rem; display: inline-block; margin-bottom: .7rem; width: fit-content; }
+.opinion-fecha { font-family: 'Space Mono', monospace; font-size: .5rem; letter-spacing: .06em; margin-bottom: .55rem; opacity: .7; }
+.opinion-title { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: .95rem; letter-spacing: -.02em; line-height: 1.28; margin-bottom: .55rem; }
+.opinion-subtitle { font-family: 'Spectral', serif; font-style: italic; font-weight: 400; font-size: .74rem; line-height: 1.55; flex: 1; margin-bottom: .9rem; }
+.opinion-cta { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: .5rem; letter-spacing: .06em; text-transform: uppercase; padding: .55rem .9rem; display: inline-flex; align-items: center; justify-content: center; gap: .4rem; text-decoration: none; width: 100%; text-align: center; border: none; transition: transform .15s ease; }
+.opinion-card:hover .opinion-cta { transform: scale(1.02); }
+.opinion-arrow { display: inline-block; transition: transform .25s ease; }
+.opinion-card:hover .opinion-arrow { transform: translateX(5px); }
+.opinion-a { background: var(--bk); color: var(--wh); }
+.opinion-a .opinion-tag { background: var(--mg); color: #fff; }
+.opinion-a .opinion-subtitle { color: rgba(255,255,255,.7); }
+.opinion-a .opinion-fecha { color: rgba(255,255,255,.85); }
+.opinion-a .opinion-cta { background: var(--mg); color: #fff; }
+.opinion-b { background: var(--mg); color: var(--wh); }
+.opinion-b .opinion-tag { background: #fff; color: var(--mg); }
+.opinion-b .opinion-subtitle { color: rgba(255,255,255,.8); }
+.opinion-b .opinion-fecha { color: rgba(255,255,255,.9); }
+.opinion-b .opinion-cta { background: #fff; color: var(--mg); }
+.opinion-c { background: var(--lm2); color: var(--bk); }
+.opinion-c .opinion-tag { background: var(--bk); color: #fff; }
+.opinion-c .opinion-subtitle { color: rgba(8,8,8,.65); }
+.opinion-c .opinion-cta { background: var(--bk); color: #fff; }
+.opinion-d { background: var(--wh); border: 2px solid var(--bk); color: var(--bk); }
+.opinion-d .opinion-tag { background: var(--lm2); color: var(--bk); }
+.opinion-d .opinion-subtitle { color: rgba(8,8,8,.6); }
+.opinion-d .opinion-cta { background: var(--bk); color: #fff; }
 .opinion-empty-hint { font-family: 'Space Mono', monospace; font-size: .48rem; color: rgba(8,8,8,.3); letter-spacing: .05em; text-align: center; padding: .9rem 0 .2rem; border-top: 1px solid rgba(8,8,8,.07); margin-top: .4rem; }
 
 @media (max-width: 700px) {
   .opinion-layout { padding: .8rem 1rem 1.5rem; height: auto; overflow-y: visible; }
-  .opinion-list { overflow-y: visible; }
-  .opinion-item { flex-direction: column; align-items: flex-start; gap: .5rem; }
-  .opinion-item-cta { align-self: flex-end; }
+  .opinion-grid { grid-template-columns: 1fr; overflow-y: visible; }
 }
 
 @media (max-width: 700px) {
@@ -1849,14 +1866,14 @@ nav {
         <p class="opinion-sublead">Columnas y artículos sobre hospitalidad global</p>
         <div class="opinion-rule"></div>
       </div>
-      <div class="opinion-list">
+      <div class="opinion-grid">
 
-        <a class="opinion-item" href="https://www.hosteltur.com/comunidad/006575_el-huesped-no-siempre-tiene-la-razon.html" target="_blank" rel="noopener">
-          <div class="opinion-item-main">
-            <span class="opinion-item-meta">Hosteltur.com <span class="opinion-fecha">· 1 de septiembre de 2026</span></span>
-            <span class="opinion-item-title">El huésped no siempre tiene la razón</span>
-          </div>
-          <span class="opinion-item-cta">Leer artículo <span class="opinion-item-arrow">→</span></span>
+        <a class="opinion-card opinion-a" href="https://www.hosteltur.com/comunidad/006575_el-huesped-no-siempre-tiene-la-razon.html" target="_blank" rel="noopener">
+          <span class="opinion-tag">Hosteltur.com</span>
+          <span class="opinion-fecha">1 de septiembre de 2026</span>
+          <p class="opinion-title">El huésped no siempre tiene la razón</p>
+          <p class="opinion-subtitle">Una industria obsesionada con poner al cliente en el centro corre el riesgo de expulsar de la escena a quienes trabajan, hospedan y habitan el destino.</p>
+          <span class="opinion-cta">Leer artículo <span class="opinion-arrow">→</span></span>
         </a>
 
       </div>
