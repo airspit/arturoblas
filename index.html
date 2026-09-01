@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=Space+Grotesk:wght@300;400;500&family=Spectral:ital,wght@0,400;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Hanken+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -334,6 +335,47 @@ nav {
 @media (max-width: 700px) {
   .opinion-layout { padding: .8rem 1rem 1.5rem; height: auto; overflow-y: visible; }
   .opinion-grid { grid-template-columns: 1fr; overflow-y: visible; }
+}
+
+/* HOWTIQ */
+.htq-layout { display: flex; flex-direction: column; align-items: center; height: 100%; overflow-y: auto; padding: 1.4rem 1.5rem; }
+.htq-kicker { font-family: 'Space Mono', monospace; font-size: .56rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(8,8,8,.4); font-weight: 700; margin-bottom: .6rem; }
+.htq-panel {
+  width: 100%; max-width: 780px;
+  background: radial-gradient(130% 100% at 50% 0%, #FFFDF9 0%, #F6ECDC 60%, #F1E4D0 100%);
+  border-radius: 22px;
+  padding: 1.8rem 1.9rem 1.6rem;
+  color: #2B2521;
+  box-shadow: 0 10px 0 rgba(8,8,8,.06);
+}
+.htq-wm-row { display: flex; align-items: center; gap: .7rem; margin-bottom: 1rem; }
+.htq-wm-icon { width: 42px; height: 42px; border-radius: 13px; background: #FF385C; display: flex; align-items: center; justify-content: center; flex: none; }
+.htq-wm-icon svg { width: 24px; height: 24px; }
+.htq-wm { font-family: 'Baloo 2', cursive; font-weight: 800; font-size: 1.7rem; letter-spacing: -.02em; color: #2B2521; }
+.htq-block { margin-bottom: 1.1rem; }
+.htq-block-label { font-family: 'Space Mono', monospace; font-size: .5rem; letter-spacing: .1em; text-transform: uppercase; color: #C21F42; font-weight: 700; margin-bottom: .4rem; display: block; }
+.htq-text { font-family: 'Hanken Grotesk', sans-serif; font-size: .78rem; line-height: 1.6; color: rgba(43,37,33,.85); }
+.htq-modes { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; margin-bottom: 1.1rem; }
+.htq-mode-card { background: var(--card, #fff); border-radius: 14px; padding: .8rem .5rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .4rem; }
+.htq-mode-icon { width: 40px; height: 40px; }
+.htq-mode-name { font-family: 'Baloo 2', cursive; font-weight: 700; font-size: .68rem; color: #2B2521; }
+.htq-mode-word { font-family: 'Space Mono', monospace; font-size: .48rem; letter-spacing: .06em; text-transform: uppercase; color: rgba(43,37,33,.45); }
+.htq-sources-box { background: rgba(255,56,92,.06); border: 1.5px solid rgba(255,56,92,.25); border-radius: 14px; padding: .85rem 1rem; margin-bottom: 1.1rem; }
+.htq-sources-list { font-family: 'Hanken Grotesk', sans-serif; font-size: .68rem; line-height: 1.5; color: rgba(43,37,33,.65); margin-top: .35rem; }
+.htq-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.1rem; }
+.htq-keeper-placeholder { width: 100%; max-width: 130px; margin: 0 auto 1rem; aspect-ratio: 1; border-radius: 50%; background: rgba(255,56,92,.08); border: 2px dashed rgba(255,56,92,.3); display: flex; align-items: center; justify-content: center; font-family: 'Space Mono', monospace; font-size: .48rem; color: rgba(255,56,92,.5); text-align: center; padding: .5rem; }
+.htq-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; margin-bottom: 1.2rem; }
+.htq-shot-placeholder { aspect-ratio: 9/16; border-radius: 12px; background: rgba(43,37,33,.05); border: 2px dashed rgba(43,37,33,.15); display: flex; align-items: center; justify-content: center; font-family: 'Space Mono', monospace; font-size: .42rem; color: rgba(43,37,33,.35); text-align: center; padding: .4rem; }
+.htq-cta { display: flex; align-items: center; justify-content: center; gap: .6rem; font-family: 'Baloo 2', cursive; font-weight: 700; font-size: .95rem; color: #fff; background: #FF385C; box-shadow: 0 5px 0 #C21F42; border-radius: 17px; padding: .9rem 1.4rem; text-decoration: none; width: 100%; transition: transform .1s; }
+.htq-cta:hover { transform: translateY(1px); box-shadow: 0 4px 0 #C21F42; }
+.htq-cta-note { font-family: 'Space Mono', monospace; font-size: .48rem; letter-spacing: .05em; color: rgba(43,37,33,.4); text-align: center; margin-top: .6rem; }
+
+@media (max-width: 700px) {
+  .htq-layout { height: auto; overflow-y: visible; padding: 1.2rem 1rem; }
+  .htq-panel { padding: 1.4rem 1.2rem; }
+  .htq-modes { grid-template-columns: 1fr; }
+  .htq-cols { grid-template-columns: 1fr; }
+  .htq-shots { grid-template-columns: 1fr 1fr 1fr; }
 }
 
 @media (max-width: 700px) {
@@ -711,7 +753,8 @@ nav {
     <button class="nav-pill" onclick="goTo(3)">airbnb</button>
     <button class="nav-pill" onclick="goTo(4)">servicios</button>
     <button class="nav-pill" onclick="goTo(5)">opinión</button>
-    <button class="nav-pill" onclick="goTo(6)">contacto</button>
+    <button class="nav-pill" onclick="goTo(6)">howtiq</button>
+    <button class="nav-pill" onclick="goTo(7)">contacto</button>
   </div>
 </nav>
 
@@ -1881,6 +1924,96 @@ nav {
     </div>
   </section>
 
+  <section class="snap-section" id="howtiq" data-name="howtiq">
+    <div class="htq-layout">
+      <p class="htq-kicker">Proyecto propio</p>
+
+      <div class="htq-panel">
+        <div class="htq-wm-row">
+          <div class="htq-wm-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          </div>
+          <span class="htq-wm">howtiq</span>
+        </div>
+
+        <div class="htq-block">
+          <span class="htq-block-label">Qué es · Cómo nació</span>
+          <p class="htq-text">Howtiq es un juego de trivia para anfitriones de Airbnb. Nació de un problema muy concreto. Nadie lee las políticas y el reglamento de la plataforma, y si las lee, no las recuerda. Howtiq convierte esa lectura obligatoria en algo entretenido. Cada pregunta es una norma, una política o una regla real de la plataforma, y el factor competitivo de subir en el ranking es lo que te mantiene jugando y, sin darte cuenta, aprendiendo.</p>
+        </div>
+
+        <div class="htq-modes">
+          <div class="htq-mode-card">
+            <svg class="htq-mode-icon" viewBox="0 0 64 64" role="img" aria-label="Ir — Alojamientos">
+              <defs><linearGradient id="htqDoorBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3A277"/><stop offset="1" stop-color="#D9633A"/></linearGradient><linearGradient id="htqDoorIn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7A3018"/><stop offset="1" stop-color="#B85428"/></linearGradient></defs>
+              <ellipse cx="32" cy="57" rx="21" ry="3.2" fill="#8A4A22" opacity="0.16"/>
+              <path d="M22 54 L15 60 L49 60 L42 54 Z" fill="#FFC978" opacity="0.9"/>
+              <path d="M14 54 V29 a18 18 0 0 1 36 0 V54 Z" fill="url(#htqDoorBody)"/>
+              <path d="M22 54 V30 a10 10 0 0 1 20 0 V54 Z" fill="url(#htqDoorIn)"/>
+              <circle cx="45.5" cy="38" r="2.4" fill="#FFE2BE"/>
+              <path d="M17.5 51 V30 a14.5 14.5 0 0 1 7.5 -12.4" stroke="#FFD9B6" stroke-width="3.2" stroke-linecap="round" fill="none" opacity="0.75"/>
+            </svg>
+            <span class="htq-mode-name">Alojamientos</span>
+            <span class="htq-mode-word">Ir</span>
+          </div>
+          <div class="htq-mode-card">
+            <svg class="htq-mode-icon" viewBox="0 0 64 64" role="img" aria-label="Hacer — Experiencias">
+              <defs><linearGradient id="htqCompBody" x1="0.2" y1="0" x2="0.8" y2="1"><stop offset="0" stop-color="#6FDDF5"/><stop offset="1" stop-color="#2E9FC7"/></linearGradient><linearGradient id="htqCompDial" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF6E9"/><stop offset="1" stop-color="#F9DDBC"/></linearGradient></defs>
+              <ellipse cx="32" cy="57" rx="20" ry="3.2" fill="#1E6E8C" opacity="0.16"/>
+              <circle cx="32" cy="32" r="22" fill="url(#htqCompBody)"/>
+              <circle cx="32" cy="32" r="15.5" fill="url(#htqCompDial)"/>
+              <circle cx="32" cy="13.6" r="2.2" fill="#FFF0D8"/>
+              <path d="M15.5 26 a18 18 0 0 1 9 -10.5" stroke="#CFF4FF" stroke-width="3.2" stroke-linecap="round" fill="none" opacity="0.8"/>
+              <g transform="rotate(-20 32 32)"><path d="M32 18.5 L38.5 32 L25.5 32 Z" fill="#FF5A44"/><path d="M32 45.5 L38.5 32 L25.5 32 Z" fill="#F6C48E"/></g>
+              <circle cx="32" cy="32" r="2.8" fill="#8A3A1E"/>
+            </svg>
+            <span class="htq-mode-name">Experiencias</span>
+            <span class="htq-mode-word">Hacer</span>
+          </div>
+          <div class="htq-mode-card">
+            <svg class="htq-mode-icon" viewBox="0 0 64 64" role="img" aria-label="Recibir — Servicios">
+              <defs><linearGradient id="htqMagBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B57EDD"/><stop offset="1" stop-color="#7B45A8"/></linearGradient></defs>
+              <ellipse cx="32" cy="56" rx="19" ry="3.2" fill="#5B2E7E" opacity="0.16"/>
+              <path d="M19 22 V34 a13 13 0 0 0 26 0 V22" stroke="url(#htqMagBody)" stroke-width="11" fill="none" stroke-linecap="round"/>
+              <path d="M15.5 30 V25" stroke="#D9B4F0" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+              <rect x="13.5" y="14" width="11" height="9" rx="3.4" fill="#F7B955"/>
+              <rect x="39.5" y="14" width="11" height="9" rx="3.4" fill="#F7B955"/>
+              <g><circle cx="32" cy="10.5" r="4.6" fill="#F7B955"/><circle cx="30.4" cy="9" r="1.5" fill="#FFE6BC"/><path d="M25 3.5 L23.6 6.5" stroke="#E5A34B" stroke-width="2.4" stroke-linecap="round" opacity="0.65"/><path d="M39 3.5 L40.4 6.5" stroke="#E5A34B" stroke-width="2.4" stroke-linecap="round" opacity="0.65"/></g>
+            </svg>
+            <span class="htq-mode-name">Servicios</span>
+            <span class="htq-mode-word">Recibir</span>
+          </div>
+        </div>
+
+        <div class="htq-sources-box">
+          <span class="htq-block-label" style="margin-bottom:0;">Cómo se arma el contenido</span>
+          <p class="htq-sources-list">Todas las preguntas de Howtiq están basadas en documentación oficial de la plataforma, incluyendo Condiciones de Servicio, Política de Privacidad, Políticas de la comunidad, Política contra la discriminación, Estándares para anfitriones, Políticas de cancelación, Políticas de contenido, Verificación de identidad, Registro de usuarios y anfitriones, Protección para anfitriones, Seguridad, Pagos, Coanfitriones y Centro de Recursos para Anfitriones. El contenido se actualiza todo el tiempo y se reescribe para el formato de juego, pero no es una IA improvisando. Cada pregunta está anclada en documentación oficial real y verificable, no en lo que un chatbot cree recordar sobre la plataforma.</p>
+        </div>
+
+        <div class="htq-cols">
+          <div class="htq-block" style="margin-bottom:0;">
+            <span class="htq-block-label">Objetivo</span>
+            <p class="htq-text">Es una herramienta para que el anfitrión conozca de verdad las reglas del juego en el que participa todos los días. Muchos anfitriones operan sin saber qué dice el reglamento, y eso los deja en desventaja cuando tienen que hacer un reclamo. El que conoce las políticas puede defender sus argumentos con solidez frente a la plataforma. El que no las conoce, no.</p>
+          </div>
+          <div class="htq-block" style="margin-bottom:0;">
+            <span class="htq-block-label">A quién va dirigido</span>
+            <p class="htq-text">A cualquier anfitrión, nuevo o con años de experiencia, que quiera mejorar su hospitalidad y, al mismo tiempo, estar mejor parado para hacer valer sus derechos cuando la situación lo exige.</p>
+          </div>
+        </div>
+
+        <div class="htq-keeper-placeholder">Imagen de Keeper<br>(mascota)</div>
+
+        <div class="htq-shots">
+          <div class="htq-shot-placeholder">Captura<br>pregunta</div>
+          <div class="htq-shot-placeholder">Captura<br>ranking</div>
+          <div class="htq-shot-placeholder">Captura<br>modos</div>
+        </div>
+
+        <a class="htq-cta" href="https://howtiq.com" target="_blank" rel="noopener">Jugar en Howtiq →</a>
+        <p class="htq-cta-note">Registrarse toma un click · Libre y gratuito para toda la comunidad</p>
+      </div>
+    </div>
+  </section>
+
   <section class="snap-section" id="contacto" data-name="contacto" style="background:var(--bk);display:flex;flex-direction:column;">
     <div class="contacto-main">
       <p class="contacto-eyebrow">contacto</p>
@@ -1897,6 +2030,7 @@ nav {
         <a href="#" onclick="goTo(3); return false;">AIRBNB</a>
         <a href="#" onclick="goTo(4); return false;">SERVICIOS</a>
         <a href="#" onclick="goTo(5); return false;">OPINIÓN</a>
+        <a href="#" onclick="goTo(6); return false;">HOWTIQ</a>
       </div>
     </div>
     <div class="contacto-icons">
