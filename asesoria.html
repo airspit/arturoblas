@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="format-detection" content="telephone=no, email=no, date=no, address=no">
+<title>Asesoría · Arturo Blas</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;700;900&family=Space+Grotesk:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mg: #E5097F; --rs1: #e92c91; --rs2: #f252a7;
+    --lm1: #15f035; --lm2: #62f877;
+    --bk: #080808; --wh: #FFFFFF;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--wh); color: var(--bk); font-family: 'Space Grotesk', sans-serif;
+    display: flex; align-items: center; justify-content: center; min-height: 100vh;
+    padding: 1.5rem; position: relative; overflow: hidden;
+  }
+  .call-tri { position: absolute; opacity: .06; pointer-events: none; }
+  .call-tri-1 { width: 60vw; height: 60vw; background: var(--mg); clip-path: polygon(0 0, 100% 0, 0 100%); top: -20vw; left: -20vw; }
+  .call-tri-2 { width: 50vw; height: 50vw; background: var(--lm1); clip-path: polygon(100% 100%, 0 100%, 100% 0); bottom: -18vw; right: -18vw; }
+
+  .call-card {
+    position: relative; z-index: 2; width: 100%; max-width: 480px;
+    background: var(--wh); border: 3px solid var(--bk); border-radius: 18px;
+    padding: 2.4rem 2rem 2.2rem; text-align: center;
+  }
+  .call-logo { font-family: 'Unbounded', sans-serif; font-weight: 900; font-size: 1rem; letter-spacing: -.02em; color: var(--bk); margin-bottom: 1.6rem; }
+  .call-logo span { color: var(--mg); }
+  .call-kicker { font-family: 'Space Mono', monospace; font-size: .58rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--mg); margin-bottom: .7rem; }
+  .call-headline { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 1.5rem; letter-spacing: -.02em; line-height: 1.25; margin-bottom: .9rem; }
+  .call-sub { font-size: .82rem; line-height: 1.6; color: rgba(8,8,8,.65); margin-bottom: 1.8rem; }
+  .call-btn {
+    display: flex; align-items: center; justify-content: center; gap: .5rem;
+    background: var(--mg); color: var(--wh); font-family: 'Unbounded', sans-serif;
+    font-weight: 700; font-size: .82rem; text-decoration: none;
+    padding: 1rem 1.4rem; border-radius: 10px; border: none; cursor: pointer;
+    transition: transform .15s ease, background .15s ease; width: 100%;
+  }
+  .call-btn:hover { background: var(--bk); transform: translateY(-2px); }
+  .call-btn-arrow { transition: transform .2s ease; }
+  .call-btn:hover .call-btn-arrow { transform: translateX(4px); }
+  .call-note { font-family: 'Space Grotesk', sans-serif; font-size: .68rem; color: rgba(8,8,8,.45); letter-spacing: .01em; margin-top: 1.4rem; line-height: 1.6; }
+  .call-note a { font-family: 'Space Grotesk', sans-serif; font-weight: 500; color: var(--mg); text-decoration: none; }
+  .call-note a:hover { text-decoration: underline; }
+
+  @media (max-width: 480px) {
+    .call-card { padding: 2rem 1.4rem 1.8rem; }
+    .call-headline { font-size: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="call-tri call-tri-1"></div>
+  <div class="call-tri call-tri-2"></div>
+
+  <div class="call-card">
+    <div class="call-logo">arturo<span>blas</span></div>
+    <p class="call-kicker">Asesoría</p>
+    <h1 class="call-headline">Tu encuentro virtual<br>está por comenzar</h1>
+    <p class="call-sub">Hacé click en el botón para unirte a la reunión por Zoom. Si es tu primera vez, puede pedirte instalar la app o unirte directo desde el navegador, cualquiera de las dos opciones funciona bien.</p>
+
+    <a class="call-btn" href="https://us05web.zoom.us/j/6803109178?pwd=mmNYPW6JrFHbX0bCVYBuPflyTB3ax5.1" target="_blank" rel="noopener">
+      Unirme a la videollamada
+      <span class="call-btn-arrow">→</span>
+    </a>
+
+    <p class="call-note">¿Problemas para conectarte? Escribime a<br><a href="mailto:hola@arturoblas.com">hola@arturoblas.com</a></p>
+  </div>
+
+</body>
+</html>
